@@ -260,6 +260,115 @@ FunnelScript is scientifically verified as a true programming language if and on
 
 ---
 
+## Debate 7: The 4-Layer Architecture Consensus & The Computational Model
+
+### The Consensus: A General DSL with Official Standard Libraries
+Following collaborative design deliberation, the fundamental character of FunnelScript is solidified as a **foundational programming language with a minimal mathematical kernel, coupled with an official first-party marketing standard library and an open community ecosystem.**
+
+FunnelScript does not build hardcoded tools or static market simulations; it delivers the language substrate upon which arbitrary market systems, strategies, and economic interactions are authored and executed.
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                       The 4-Tier FunnelScript Stack                         │
+│                                                                             │
+│  ┌───────────────────────────────────────────────────────────────────────┐  │
+│  │ Tier 04: Community Package Ecosystem                                  │  │
+│  │ Market Models (EG/KSA/US), Behavioral Heuristics, Sector Blueprints,  │  │
+│  │ Third-Party Statistical Adapters, Custom Heuristic Engines            │  │
+│  └───────────────────────────────────────────────────────────────────────┘  │
+│                                     ▲                                        │
+│                                     │ Extends & Implements                   │
+│  ┌───────────────────────────────────────────────────────────────────────┐  │
+│  │ Tier 03: Official Marketing Standard Library (First-Party)            │  │
+│  │ Audience, Campaign, Touchpoint, Conversion, Attribution, Budget,     │  │
+│  │ Customer Journey, Adstock Decay, Lift Calibration                     │  │
+│  └───────────────────────────────────────────────────────────────────────┘  │
+│                                     ▲                                        │
+│                                     │ Built With                             │
+│  ┌───────────────────────────────────────────────────────────────────────┐  │
+│  │ Tier 02: Reference Execution Runtime                                  │  │
+│  │ Discrete-Event Calendar (DES), Stochastic Sampler, State Engine,      │  │
+│  │ Deterministic Replay, Invariant Enforcer, Telemetry Aggregator        │  │
+│  └───────────────────────────────────────────────────────────────────────┘  │
+│                                     ▲                                        │
+│                                     │ Executes                               │
+│  ┌───────────────────────────────────────────────────────────────────────┐  │
+│  │ Tier 01: FunnelScript Language Core (Foundational Kernel)             │  │
+│  │ Grammar, Type System, AST, Entity, Agent, State, Event, Rule,         │  │
+│  │ Transition, Probability Primitives, Constraints, Modules              │  │
+│  └───────────────────────────────────────────────────────────────────────┘  │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+### The Three Architectural Governance Axioms
+
+#### Axiom 1: Complete World-Model Neutrality
+The language core imposes **zero predefined market assumptions**. A user can construct an agent-based consumer market featuring $10^6$ synthetic agents, while another user constructs a deterministic enterprise account-based marketing (ABM) model containing zero consumer agents. Both programs are equally valid if they obey the syntactic and semantic type rules of the language.
+
+#### Axiom 2: First-Party Standard Library Parity (No Privileged APIs)
+The official standard library (`std::marketing`) must be authored strictly using the **public extension interfaces and syntax** available to any third-party package developer. If first-party marketing primitives require internal compiler privileges or hardcoded compiler branches, the language design is defective. Community developers must possess the identical expressive capability to invent alternative marketing paradigms (e.g. `affiliate_network`, `influencer_graph`, or `b2b_procurement`).
+
+#### Axiom 3: Strict Separation of Programmatic Verification vs. Scientific Validation
+The compiler and static linter are responsible exclusively for **computational correctness**:
+* Syntax parsing & lexical tokenization.
+* Type safety and state reachability.
+* Directed graph acyclicity (where forward flow is asserted).
+* Constraint consistency.
+
+The compiler **never** passes judgment on economic realism. A strategy that assumes 90% conversion rates is computationally valid; its empirical plausibility must be evaluated externally through Bayesian calibration (`pymc-marketing-mcp`) and out-of-sample backtesting.
+
+---
+
+## Debate 8: The Computational Model — Ontological Distinction between `Entity` and `Agent`
+
+Before formalizing new syntax, the foundational execution semantics of FunnelScript must define the ontological primitives that populate a program and govern how time advances.
+
+### 1. The Ontological Subtyping Principle: $\text{Agent} \subset \text{Entity}$
+Every agent is an entity, but not every entity is an agent:
+
+$$\text{Agent} \subset \text{Entity}$$
+
+```
+┌──────────────────────────────────────────────┐
+│                    Entity                    │
+│   Identity, Attributes, State, Lifespan      │
+│   (Passive, Reactive, Externally Mutated)   │
+│   Examples: Inventory, Budget, AdSlot, Cash  │
+│                                              │
+│         ┌───────────────────────────┐        │
+│         │           Agent           │        │
+│         │   Autonomous Behavior,    │        │
+│         │   Decision Heuristics,    │        │
+│         │   Self-Initiated Action   │        │
+│         │   Examples: Consumer,     │        │
+│         │   Competitor, Bidder      │        │
+│         └───────────────────────────┘        │
+└──────────────────────────────────────────────┘
+```
+
+| Ontological Dimension | `Entity` (Base Object) | `Agent` (Autonomous Actor) |
+| :--- | :--- | :--- |
+| **Definition** | An economic or structural object possessing identity, mutable attributes, and state. | An entity possessing bounded rationality, internal decision rules, and autonomous initiation. |
+| **Agency** | **Passive / Reactive:** State changes occur via external event dispatch or agent manipulation. | **Active / Proactive:** Initiates actions, executes choices, and triggers events affecting other entities. |
+| **Internal Mechanics** | State storage, capacity boundaries, depletion counters. | Utility functions, cognitive heuristics, memory stores, probabilistic choice kernels. |
+| **Domain Examples** | `Budget`, `WarehouseInventory`, `AdUnitSlot`, `WorkingCapitalAccount`, `CouponPool`. | `ConsumerCohort`, `CompetitorFirm`, `AlgorithmicAdBidder`, `SalesRepresentative`. |
+
+### 2. The Core Algebraic Primitives of the Computational Model
+A FunnelScript program $\mathcal{M}$ is defined as a 7-tuple:
+
+$$\mathcal{M} = \langle \mathcal{E}, \mathcal{A}, \mathcal{S}, \mathcal{V}, \mathcal{R}, \mathcal{T}, \mathcal{C} \rangle$$
+
+Where:
+1. $\mathcal{E}$ is the set of **Entities** (passive state containers).
+2. $\mathcal{A} \subseteq \mathcal{E}$ is the set of **Agents** (autonomous decision actors).
+3. $\mathcal{S}$ is the set of **Discrete States** defined across entity lifecycles.
+4. $\mathcal{V}$ is the set of **Events** scheduled across the simulation calendar.
+5. $\mathcal{R}$ is the set of **Behavioral Rules** (deterministic or stochastic functions $f: (\text{State}, \text{Context}) \to \text{Action}$).
+6. $\mathcal{T}$ is the **Time-Advance Model** (hybrid fixed-increment $\Delta t$ and next-event scheduling $\tau$).
+7. $\mathcal{C}$ is the set of **Model-Level Constraints** (user-defined invariants enforced during execution).
+
+---
+
 ## Actionable Operational Checklist
 
 | # | Domain | Actionable Specification | Priority | Status |
@@ -268,9 +377,10 @@ FunnelScript is scientifically verified as a true programming language if and on
 | **2** | **Static Verification** | Enforce DAG reachability and cycle detection in AST linter before any simulation run. | P0 | **Implemented** |
 | **3** | **Liquidity Invariant** | Model gateway settlement latency $\Delta_{\text{settle}}$ and enforce $P(\text{Insolvency})$ ad halt. | P0 | **Implemented** |
 | **4** | **Two-Tier Engine** | Keep vectorized SIMD runtime for $10^5$ population agents; reserve cognitive agents for sampling. | P0 | **Implemented** |
-| **5** | **General Core DSL** | Decouple hardcoded marketing entities into minimal kernel (`entity`, `state`, `event`) + `std::marketing`. | P1 | **Next Phase** |
-| **6** | **Calibration Contract** | Implement `schema/calibration_manifest.json` bridge to ingest Bayesian priors from `pymc-marketing-mcp`. | P1 | **Next Phase** |
-| **7** | **Subjective Belief Layer** | Formalize separation of `WorldTruth` and `AgentBelief` to support imperfect consumer heuristics. | P2 | **Roadmap** |
-| **8** | **OmniTwin Memory Adapter** | Develop optional adapter for Tier-2 cognitive agents to conduct narrative copy pre-testing. | P2 | **Roadmap** |
-| **9** | **Empirical Validation** | Backtest simulation outputs against historical incrementality lift tests to measure empirical coverage. | P2 | **Roadmap** |
+| **5** | **General Core DSL** | Decouple hardcoded marketing entities into minimal kernel (`entity`, `agent`, `state`, `event`). | P1 | **Next Phase** |
+| **6** | **Standard Library (`std::marketing`)** | Re-implement `Audience`, `Touchpoint`, and `Campaign` as first-party library abstractions over the kernel. | P1 | **Next Phase** |
+| **7** | **Calibration Contract** | Implement `schema/calibration_manifest.json` bridge to ingest Bayesian priors from `pymc-marketing-mcp`. | P1 | **Next Phase** |
+| **8** | **Subjective Belief Layer** | Formalize separation of `WorldTruth` and `AgentBelief` to support imperfect consumer heuristics. | P2 | **Roadmap** |
+| **9** | **OmniTwin Memory Adapter** | Develop optional adapter for Tier-2 cognitive agents to conduct narrative copy pre-testing. | P2 | **Roadmap** |
+| **10** | **Empirical Validation** | Backtest simulation outputs against historical incrementality lift tests to measure empirical coverage. | P2 | **Roadmap** |
 
