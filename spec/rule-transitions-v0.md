@@ -8,7 +8,7 @@ Status: Experimental language-core behavior contract (2026-10-31). Extends DEC-0
 2. Bernard P. Zeigler, *DEVS Representation of Dynamical Systems: Event-Based Intelligent Control*, NASA Technical Reports Server, 1989. https://ntrs.nasa.gov/citations/19890044726 . Input events drive state transitions on an ordered calendar.
 3. Cardelli and Wegner, *On Understanding Types, Data Abstraction, and Polymorphism*, ACM Computing Surveys, 1985. https://www.nokia.com/bell-labs/publications-and-media/publications/on-understanding-types-data-abstraction-and-polymorphism/ . Typed state and subtype identity are independent of marketing objects.
 
-This contract is a deliberately narrow operational subset, not a full expression language, complete DEVS implementation, distributed transaction system, or predictive market model.
+This contract is a deliberately narrow operational subset, not a full expression language, complete DEVS implementation, distributed transaction system, or predictive market model. Source-level scheduled events were deferred in this v0 contract and subsequently specified by `spec/event-emission-v0.md` (DEC-028).
 
 ## Source-level example
 
@@ -36,7 +36,7 @@ An input event is addressed as `<declaration>.<event>`, e.g. `Counter.Pulse`. Th
 
 ## Execution semantics
 
-Let `S` be the immutable-in-observation mapping `owner -> field -> value`. For event `e` addressed to owner `a`, select the unique rule `r`. For each assignment `x_i := expr_i`, compute `v_i = eval(expr_i, S[a])` against the same pre-event snapshot. Produce `S' = S[a <- S[a] union {x_i -> v_i}]` only after every assignment has passed static typing and runtime evaluation. This establishes simultaneous-assignment semantics, regardless of transition statement order. Existing previous result states must remain unchanged (copy-on-write for the addressed declaration).
+Let `S` be the immutable-in-observation mapping `owner -> field -> value`. For event `e` addressed to owner `a`, select the unique rule `r`. For each assignment `x_i := expr_i`, compute `v_i = eval(expr_i, S[a])` against the same pre-event snapshot. Produce `S' = S[a <- S[a] union {x_i -> v_i}]` only after every assignment has passed static typing and runtime evaluation. This establishes simultaneous-assignment semantics, regardless of transition statement order. Existing previous result states must remain unchanged (copy-on-write for the addressed declaration). The executor also snapshots the validated AST, so mutation of the caller's original AST after construction cannot change executable rules without revalidation.
 
 Arithmetic `+` and `-` is defined only for `int` with `int` or `float` with `float`. No implicit numeric promotion; `bool` does not behave as `int`. There is no string concatenation in v0. A rule cannot assign the same target twice. Names of rules and their listened-to events are unique per declaration. No rule may mutate another declaration's state in v0.
 

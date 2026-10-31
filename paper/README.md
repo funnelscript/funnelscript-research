@@ -281,7 +281,7 @@ FunnelScript demonstrates that marketing strategies can be elevated from ambiguo
 
 ## Implementation Note: Language-Neutral World Declarations (2026-10-31)
 
-The reference compiler has gained an additive `world` syntax with context-sensitive `entity`, `agent`, and `state` declarations. The `AgentDefinition` AST class is a nominal subtype of `EntityDefinition`; primitive field declarations use exact literal type checks and uniqueness constraints. This is an operational compiler contract under hypotheses H-W1 to H-W4, not a theorem of general type soundness or a validated computational market model. The full source grammar, falsification boundaries, and runnable evaluation mapping are in `spec/world-declarations-v0.md` and `evals/world-declarations-v0.md`. Agent decision rules and user-defined transition bodies are not yet implemented.
+The reference compiler has gained an additive `world` syntax with context-sensitive `entity`, `agent`, and `state` declarations. The `AgentDefinition` AST class is a nominal subtype of `EntityDefinition`; primitive field declarations use exact literal type checks and uniqueness constraints. This is an operational compiler contract under hypotheses H-W1 to H-W4, not a theorem of general type soundness or a validated computational market model. The full source grammar, falsification boundaries, and runnable evaluation mapping are in `spec/world-declarations-v0.md` and `evals/world-declarations-v0.md`. At this declaration-only milestone, rule execution was deferred; typed transition handlers, local source emissions, and pre-event guards were subsequently implemented in DEC-027, DEC-028, and DEC-029. Autonomous decision-making and market-model calibration remain unimplemented.
 
 
 ---
@@ -291,3 +291,13 @@ The reference compiler has gained an additive `world` syntax with context-sensit
 The experimental `rule R on event E` and `transition field = expr` subset provides a separately falsifiable language-core result. The implemented source interpreter validates exact primitive types and executes simultaneous state assignments on a deterministic discrete-event calendar. See [`spec/rule-transitions-v0.md`](../spec/rule-transitions-v0.md) and [`evals/world-rules-v0.md`](../evals/world-rules-v0.md) for operational semantics and test probes.
 
 This isolated interpreter result must not be interpreted as empirical validation of the market-simulation claims in this working paper. No posterior calibration, consumer-behavior fidelity, counterfactual identification, or Live effects are established by these unit tests.
+
+
+## Operational Note: Source-Generated Discrete Events (2026-10-31)
+
+An experimental extension permits typed World rules to generate finite-delay local events using `emit Event after Delay;`. It schedules these events through the existing discrete event calendar rather than continuous polling or direct external actions. See [`spec/event-emission-v0.md`](../spec/event-emission-v0.md) and [`evals/event-emission-v0.md`](../evals/event-emission-v0.md) for falsifiable semantics and executable probes. This feature is not evidence of autonomy, market calibration, or predictive fidelity.
+
+
+## Operational Note: Typed Conditional World Rules (2026-10-31)
+
+Experimental source-level `when (field OP literal)` guards permit a pre-event state predicate to suppress both transitions and event emission with exact primitive typing. Formal semantics and falsification evidence are recorded in [`spec/world-guards-v0.md`](../spec/world-guards-v0.md) and [`evals/world-guards-v0.md`](../evals/world-guards-v0.md). This is interpreter evidence, not evidence of probabilistic consumer psychology or market prediction.
