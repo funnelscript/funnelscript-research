@@ -48,3 +48,29 @@ must govern every inquiry, implementation pass, refactoring, and architectural u
 
 ### 6. Traceability & Implementation Parity
 - All research proposals and changes must map to runnable evaluation scenarios in `evals/` and verifiable implementations in `funnelscript/funnelscript`.
+
+---
+
+## Unbreakable Coding Invariants (Anti-Slop + Ponytail)
+
+> Derived from `/anti-slop-engineering` and `/ponytail`. These rules are non-negotiable and apply to every script, spec, and implementation artifact in this repository.
+
+**KISS / DRY / YAGNI — Hard Limits:**
+- Control flow nesting **≤ 4 levels**. Functions **≤ 80 lines**. Single-responsibility, always.
+- Consolidate duplicate blocks ≥ 4 lines into a canonical module. One source of truth.
+- No speculative parameters (`_unused`, `future_kwargs`), dead branches (`if False:`), or `TODO(future)` placeholders. Build for current verified contracts only.
+
+**Reliability — No Band-Aids:**
+- Never `except Exception: pass`. Silent swallows are forbidden.
+- No blind `sleep()` synchronization. Use exponential backoff with full jitter.
+- Bound concurrency with pools or semaphores. State-changing operations must be idempotent.
+
+**Senior Dev Ladder (Ponytail):**
+- Intercept SHIT hazards before writing code: **S**cope creep, **H**ypothetical hardening, **I**ntent violation, **T**ask thrashing.
+- Name the built-in — never hand-roll what the platform provides (`crypto.randomUUID()`, `URLSearchParams`, `itertools`, etc.).
+- Abstract only at ≥ 2 real existing call-sites with identical mutation requirements and a clean non-conjunction name. No premature DRY.
+- Boring engineering wins: predictable, minimal, reversible decisions over clever ones.
+
+**Zero Hallucinated Artifacts:**
+- Never generate unrequested docs, speculative scaffolding, or fake distribution dossiers.
+- Repository files map 1:1 with verified local reality. No `TODO` files that describe future systems as if they exist.
