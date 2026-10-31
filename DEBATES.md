@@ -1004,3 +1004,15 @@ A critical trap in ambitious software projects is delaying release until a massi
 * **Option C, one-file `init-world` and versioned Git source (accepted):** Reuse the packaged Marketing module and native `pathlib.open("x")` semantics. CI tests the wheel from outside the repository. Author-facing steps are versioned and explicit, without extra package manager code.
 * **Trade-offs:** The user needs uv and Git, the generated World still requires explicit typed events, and GitHub Actions artifacts are time-limited. Preview install success on one platform does not establish population-scale execution or external predictive validity.
 * **Falsification:** H-P1 to H-P4 require an observable installed-CLI journey, non-overwrite behavior, wheel inspection and proof that the announced tag/commit and public CI evidence agree.
+
+
+---
+
+## Debate 23: Copied Cross-Repository Docs vs Scoped Verified Entry Points
+
+**Problem:** A shared contributor template treated the research tree as if it contained application CLI, interpreter and Web Studio code. Three local Markdown links pointed to nonexistent records.
+
+* **Option A, reuse one template:** Saves editorial work but was disproven by the actual repository layout. Rejected.
+* **Option B, distinct contributor guides and automated local link checks (accepted):** Research documents hypotheses/evaluations and points implementation contributors to the sister checkout; each repository uses its own test oracle.
+* **Trade-off:** Editorial synchronization remains necessary. Relative-file checks do not validate external websites or claims in the scientific manuscript, so runnable installed-CLI smoke and manual evidence auditing stay separate.
+* **Falsification:** H-P5 through H-P7; initial RED three missing-link failures, subsequent GREEN and the independent app workstation-link RED are recorded under FL-018 and `evals/developer-preview-v0.md`.

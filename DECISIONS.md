@@ -461,3 +461,11 @@
 * **Research and falsification:** `spec/developer-preview-v0.md` (H-P1 to H-P4), `evals/developer-preview-v0.md`, `tests/test_preview_quickstart.py` and a candidate-vs-remote release audit.
 * **Rationale:** A first independent user can try the reference language without learning the repository internals, while a minimal package/tag/CI path is inspectable and reversible before a public release.
 * **Limits:** No PyPI publishing, general package registry, module signatures, clean-machine user study, real economic model validation, or Live execution. A source tag alone is not a verified GitHub Release object.
+
+
+### DEC-034: Repository-Specific Documentation Contracts for the Experimental Preview
+
+* **Decision (2026-10-31):** Application and research each maintain a contributor entrypoint truthful to the local file tree and automated no-new-dependency checks for canonical relative Markdown links. Shipped World functionality is distinguished from the legacy strategy simulator and proposed ecosystem, calibration, and Live capabilities.
+* **Alternatives:** Shared copied instructions were falsified by missing research `src/` and `apps/web/` paths and three broken decision/debate links; a new documentation framework adds risk without solving current failures.
+* **Research and tests:** H-P5 through H-P7 in `spec/developer-preview-v0.md`; research `tests/test_docs_links.py`, application `tests/test_documentation_links.py` and FL-018. The evaluated public Git tag remains `v0.2.0a1`.
+* **Limits:** Link checks do not prove external URLs, code-block correctness, scientific truth, economic conservation or out-of-sample predictive validity.

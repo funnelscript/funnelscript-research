@@ -1,6 +1,6 @@
 # Experimental Developer Preview v0: Installed World Quickstart and CI Contract
 
-Status: Research-first contract implemented locally, 2026-10-31. Accepted DEC-033. Target candidate: Python distribution `0.2.0a1` and source tag `v0.2.0a1`, subject to fresh verification.
+Status: Research-first contract implemented and public Git source tag independently verified, 2026-10-31. Accepted DEC-033. Python distribution version `0.2.0a1`, annotated source tag `v0.2.0a1`; see the later attestation in `evals/developer-preview-v0.md`. PyPI remains out of scope.
 
 ## Evidence anchors
 
@@ -39,6 +39,16 @@ Let `T` be a target path and `B(T)` its bytes before an invocation.
 4. For the seed-1 documented scenario `p=0.7, cpc=2.0, order_value=100.0`, `processed_events=2`, `spend=2.0`, `revenue=100.0`. These values prove interpreter replay only, not external market prediction.
 5. The version string in `pyproject.toml`, Git source tag and actual wheel metadata must identify the same candidate. Clean-install evidence must not use the project cwd.
 6. No secrets or long-lived publishing tokens are added to workflows. Publishing a prerelease never unlocks Shadow/Live effects.
+
+## Documentation consistency extension (H-P5 to H-P7)
+
+Research anchor: the repository's actual file tree, the installed `funnelscript --help` surface, and the public-tag/CI evidence recorded in `evals/developer-preview-v0.md`. An illustrative source snippet or roadmap proposal is not proof of shipping behavior.
+
+- **H-P5, navigable contributor contract:** Every relative Markdown link in research entrypoints, specifications, evaluations, and canonical documentation resolves to a real file inside this repository. Counterexample: a contributor follows a decision link to nonexistent `docs/DECISIONS.md` instead of the root record.
+- **H-P6, truthful repository scope:** Research contribution instructions describe paths and verification commands that actually exist here and refer implementation work to the application repository. Counterexample: they instruct a research-only contributor to run `uv run pytest` or `bun test` in an absent source tree.
+- **H-P7, release accuracy:** README and preview docs distinguish the confirmed `v0.2.0a1` Git-source preview from unimplemented calibration, market validation, PyPI, and Live Execution. Counterexample: they call the verified tag unpublished or future features shipped.
+
+Invariant: `link(document, target)` implies `resolved(document.parent / target).is_file()` for each repository-relative local Markdown target in canonical documents; external URLs and fragment-only links are outside this filesystem oracle. The research check uses standard-library `unittest`, without a new dependency. No interpreter semantics change in this documentation pass.
 
 ## Out of scope
 

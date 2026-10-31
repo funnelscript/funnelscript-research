@@ -1,115 +1,42 @@
-# Contributing to FunnelScript
+# Contributing to FunnelScript Research
 
-> Engineering guidelines, development workflows, testing requirements, and contribution taxonomy for the FunnelScript compiler and runtime.
+This repository holds FunnelScript's research contracts, falsifiable hypotheses, architecture decisions, evaluations, and manuscripts. The [application repository](https://github.com/funnelscript/funnelscript) owns the compiler, interpreter, CLI, tests, packaged Standard Library, and Web Studio.
 
----
+## Repository map
 
-## Architectural Overview
+| Path | Purpose |
+| --- | --- |
+| [`spec/`](spec/developer-preview-v0.md) | Language and execution contracts, hypotheses, grammar, JSON Schema |
+| [`evals/`](evals/developer-preview-v0.md) | Observations and falsification evidence against the specifications |
+| [`paper/`](paper/README.md) | Academic manuscript and references; claims need independent evidence |
+| [`notebooks/`](notebooks/README.md) | Research notebooks and exploratory calculations |
+| [`docs/`](docs/MARKETING_SYSTEMS_ENGINEERING.md) | Strategy and ecosystem proposals, not necessarily shipped features |
+| [`DECISIONS.md`](DECISIONS.md) | Accepted architecture decisions |
+| [`DEBATES.md`](DEBATES.md) | Open trade-offs and counterarguments |
+| [`OUT_OF_THE_BOX.md`](OUT_OF_THE_BOX.md) | Speculative ideas requiring evaluation |
 
-FunnelScript is engineered with a strict inside-out separation of concerns:
+## Research-first contribution workflow
 
-```
-src/funnelscript/
-├── tokens.py              # Lexer token specifications and regex rules
-├── parser.py              # Recursive-descent AST parser (WorldAST & StrategyAST)
-├── linter.py              # Static semantic analysis, DAG reachability, mass balance
-├── runtime/
-│   ├── engine.py          # Vectorized SIMD agent execution engine
-│   └── event_kernel.py    # Priority-queue discrete-event calendar substrate
-├── compiler/
-│   └── world_ast.py       # General World, Entity, and Agent type checking
-├── adapters/
-│   └── pymc_adapter.py    # Bayesian posterior parameter ingestion
-└── cli.py                 # Command-line interface (check, simulate, calibrate)
-```
-
-Web client applications and visualization dashboards reside in `apps/web`.
-
----
-
-## Development Environment Setup
-
-### Prerequisites
-
-* Python $\ge 3.11$ with [`uv`](https://github.com/astral-sh/uv)
-* [`bun`](https://bun.sh) for JavaScript/TypeScript tooling
-
-### Installation
+1. Cite a theoretical or observed anchor. Distinguish proposed mechanisms from implemented capabilities and experimentally validated results.
+2. State a falsifiable hypothesis, a counterexample, and the invariant or acceptance criterion in the relevant file under `spec/`.
+3. Record the test procedure and actual outcomes under `evals/`. Link a concrete application test or GitHub Actions run when the claim depends on implementation.
+4. Update the accepted decision, debate, and hypothesis records if the design boundary changes. Keep the research and [application documentation](https://github.com/funnelscript/funnelscript/tree/main/docs) aligned.
+5. Run the repository-local documentation contract test and verify the diff before submitting:
 
 ```bash
-git clone https://github.com/imMamdouhaboammar/funnelscript.git
-cd funnelscript
-
-# Install Python dependencies and virtual environment
-uv sync
-
-# Install Web Studio dependencies
-cd apps/web
-bun install
-cd ../..
+python3 -m unittest discover -s tests -v
+git diff --check
 ```
 
----
+The documentation test checks relative links in canonical research documents. It does not verify external URLs, scientific claims, or the behavior of the application. Python's standard library is sufficient; no application dependencies are installed in this repository.
 
-## Verification & Test Execution
+## Compiler and runtime changes
 
-All pull requests must pass the complete polyglot test suite before review:
+Work on parsers, World rules, CLI, Python regressions, or Bun belongs in [funnelscript/funnelscript](https://github.com/funnelscript/funnelscript). Follow its [contributor guide](https://github.com/funnelscript/funnelscript/blob/main/CONTRIBUTING.md) and local `AGENTS.md`. Reference the relevant research hypothesis and then run the application's own verification suite there. Do not run `uv run pytest` or `bun test` as if the research checkout contained the implementation.
 
-### Python Compiler & Runtime Tests
+## Evidence and language standards
 
-```bash
-# Execute complete unit, integration, and performance test suite
-uv run pytest -v
-
-# Target specific compiler test suites
-uv run pytest tests/test_world_language.py -v
-uv run pytest tests/test_event_kernel.py -v
-uv run pytest tests/test_linter.py -v
-uv run pytest tests/test_runtime.py -v
-```
-
-### Web Studio Tests & Production Build
-
-```bash
-cd apps/web
-bun test
-bun run build
-cd ../..
-```
-
----
-
-## Contribution Taxonomy & Entry Points
-
-Issues and pull requests are categorized by architectural layer:
-
-| Label | Scope | Typical Entry Tasks |
-| :--- | :--- | :--- |
-| `good-first-issue` | Standard Library & CLI | New standard channels, CLI output formatting, documentation examples |
-| `compiler` | Syntax & AST | Parser extensions, AST node definitions, type checker validations |
-| `runtime` | Execution Engine | Vectorized SIMD kernels, event calendar performance, stochastic sampling |
-| `adapters` | Ecosystem Connectors | PyMC calibration schemas, provider API mocks, webhook ingestion |
-| `rfc` | Language Specification | Formal grammar revisions, new syntax keywords, core type changes |
-
----
-
-## Pull Request Guidelines
-
-1. **Strict 100% English Standard:** All code, comments, docstrings, issue reports, and commit messages must be strictly in English. Non-English characters are prohibited in tracked source files.
-2. **Red-Green Falsification:** Every bug fix or net-new feature must include automated test cases that fail without the proposed implementation and pass with it.
-3. **Mass & Budget Invariants:** Any modification to strategy linting or simulation semantics must prove that audience mass conservation ($\sum P(\text{state}) = 1.0$) and financial budget ceilings ($C_{\text{max}}$) remain fully preserved.
-4. **RFC Process for Core Changes:** Changes modifying language grammar (`tokens.py`, `parser.py`) or type systems require an accepted RFC proposal in `docs/` prior to implementation.
-
----
-
-## Strategic & Architectural Documentation
-
-Contributors should consult the following foundational guides:
-
-* **[Open-Source Growth Playbook](docs/OPEN_SOURCE_GROWTH_PLAYBOOK.md):** The 4-pillar open-source scaling strategy.
-* **[The Shim Strategy](docs/SHIM_STRATEGY.md):** Specification-first adoption and the linter wedge.
-* **[Package Manager Specification (`fpm`)](docs/fpm.md):** Anatomy, lockfiles, and commercial incentives.
-* **[Marketing Systems Engineering](docs/MARKETING_SYSTEMS_ENGINEERING.md):** The core persona, mental models, and JTBD.
-* **[Architecture Decision Records](docs/DECISIONS.md):** Canonical record of all accepted architectural decisions (DEC-001 through DEC-026).
-* **[Intellectual Debates](docs/DEBATES.md):** Rigorous engineering trade-offs and falsification boundaries.
-* **[Out of the Box Ideas](docs/OUT_OF_THE_BOX.md):** Speculative hypotheses and frontier research tracking (OOTB-001 through OOTB-020).
+- Use English for tracked research and implementation files.
+- Do not label a simulation reproducible merely because it produces a fixed seed. Separate model assumptions, fitted data, uncertainty, and out-of-sample validation.
+- Report failed hypotheses and reproducible failure lessons; do not alter tests or benchmarks just to obtain a passing result.
+- Do not publish credentials, confidential market data, unverifiable financial returns, or predictions disguised as measurements.

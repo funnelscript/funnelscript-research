@@ -1,93 +1,57 @@
 # FunnelScript Research
 
-> Formal specification, theoretical foundations, mathematical proofs, and scientific research paper for **FunnelScript** — the Declarative Domain-Specific Language (DSL) and Stochastic Agent-Based Simulation Runtime for Marketing Systems Engineering.
+Research specifications, falsification protocols, and scientific manuscripts for [FunnelScript](https://github.com/funnelscript/funnelscript), an **experimental** language for expressing and executing stateful marketing-system models. The compiler, CLI, tests, bundled Marketing Standard Library, and Web Studio live in the [application repository](https://github.com/funnelscript/funnelscript).
 
-## Repository Structure
+## Current evidence boundary
 
+| Capability or claim | Status | Evidence |
+| --- | --- | --- |
+| Typed World syntax, event-driven transitions, guards, and event payloads | Implemented in the reference interpreter | [World rules](spec/rule-transitions-v0.md), [events](spec/typed-event-payloads-v0.md), [evals](evals/world-rules-v0.md) |
+| Seeded Bernoulli/Uniform sampling and local event scheduling | Implemented; assumption-driven only | [Stochastic specification](spec/stochastic-operators-v0.md), [evaluation](evals/stochastic-operators-v0.md) |
+| Source imports and first `std:marketing/lead_response.fnl` module | Implemented, one exported entity/agent per module | [Library contract](spec/marketing-stdlib-v0.md), [evaluation](evals/marketing-stdlib-v0.md) |
+| Installed CLI starter and source-tagged `v0.2.0a1` preview | Published via Git tag; CI and clean-directory Git install verified | [Preview specification](spec/developer-preview-v0.md), [attestation](evals/developer-preview-v0.md) |
+| Market digital twin, fitted human behavior, causal lift prediction, PyMC/OmniTwin adapter | Research intent; **not validated or shipped as the World runtime** | [Paper and limitations](paper/README.md) |
+| Live marketing actions, `fpm` registry, PyPI distribution | Not shipped | [Ecosystem proposal](docs/fpm.md), [preview limits](spec/developer-preview-v0.md) |
+
+The source preview is reproducible for a given model, event sequence, and seed. This does **not** establish statistical calibration, economic realism, or out-of-sample predictive accuracy.
+
+## Try the versioned interpreter
+
+The public `v0.2.0a1` tag can be installed without cloning the research repository. Python 3.12+ and [uv](https://docs.astral.sh/uv/) are required:
+
+```bash
+uvx --from "git+https://github.com/funnelscript/funnelscript@v0.2.0a1" funnelscript --version
+uvx --from "git+https://github.com/funnelscript/funnelscript@v0.2.0a1" funnelscript init-world first.fnl
+uvx --from "git+https://github.com/funnelscript/funnelscript@v0.2.0a1" funnelscript check first.fnl
+uvx --from "git+https://github.com/funnelscript/funnelscript@v0.2.0a1" funnelscript run-world first.fnl --event '{"name":"Prospect.Impression","time":0,"payload":{"cpc":2.0,"conversion_probability":0.7,"order_value":100.0}}' --seed 1
 ```
-.
-├── paper/
-│   ├── README.md              # Full academic research paper (Markdown format)
-│   ├── funnelscript.tex       # IEEE/ACM LaTeX manuscript source
-│   └── references.bib         # Academic citations and foundational bibliography
-├── notebooks/
-│   ├── executive_engineering_notebook.md   # Executive engineering playbook & visual architecture
-│   └── executive_engineering_notebook.ipynb # Interactive runnable simulation & invariant verification
-├── spec/
-│   ├── event-kernel-v0.md     # Language-neutral DEVS event kernel specification
-│   ├── grammar.ebnf           # Complete, closed EBNF grammar specification
-│   └── schema.json            # AST JSON Schema specification
-└── evals/
-    └── event-kernel-v0.md     # Falsification plan and hypothesis mapping (H-K1 to H-K4)
-```
 
-## Key Theoretical Contributions
+This models one assumed lead journey, not a market population. The [application tutorial](https://github.com/funnelscript/funnelscript/blob/main/docs/EXPERIMENTAL_PREVIEW.md) covers the result and local module extension. A Git tag is not a PyPI release or a standalone GitHub Release object.
 
-1. **Finite State Automaton Customer Model ($M$):** Formal stochastic state transitions across `COLD`, `AWARE`, `CONSIDERING`, `CART_ABANDONED`, `CONVERTED`, and `CHURNED`.
-2. **Multi-Scale Discrete-Event $\tau$-Calendar:** Eliminates temporal race conditions across micro-second ad clicks, hourly abandonment, and daily payout schedules.
-3. **Working Capital Dynamics & Cash Ruin Probability $P(\text{Insolvency})$:** Mathematical proof that high-ROAS marketing strategies face catastrophic failure without accounting for settlement latency ($\Delta_{\text{settle}}$).
-4. **Behavioral Cannibalization Detection:** Dynamic agent-based proof of margin erosion caused by automated cart abandonment incentives.
+## Language and evaluation contracts
 
-## Experimental Domain-Neutral Kernel Contract
+- [Domain-neutral event kernel](spec/event-kernel-v0.md) and [evaluation](evals/event-kernel-v0.md)
+- [World declarations](spec/world-declarations-v0.md) and [evaluation](evals/world-declarations-v0.md)
+- [World rules](spec/rule-transitions-v0.md) and [evaluation](evals/world-rules-v0.md)
+- [Local event emission](spec/event-emission-v0.md) and [evaluation](evals/event-emission-v0.md)
+- [Typed guards](spec/world-guards-v0.md) and [evaluation](evals/world-guards-v0.md)
+- [Typed event payloads](spec/typed-event-payloads-v0.md) and [evaluation](evals/typed-event-payloads-v0.md)
+- [Stochastic operators](spec/stochastic-operators-v0.md) and [evaluation](evals/stochastic-operators-v0.md)
+- [Marketing source library](spec/marketing-stdlib-v0.md) and [evaluation](evals/marketing-stdlib-v0.md)
+- [Installed developer preview and documentation contract](spec/developer-preview-v0.md) and [evaluation](evals/developer-preview-v0.md)
+- [Reference EBNF](spec/grammar.ebnf), [JSON Schema](spec/schema.json)
 
-[Event Kernel v0](spec/event-kernel-v0.md) defines the bounded discrete-event scheduling, seeded replay, model-owned transitions, and inert effect-intent hypotheses (H-K1 to H-K4). It is an executable semantic foundation for the language, **not** a market prediction or authorization to invoke live platform APIs.
+## Broader research and design records
 
-## Executive Engineering Playbook & Interactive Notebook
+- [Research manuscript](paper/README.md), [LaTeX source](paper/funnelscript.tex), and [bibliography](paper/references.bib)
+- [Exploratory notebook](notebooks/executive_engineering_notebook.ipynb) and [engineering notes](notebooks/executive_engineering_notebook.md): exploratory, not evidence of calibrated market forecasting
+- [Accepted decisions](DECISIONS.md), [debates](DEBATES.md), and [unproven hypotheses](OUT_OF_THE_BOX.md)
+- [Marketing Systems Engineering](docs/MARKETING_SYSTEMS_ENGINEERING.md), [fpm concept](docs/fpm.md), and [ecosystem growth plan](docs/OPEN_SOURCE_GROWTH_PLAYBOOK.md): design proposals where not corroborated by the interpreter
 
-* **Playbook:** [`notebooks/executive_engineering_notebook.md`](notebooks/executive_engineering_notebook.md) — Comprehensive architecture playbook, Bayesian prior injection mechanics, 5-subsystem breakdown, and cross-industry language intersections (Terraform, Julia, Solidity).
-* **Interactive Notebook:** [`notebooks/executive_engineering_notebook.ipynb`](notebooks/executive_engineering_notebook.ipynb) — Executable Jupyter notebook simulating $100,000$ agents, Hill equation saturation kinetics, and mass conservation invariants.
+## Contributing
 
-## Experimental Typed World Declarations
-
-[World Declarations v0](spec/world-declarations-v0.md) defines context-sensitive `world`, `entity`, `agent`, and `state` declarations, with an explicit primitive type checker and backward compatibility gates.
-
-## Experimental Rule and Transition Semantics
-
-[Rule Transitions v0](spec/rule-transitions-v0.md) and [Falsification Evaluation](evals/world-rules-v0.md) define the small-step operational semantics where input events drive simultaneous state transitions across entities and agents on the discrete-event calendar substrate (`funnelscript run-world`).
-
-## Experimental Scheduled Source Events
-
-[Event Emission v0](spec/event-emission-v0.md) and its [falsification tests](evals/event-emission-v0.md) specify `emit Event after Delay;`, local handler resolution, deterministic discrete-event scheduling and bounded zero-delay recursion. This is a pure interpreter mechanism and is not evidence of autonomous market agents or out-of-sample predictive validity.
-
-## Experimental Typed World Guards
-
-[Typed Guard Semantics v0](spec/world-guards-v0.md) and [Falsification Evaluation](evals/world-guards-v0.md) define `when (field OP literal)` predicates on pre-event state with strictly typed comparisons. False guards suppress both assignments and local events; deterministic interpreter tests do not validate market predictions.
-
-## Experimental Typed Event Payloads
-
-[Typed Event Payloads v0](spec/typed-event-payloads-v0.md) and [Falsification Evaluation](evals/typed-event-payloads-v0.md) specify source-level event field schemas, typed input JSON records, named local emission arguments and read-only `payload.field` expressions. Both ingress and scheduled outgoing messages are validated; these mechanisms have no external effects and do not establish predictive market validity.
-
-## Strategic Documentation & Ecosystem
-
-* **[Contributing Guide](CONTRIBUTING.md):** Setup, testing standards, and good-first-issue taxonomy.
-* **[Open-Source Growth Playbook](docs/OPEN_SOURCE_GROWTH_PLAYBOOK.md):** The 4-pillar open-source movement scaling framework.
-* **[Package Manager Specification (`fpm`)](docs/fpm.md):** Modular libraries, manifests, lockfiles, and commercial incentives.
-* **[Marketing Systems Engineering](docs/MARKETING_SYSTEMS_ENGINEERING.md):** Manifesto, mental models, and the MSE practitioner persona.
-* **[The Shim Strategy](docs/SHIM_STRATEGY.md):** Specification-first adoption and the linter wedge.
-* **[Architecture Decisions (DECISIONS.md)](DECISIONS.md):** Canonical records of accepted architectural decisions (DEC-001 through DEC-033).
-* **[Engineering Debates (DEBATES.md)](DEBATES.md):** Falsifiable trade-offs and operational boundary decisions.
-* **[Out of the Box Ideas (OUT_OF_THE_BOX.md)](OUT_OF_THE_BOX.md):** Frontier research tracking and speculative hypotheses (OOTB-001 through OOTB-027).
-
-## Core Language Implementation
-
-The reference compiler, parser, AST semantic validator, and Monte Carlo simulation runtime live in the sister repository:
-👉 [funnelscript-core](https://github.com/funnelscript/funnelscript)
+Follow the [research contribution guide](CONTRIBUTING.md). This repository has a standard-library documentation-link check: `python3 -m unittest discover -s tests -v`. Runtime and frontend changes belong in the [application contribution workflow](https://github.com/funnelscript/funnelscript/blob/main/CONTRIBUTING.md).
 
 ## License
 
-MIT License. See [LICENSE](LICENSE) for details.
-
-
-## Experimental Seeded World Sampling
-
-[Stochastic Operators v0](spec/stochastic-operators-v0.md) and [Conformance Evaluation](evals/stochastic-operators-v0.md) specify typed `sample bernoulli(p)` and `sample uniform(low,high)` in World transitions. Both use one draw per operator from the existing seeded event RNG, respect exact-float input and range constraints, and support deterministic replay. These operators encode user-supplied uncertain assumptions; they do not by themselves validate simulated market response rates. Accepted decision: DEC-031; research idea: OOTB-025.
-
-
-## Initial Marketing Standard Library and World Imports
-
-[Marketing Standard Library v0](spec/marketing-stdlib-v0.md) and its [conformance evaluation](evals/marketing-stdlib-v0.md) define source-level `import "std:marketing/lead_response.fnl" as Prospect;` inside a World. The bundled library uses existing typed events, seeded sampling, a guarded one-shot lead journey and delayed local checkout. Local modules follow the same core import rules. The reference interpreter rejects module cycles, ambiguous exports and path escapes. This v0 is not a validated financial model, a consumer population simulator, a calibrated market digital twin or a capability to execute Live marketing actions.
-
-
-## Experimental Developer Preview Candidate
-
-[Developer Preview v0 Contract](spec/developer-preview-v0.md) and [Evaluation](evals/developer-preview-v0.md) describe the tagged Git source install and installed-CLI World starter. The candidate uses Python `0.2.0a1` and `init-world`, with a pinned CI workflow for Python, wheel smoke and Bun build. Public tag and workflow status must be verified separately; nothing in this milestone validates market forecasts, real agents, financial conservation or Live execution.
+[MIT](LICENSE).
