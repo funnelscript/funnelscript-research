@@ -47,7 +47,7 @@ Economic laws such as population conservation, wallet constraints, saturation, a
 
 Implementation target: `funnelscript/src/funnelscript/core/event_machine.py`.
 Regression suite: `funnelscript/tests/test_event_machine.py`.
-Test cases: stable event order; same-time event insertion; two seeded replays; malformed timestamps and retrograde scheduling; event limit; horizon deferral; marketing-free counter state; unexecuted effect intent.
+Test cases: stable event order; same-time event insertion; two seeded replays; malformed timestamps and retrograde scheduling; event limit; horizon deferral; marketing-free counter state; unexecuted effect intent; rejection of malformed effect output values.
 
 ## Deferred, explicit non-goals
 
