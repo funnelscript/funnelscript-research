@@ -39,7 +39,22 @@
 
 ## Experimental Typed World Declarations
 
-[World Declarations v0](spec/world-declarations-v0.md) defines context-sensitive `world`, `entity`, `agent`, and `state` declarations, with an explicit primitive type checker and backward compatibility gates. It is a static AST/type-checking milestone only; agent decision rules and world execution are deferred.
+[World Declarations v0](spec/world-declarations-v0.md) defines context-sensitive `world`, `entity`, `agent`, and `state` declarations, with an explicit primitive type checker and backward compatibility gates.
+
+## Experimental Rule and Transition Semantics
+
+[Rule Transitions v0](spec/rule-transitions-v0.md) and [Falsification Evaluation](evals/world-rules-v0.md) define the small-step operational semantics where input events drive simultaneous state transitions across entities and agents on the discrete-event calendar substrate (`funnelscript run-world`).
+
+## Strategic Documentation & Ecosystem
+
+* **[Contributing Guide](CONTRIBUTING.md):** Setup, testing standards, and good-first-issue taxonomy.
+* **[Open-Source Growth Playbook](docs/OPEN_SOURCE_GROWTH_PLAYBOOK.md):** The 4-pillar open-source movement scaling framework.
+* **[Package Manager Specification (`fpm`)](docs/fpm.md):** Modular libraries, manifests, lockfiles, and commercial incentives.
+* **[Marketing Systems Engineering](docs/MARKETING_SYSTEMS_ENGINEERING.md):** Manifesto, mental models, and the MSE practitioner persona.
+* **[The Shim Strategy](docs/SHIM_STRATEGY.md):** Specification-first adoption and the linter wedge.
+* **[Architecture Decisions (DECISIONS.md)](DECISIONS.md):** Canonical records of accepted architectural decisions (DEC-001 through DEC-026).
+* **[Engineering Debates (DEBATES.md)](DEBATES.md):** Falsifiable trade-offs and operational boundary decisions.
+* **[Out of the Box Ideas (OUT_OF_THE_BOX.md)](OUT_OF_THE_BOX.md):** Frontier research tracking and speculative hypotheses (OOTB-001 through OOTB-020).
 
 ## Core Language Implementation
 

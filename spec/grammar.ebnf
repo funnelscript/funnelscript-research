@@ -8,9 +8,13 @@ ProgramFile           ::= StrategyFile | WorldFile ;
 (* New declaration words are soft keywords in the reference lexer. *)
 WorldFile             ::= "world" Identifier "{" WorldDeclaration* "}" ;
 WorldDeclaration      ::= WorldEntityDeclaration | WorldAgentDeclaration ;
-WorldEntityDeclaration ::= "entity" Identifier "{" StateField* "}" ;
-WorldAgentDeclaration ::= "agent" Identifier "{" StateField* "}" ;
+WorldEntityDeclaration ::= "entity" Identifier "{" WorldMember* "}" ;
+WorldAgentDeclaration ::= "agent" Identifier "{" WorldMember* "}" ;
+WorldMember           ::= StateField | RuleDeclaration ;
 StateField            ::= "state" Identifier ":" PrimitiveType "=" StateLiteral ";" ;
+RuleDeclaration       ::= "rule" Identifier "on" "event" Identifier "{" TransitionStatement* "}" ;
+TransitionStatement   ::= "transition" Identifier "=" StateExpression ";" ;
+StateExpression       ::= StateLiteral | Identifier (("+" | "-") StateLiteral)? ;
 PrimitiveType         ::= "int" | "float" | "bool" | "string" ;
 StateLiteral          ::= SignedNumber | StringLiteral | BooleanLiteral ;
 SignedNumber          ::= ( "-" )? Number ;

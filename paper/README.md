@@ -282,3 +282,12 @@ FunnelScript demonstrates that marketing strategies can be elevated from ambiguo
 ## Implementation Note: Language-Neutral World Declarations (2026-10-31)
 
 The reference compiler has gained an additive `world` syntax with context-sensitive `entity`, `agent`, and `state` declarations. The `AgentDefinition` AST class is a nominal subtype of `EntityDefinition`; primitive field declarations use exact literal type checks and uniqueness constraints. This is an operational compiler contract under hypotheses H-W1 to H-W4, not a theorem of general type soundness or a validated computational market model. The full source grammar, falsification boundaries, and runnable evaluation mapping are in `spec/world-declarations-v0.md` and `evals/world-declarations-v0.md`. Agent decision rules and user-defined transition bodies are not yet implemented.
+
+
+---
+
+## Implementation Evidence Note: Typed World Rule Interpreter (2026-10-31)
+
+The experimental `rule R on event E` and `transition field = expr` subset provides a separately falsifiable language-core result. The implemented source interpreter validates exact primitive types and executes simultaneous state assignments on a deterministic discrete-event calendar. See [`spec/rule-transitions-v0.md`](../spec/rule-transitions-v0.md) and [`evals/world-rules-v0.md`](../evals/world-rules-v0.md) for operational semantics and test probes.
+
+This isolated interpreter result must not be interpreted as empirical validation of the market-simulation claims in this working paper. No posterior calibration, consumer-behavior fidelity, counterfactual identification, or Live effects are established by these unit tests.
