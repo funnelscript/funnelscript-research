@@ -94,6 +94,172 @@ Rather than forcing an unmaintainable monolithic merge, both systems interface v
 
 ---
 
+## Debate 4: Empirical Identifiability & The 4-Pillar Probabilistic World Model
+
+### The Conflict & The Identifiability Barrier
+A fundamental question arises: *Can real-world marketing data (such as MMM time series from PyMC Marketing) completely specify the micro-behavioral rules of synthetic agents?*
+
+The mathematical answer is **No, due to the Identifiability Problem**. Consider the **3% Conversion Rate Paradox**:
+Two fundamentally different consumer worlds produce the exact same aggregate empirical conversion rate of $3.0\%$:
+
+| Dimension | World A: High Price Elasticity | World B: Brand Trust & Quality |
+| :--- | :--- | :--- |
+| **Micro-Demographics** | Consumers are bargain hunters ($\beta \gg 0.70$) | Consumers value trust and reliability ($\alpha \gg 0.70$) |
+| **Purchase Driver** | Price discounting and flash promotions | Brand credibility, peer reviews, social proof |
+| **Observed Baseline CR** | $3.0\%$ | $3.0\%$ |
+| **Impact of a 20% Discount** | **Dramatic Surge:** CR jumps to $7.5\%$ | **Negligible / Negative:** CR remains $3.1\%$ (erodes margins) |
+
+Historical macro data alone cannot distinguish between World A and World B. While Bayesian MMM (via `pymc-marketing-mcp`) accurately estimates channel-level response curves and saturation parameters ($K, \lambda$), deducing individual psychological propensities requires explicit behavioral hypotheses and experimental lift tests.
+
+```mermaid
+flowchart TD
+    subgraph S1 ["1. Empirical Reality"]
+      D1["Historical Marketing Spend"]
+      D2["Transaction Logs & Cart Data"]
+      D3["Lift-Test Experiments"]
+    end
+
+    subgraph S2 ["2. Bayesian Inference (PyMC)"]
+      B1["Posterior Adstock (λ)"]
+      B2["Saturation Curves (K, n)"]
+      B3["Parameter Uncertainty Distributions"]
+    end
+
+    subgraph S3 ["3. Agent-Based World (FunnelScript)"]
+      A1["Synthetic Consumer Populations"]
+      A2["Discrete State Machines"]
+      A3["Dynamic Interaction & Bounded Rationality"]
+    end
+
+    subgraph S4 ["4. Reality Feedback"]
+      F1["Out-of-Sample Backtesting"]
+      F2["Bayesian Prior Updating Loop"]
+    end
+
+    S1 -->|"Calibrates"| S2
+    S2 -->|"Injects Priors"| S3
+    S3 -->|"Simulates Counterfactuals"| S4
+    F4["Continuous Model Evolution"]
+    S4 -->|"Updates Reality"| F4
+```
+
+### The 4-Pillar Probabilistic World Model Architecture
+To guarantee scientific grounding, every FunnelScript world must be synthesized from four interdependent layers:
+1. **Empirical Reality:** The physical ground truth: historical sales, ad platform billing, customer cohort churn, and experimental lift tests.
+2. **Bayesian Inference:** Macro-parameter estimation preserving full posterior uncertainty (P10, P50, P90) rather than fragile point estimates.
+3. **Agent-Based World:** Synthetic populations governed by discrete state transition matrices, budget constraints, and psychological decision kernels.
+4. **Reality Feedback:** Continuous validation of simulation trajectories against out-of-sample real performance, updating world priors when divergence is detected.
+
+### Progressive World Specialization
+Markets are geographically and structurally heterogeneous. A retail fast-moving consumer goods (FMCG) market in Egypt possesses different purchasing cadence, cash-on-delivery reliance, and inflation volatility compared to an enterprise B2B SaaS sales cycle in Saudi Arabia. FunnelScript adopts **Progressive Specialization**:
+* **Level 0 (Generalized Baseline):** An uncalibrated prototype running on industry reference priors.
+* **Level 1 (Empirically Calibrated):** Incorporates enterprise MMM priors (`calibration_manifest.json`) from `pymc-marketing-mcp`.
+* **Level 2 (Fully Identified Digital Twin):** Augmented with customer-level event streams and lift-test experiments, narrowing the behavioral envelope.
+
+---
+
+## Debate 5: Cognitive Continuity & Multi-Tier Agent Architecture (The `OmniTwin` Bridge)
+
+### Cognitive Continuity vs. Market Simulation
+The analysis of [`imMamdouhaboammar/OmniTwin`](https://github.com/imMamdouhaboammar/OmniTwin) reveals a critical technological asset: a **Cognitive Continuity Engine** featuring:
+- **Hierarchical Memory** (retaining past touchpoint impressions and sentiment).
+- **State Reducer** (updating internal psychological valence across interactions).
+- **Turn Planner & Cognitive Planner** (contextual response formulation).
+- **Allostasis Engine** (modeling cognitive load and fatigue).
+- **Contour Access Layer** (evidence-bounded claims).
+
+However, a fundamental architectural dilemma emerges when applying cognitive continuity to market simulation:
+
+### 1. The Epistemological Boundary: World Truth vs. Agent Belief
+In cognitive AI systems, principles like *"No ID, No Claim"* prevent hallucinations by restricting agents to verifiable memories. In **human consumer simulation**, this constraint is fatal if applied universally:
+* **World Truth:** The objective reality of the market (e.g. the actual product defect rate is 0.1%; the competitor's price is $80).
+* **Agent Belief:** The subjective, imperfect perception held by a human consumer (e.g. the agent believes a false negative rumor, miscalculates a discount, or overestimates product complexity).
+
+Human markets are driven by bounded rationality, informational asymmetry, and subjective cognitive bias. Therefore:
+$$\text{Belief}_i(t) \neq \text{WorldTruth}(t)$$
+The simulation engine must strictly decouple the **Physical World Environment** from each **Agent's Subjective Epistemic State**.
+
+### 2. The Two-Tier Agent Scaling Paradigm
+Instantiating $100,000$ agents each powered by an active LLM and hierarchical memory graph causes insurmountable computational collapse:
+$$\mathcal{O}(N \times \text{LLM Call Latency}) \implies 10^5 \times 500\text{ms} \approx 13.8\text{ hours per simulation tick}$$
+
+FunnelScript resolves this via a **Two-Tier Hybrid Architecture**:
+
+```
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                           Two-Tier Agent Hierarchy                              │
+│                                                                                 │
+│   ┌─────────────────────────────────────────────────────────────────────────┐   │
+│   │ Tier 1: Vectorized Population Agents (N = 10^5 - 10^6)                  │   │
+│   │ • Lightweight SIMD NumPy/C numeric tensors: (α, β, γ, w, s)             │   │
+│   │ • Discrete stochastic transition kernels (< 20ns per evaluation)        │   │
+│   │ • Primary purpose: Statistical significance, macro curves, VaR/CVaR     │   │
+│   └─────────────────────────────────────────────────────────────────────────┘   │
+│                                        ▲                                        │
+│                                        │ (Stratified Sampling & Calibration)    │
+│                                        ▼                                        │
+│   ┌─────────────────────────────────────────────────────────────────────────┐   │
+│   │ Tier 2: Cognitive Sentinel Agents (N = 10^1 - 10^2, via OmniTwin)       │   │
+│   │ • Full hierarchical memory, state reducer, and sentiment allostasis     │   │
+│   │ • Qualitative reasoning, copy resonance, and message interpretation     │   │
+│   │ • Primary purpose: Creative pre-testing and narrative plausibility      │   │
+│   └─────────────────────────────────────────────────────────────────────────┘   │
+└─────────────────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## Debate 6: The Foundational Paradigm Shift — A Domain-Specific Language vs. A Marketing Tool
+
+### The Core Thesis: FunnelScript is the SQL of Marketing Systems
+The most critical realization of the project: **FunnelScript is NOT a marketing simulation software tool; it is a general-purpose Domain-Specific Programming Language (DSL).**
+
+Just as SQL provides relational algebra primitives (`SELECT`, `JOIN`, `WHERE`, `GROUP BY`, `TRANSACTION`) without hardcoding the schema of a specific company's database:
+* FunnelScript must provide computational primitives for marketing systems, economic entities, state transitions, and stochastic events.
+* FunnelScript must **never** hardcode assumptions about a specific market (e.g. "consumers are price sensitive by 0.5" or "Egypt has a 3-day delivery lag").
+* Developers and the community must be empowered to build specialized domain libraries and market representations on top of the language.
+
+### Separation Matrix: Core Language vs. Community Ecosystem
+
+| Layer | FunnelScript Core Language | Community Libraries & Ecosystem |
+| :--- | :--- | :--- |
+| **Syntax & Semantics** | Grammar, AST, Parser, Type System | Domain-specific macros, business blueprints |
+| **Execution Engine** | Discrete-event calendar, SIMD runtime | Regional market profiles (Egypt FMCG, Saudi B2B SaaS) |
+| **Probability & Math** | Distribution primitives, stochastic draws | Specific psychological heuristic models |
+| **Verification** | Invariant checking, cycle detection, reachability | Industry compliance linters (Healthcare, Fintech) |
+| **Ecosystem Bridges** | Pluggable Calibration & Memory Contracts | `pymc-marketing-adapter`, `omnitwin-memory-bridge` |
+
+### Decoupling Compiler Invariants from Specific Economic Assumptions
+In early iterations of FunnelScript, certain economic rules (e.g. strict population mass conservation $\sum N = N_{\text{total}}$, zero-credit wallet constraints $w \ge P$, and liquid cash halts) were hardcoded into the runtime. 
+
+In a true programming language, these are **model-specific constraints**, not universal linguistic axioms:
+* In a market with viral adoption or high churn, population mass $\mathcal{P}(t)$ is dynamic ($N(t) \neq \text{const}$).
+* In a market with Buy Now, Pay Later (BNPL) or consumer credit, purchases occur where price exceeds instantaneous liquid wallet balance ($P > w$).
+* In an enterprise with an overdraft or revolving credit facility, ad spend continues even when cash balance dips below zero.
+
+**Resolution:** The FunnelScript Core Language introduces generic constraint declaration primitives:
+```ebnf
+ConstraintDeclaration ::= "constraint" Identifier "{" Expression "}"
+```
+This enables the developer or standard library to express `constraint MassConservation { sum(state) == total_population }` or `constraint SolvencyHalt { liquid_cash >= 0 }` explicitly, preserving absolute expressive freedom for non-traditional markets.
+
+### The Standard Library Architecture: Minimal Kernel + `std::marketing`
+To ensure both computational purity and rich marketing ergonomics, FunnelScript adopts the classic language design pattern (seen in Rust and Julia):
+1. **Minimal Computational Kernel:**
+   * Primitives: `entity`, `agent`, `state`, `event`, `transition`, `rule`, `probability`, `constraint`.
+2. **Official Standard Library (`std::marketing`):**
+   * Pre-packaged abstractions built using the core primitives:
+     * `std::marketing::Audience`
+     * `std::marketing::Touchpoint` (`PaidTraffic`, `ConversionSurface`, `EmailChannel`)
+     * `std::marketing::Metrics` (`ROAS`, `CAC`, `CLV`, `Cannibalization`)
+     * `std::marketing::Economics` (`WorkingCapital`, `SettlementQueue`, `CashRuin`)
+
+### The Generalization Litmus Test
+FunnelScript is scientifically verified as a true programming language if and only if:
+> **The Litmus Test:** An engineer can model a cash-on-delivery retail consumer electronics campaign in Egypt, and a second engineer can model a 9-month enterprise B2B SaaS procurement cycle in Saudi Arabia, running on the exact same FunnelScript compiler and simulation runtime without modifying a single line of core compiler code.
+
+---
+
 ## Actionable Operational Checklist
 
 | # | Domain | Actionable Specification | Priority | Status |
@@ -101,6 +267,10 @@ Rather than forcing an unmaintainable monolithic merge, both systems interface v
 | **1** | **Agent Representation** | Restrict agent micro-foundations to 10–15 measurable variables; enforce strict vectorization. | P0 | **Implemented** |
 | **2** | **Static Verification** | Enforce DAG reachability and cycle detection in AST linter before any simulation run. | P0 | **Implemented** |
 | **3** | **Liquidity Invariant** | Model gateway settlement latency $\Delta_{\text{settle}}$ and enforce $P(\text{Insolvency})$ ad halt. | P0 | **Implemented** |
-| **4** | **Calibration Contract** | Design `schema/calibration_manifest.json` to ingest Bayesian priors from `pymc-marketing-mcp`. | P1 | **Next Phase** |
-| **5** | **Failure Stress-Testing** | Provide built-in simulation profiles: `baseline`, `auction_spike`, `competitor_cut`, `liquidity_squeeze`. | P1 | **Next Phase** |
-| **6** | **Empirical Validation** | Backtest simulation outputs against historical incrementality lift tests to measure empirical coverage. | P2 | **Roadmap** |
+| **4** | **Two-Tier Engine** | Keep vectorized SIMD runtime for $10^5$ population agents; reserve cognitive agents for sampling. | P0 | **Implemented** |
+| **5** | **General Core DSL** | Decouple hardcoded marketing entities into minimal kernel (`entity`, `state`, `event`) + `std::marketing`. | P1 | **Next Phase** |
+| **6** | **Calibration Contract** | Implement `schema/calibration_manifest.json` bridge to ingest Bayesian priors from `pymc-marketing-mcp`. | P1 | **Next Phase** |
+| **7** | **Subjective Belief Layer** | Formalize separation of `WorldTruth` and `AgentBelief` to support imperfect consumer heuristics. | P2 | **Roadmap** |
+| **8** | **OmniTwin Memory Adapter** | Develop optional adapter for Tier-2 cognitive agents to conduct narrative copy pre-testing. | P2 | **Roadmap** |
+| **9** | **Empirical Validation** | Backtest simulation outputs against historical incrementality lift tests to measure empirical coverage. | P2 | **Roadmap** |
+
