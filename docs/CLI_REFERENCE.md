@@ -83,6 +83,18 @@ Outputs JSON containing `world`, `state`, `processed_events`, and `pending_event
 
 ---
 
+Source-level module reuse is supported in experimental World declarations:
+
+```funnelscript
+world HolidayExperiment {
+  import "std:marketing/lead_response.fnl" as Prospect;
+}
+```
+
+The bundled `marketing/lead_response.fnl` agent exposes `Prospect.Impression` with typed `cpc`, `conversion_probability` and `order_value` parameters. One Impression generates one delayed Checkout and scenario-dependent revenue. Locally defined modules are supported as `import "./local.fnl" as Alias;` (one exported declaration per module). Imports have path, depth and cycle checks. This is neither calibration nor Live execution; see [Module and Library Contract](../spec/marketing-stdlib-v0.md).
+
+---
+
 ### 4. `funnelscript init`
 
 Scaffolds a clean starter template complete with entities, touchpoints, budget controls, and retargeting conditional branches.

@@ -7,7 +7,8 @@ ProgramFile           ::= StrategyFile | WorldFile ;
 (* --- Contextual world/entity/agent/state declarations --- *)
 (* New declaration words are soft keywords in the reference lexer. *)
 WorldFile             ::= "world" Identifier "{" WorldDeclaration* "}" ;
-WorldDeclaration      ::= WorldEntityDeclaration | WorldAgentDeclaration ;
+WorldDeclaration      ::= WorldEntityDeclaration | WorldAgentDeclaration | WorldImport ;
+WorldImport           ::= "import" StringLiteral "as" Identifier ";" ;
 WorldEntityDeclaration ::= "entity" Identifier "{" WorldMember* "}" ;
 WorldAgentDeclaration ::= "agent" Identifier "{" WorldMember* "}" ;
 WorldMember           ::= StateField | EventDeclaration | RuleDeclaration ;

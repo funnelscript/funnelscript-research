@@ -64,9 +64,9 @@
 * **[Package Manager Specification (`fpm`)](docs/fpm.md):** Modular libraries, manifests, lockfiles, and commercial incentives.
 * **[Marketing Systems Engineering](docs/MARKETING_SYSTEMS_ENGINEERING.md):** Manifesto, mental models, and the MSE practitioner persona.
 * **[The Shim Strategy](docs/SHIM_STRATEGY.md):** Specification-first adoption and the linter wedge.
-* **[Architecture Decisions (DECISIONS.md)](DECISIONS.md):** Canonical records of accepted architectural decisions (DEC-001 through DEC-031).
+* **[Architecture Decisions (DECISIONS.md)](DECISIONS.md):** Canonical records of accepted architectural decisions (DEC-001 through DEC-032).
 * **[Engineering Debates (DEBATES.md)](DEBATES.md):** Falsifiable trade-offs and operational boundary decisions.
-* **[Out of the Box Ideas (OUT_OF_THE_BOX.md)](OUT_OF_THE_BOX.md):** Frontier research tracking and speculative hypotheses (OOTB-001 through OOTB-025).
+* **[Out of the Box Ideas (OUT_OF_THE_BOX.md)](OUT_OF_THE_BOX.md):** Frontier research tracking and speculative hypotheses (OOTB-001 through OOTB-026).
 
 ## Core Language Implementation
 
@@ -81,3 +81,8 @@ MIT License. See [LICENSE](LICENSE) for details.
 ## Experimental Seeded World Sampling
 
 [Stochastic Operators v0](spec/stochastic-operators-v0.md) and [Conformance Evaluation](evals/stochastic-operators-v0.md) specify typed `sample bernoulli(p)` and `sample uniform(low,high)` in World transitions. Both use one draw per operator from the existing seeded event RNG, respect exact-float input and range constraints, and support deterministic replay. These operators encode user-supplied uncertain assumptions; they do not by themselves validate simulated market response rates. Accepted decision: DEC-031; research idea: OOTB-025.
+
+
+## Initial Marketing Standard Library and World Imports
+
+[Marketing Standard Library v0](spec/marketing-stdlib-v0.md) and its [conformance evaluation](evals/marketing-stdlib-v0.md) define source-level `import "std:marketing/lead_response.fnl" as Prospect;` inside a World. The bundled library uses existing typed events, seeded sampling, a guarded one-shot lead journey and delayed local checkout. Local modules follow the same core import rules. The reference interpreter rejects module cycles, ambiguous exports and path escapes. This v0 is not a validated financial model, a consumer population simulator, a calibrated market digital twin or a capability to execute Live marketing actions.

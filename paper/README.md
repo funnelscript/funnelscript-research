@@ -311,3 +311,8 @@ Source-level `event Name(field: type)` declarations now define exact primitive m
 ## Seeded Language-Level Stochastic Semantics (2026-10-31)
 
 DEC-031 and [Stochastic Operators v0](../spec/stochastic-operators-v0.md) specify typed, seed-replayable Bernoulli and Uniform transition operators using the existing event-calendar RNG. The empirical [conformance evaluation](../evals/stochastic-operators-v0.md) verifies interpreter behavior (H-S1 to H-S4), not predictions, causal identification, individual agent realism, or generalization to historical interventions. Any theoretical claims about calibrated market-twin fidelity require a separate empirical model and out-of-sample evaluation before publication.
+
+
+## Marketing Library Reuse Without Core Marketing Keywords (2026-10-31)
+
+DEC-032 and [Marketing Standard Library v0](../spec/marketing-stdlib-v0.md) describe the first separately authored FunnelScript marketing source unit, compiled via generic one-owner World module imports. The [evaluation](../evals/marketing-stdlib-v0.md) verifies alias-equivalent execution, filesystem confinement, source packaging and a single-journey sampled conversion flow. Finite float typing does not enforce nonnegative financial values or real behavioral model accuracy. Multi-agent populations and empirical validation remain independent research programs.
