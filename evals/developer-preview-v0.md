@@ -29,3 +29,14 @@ Date: 2026-10-31. Research: `spec/developer-preview-v0.md` (H-P1 to H-P4), DEC-0
 ## Explicit limits
 
 Tests establish a reproducible source-language and onboarding interface, not market prediction. The demo retains user-assumed conversion probabilities and no nonnegative-money refinement. GitHub Actions configuration is not CI success; a source tag is not a PyPI release, signed provenance, or a hosted GitHub Release object.
+
+## External GitHub Actions evidence for the first pushed candidate
+
+The Python application commit `52a887993ac7f045605298a28ea32e8089393292` triggered [Experimental Preview CI run 41218293773](https://github.com/funnelscript/funnelscript/actions/runs/41218293773). GitHub reported the completed run as **success** and returned separately successful jobs for:
+
+- Python tests, locked setup, wheel/sdist build, isolated-wheel CLI smoke, and upload of the distribution artifact.
+- Bun lockfile installation, frontend tests and production build.
+
+The uploaded `funnelscript-preview-distributions` artifact ID was `13049265468`, with GitHub-reported SHA-256 digest `26ed86f0edc2fe147fcfba68629487b22bb7a4d03f3a6a18dce84827e053c375` and 14-day retention through 2026-11-14. These values come from GitHub's own workflow/artifact responses, not a local forecast.
+
+A later documentation-only commit may advance `main`; that commit requires a fresh CI check before it can become the final tagged source candidate. A Git tag, versioned Git-install smoke or standalone GitHub Release is not established by this first successful CI run.
