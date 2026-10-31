@@ -40,3 +40,15 @@ The Python application commit `52a887993ac7f045605298a28ea32e8089393292` trigger
 The uploaded `funnelscript-preview-distributions` artifact ID was `13049265468`, with GitHub-reported SHA-256 digest `26ed86f0edc2fe147fcfba68629487b22bb7a4d03f3a6a18dce84827e053c375` and 14-day retention through 2026-11-14. These values come from GitHub's own workflow/artifact responses, not a local forecast.
 
 A later documentation-only commit may advance `main`; that commit requires a fresh CI check before it can become the final tagged source candidate. A Git tag, versioned Git-install smoke or standalone GitHub Release is not established by this first successful CI run.
+
+## Public Git-source preview attestation (post-publication)
+
+**Release verdict: RELEASED through the scoped Git source tag channel.** This does not imply a PyPI publication or a standalone GitHub Release object.
+
+- Application annotated tag [`v0.2.0a1`](https://github.com/funnelscript/funnelscript/tree/v0.2.0a1) was pushed; both the local peeled tag and remote `refs/tags/v0.2.0a1^{}` independently resolved to application commit `ba43bd4c3aba38eb8f58dadd09c16ca315bc41a0`.
+- Research annotated tag [`v0.2.0a1`](https://github.com/funnelscript/funnelscript-research/tree/v0.2.0a1) was pushed; its peeled local and remote tag resolved to research commit `e1872c4c8588c4596dc6720742a1b6853d07e9cb`.
+- The GitHub Actions [tag-triggered run 41218915451](https://github.com/funnelscript/funnelscript/actions/runs/41218915451) completed successfully. Both Python/wheel and Bun/frontend jobs passed on the tagged application SHA. Distribution artifact ID `13049221574` was reported with SHA-256 `5697ebeca2884d1dced7ef5fe5d83c00968044cf81305416a85156e4648c7864`.
+- Independent public install smoke: from `/tmp`, `uvx --from 'git+https://github.com/funnelscript/funnelscript@v0.2.0a1' funnelscript --version` resolved and built `ba43bd4...`, installed 12 dependencies, and printed `funnelscript 0.2.0a1`. Running `init-world`, `check`, and `run-world` against the same tag created/checked a World and produced `processed_events=2`, `revenue=100.0`, `spend=2.0`, `pending_events=0`.
+- Post-tag draft GTM documents may be committed to `main` separately. They do not alter the frozen preview source SHA or provide evidence of real-world market validity.
+
+**Residual gates:** Outside contributors have not yet independently reported clean-machine installation, and the project has no PyPI publication, hosted GitHub Release object, software supply-chain attestation, full economic constraints or PyMC/OmniTwin empirical validation. None is implicitly claimed by the source tag.
