@@ -469,3 +469,11 @@
 * **Alternatives:** Shared copied instructions were falsified by missing research `src/` and `apps/web/` paths and three broken decision/debate links; a new documentation framework adds risk without solving current failures.
 * **Research and tests:** H-P5 through H-P7 in `spec/developer-preview-v0.md`; research `tests/test_docs_links.py`, application `tests/test_documentation_links.py` and FL-018. The evaluated public Git tag remains `v0.2.0a1`.
 * **Limits:** Link checks do not prove external URLs, code-block correctness, scientific truth, economic conservation or out-of-sample predictive validity.
+
+
+### DEC-035: Curated, Named Agent Skills with an Explicit Vendor Boundary
+
+* **Decision (2026-10-31):** Keep the 22 primary repository-bundled skills available for contributors; require directory slugs to equal their hyphenated SKILL frontmatter names, and validate index coverage and immediate local resource links. Keep required scripts and references. Remove only observed redundant archives and ignored local build outputs.
+* **Provenance:** Agent Skills format specification; research H-B1 through H-B4 (`spec/skill-bundle-v0.md`) and conformance evaluations. App and research checkouts retain separate ownership while mirroring the 22 primary skill directories.
+* **Risk boundary:** The vendored `academic-paper` pipeline refers to upstream shared protocols not fully bundled. A narrow default language-pair registry is included for the observed broken link, but complete offline agent-pipeline behavior is not claimed. Do not erase vendor evidence/scripts simply to reduce line counts.
+* **Observed impact:** Four naming mismatches and one entrypoint-link failure were corrected; the registry's own abstract-guide link now resolves relative to its actual location. A redundant J-Space archive was removed; ignored Cargo build output was cleaned without changing tracked Rust code. Final full regression: application 219 passed (58 subtests), research 5 passed. No FunnelScript World or marketing simulation semantics change.

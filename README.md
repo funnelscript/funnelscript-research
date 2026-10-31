@@ -43,6 +43,7 @@ This models one assumed lead journey, not a market population. The [application 
 
 ## Broader research and design records
 
+- [Bundled contributor agent skills](agents/README.md), [resource integrity contract](spec/skill-bundle-v0.md) and [evaluation](evals/skill-bundle-v0.md)
 - [Research manuscript](paper/README.md), [LaTeX source](paper/funnelscript.tex), and [bibliography](paper/references.bib)
 - [Exploratory notebook](notebooks/executive_engineering_notebook.ipynb) and [engineering notes](notebooks/executive_engineering_notebook.md): exploratory, not evidence of calibrated market forecasting
 - [Accepted decisions](DECISIONS.md), [debates](DEBATES.md), and [unproven hypotheses](OUT_OF_THE_BOX.md)
