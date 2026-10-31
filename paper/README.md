@@ -275,3 +275,10 @@ $$f(t; \lambda, k) = \frac{k}{\lambda} \left(\frac{t}{\lambda}\right)^{k-1} e^{-
 ## 6. Conclusion
 
 FunnelScript demonstrates that marketing strategies can be elevated from ambiguous text documents into mathematically verifiable, executable software systems. By enforcing declarative structural integrity at compile time, scheduling discrete events across multi-scale time intervals, and incorporating working-capital liquidity latencies, FunnelScript eliminates blind capital allocation, providing marketing engineers with a rigorous flight simulator for business execution.
+
+
+---
+
+## Implementation Note: Language-Neutral World Declarations (2026-10-31)
+
+The reference compiler has gained an additive `world` syntax with context-sensitive `entity`, `agent`, and `state` declarations. The `AgentDefinition` AST class is a nominal subtype of `EntityDefinition`; primitive field declarations use exact literal type checks and uniqueness constraints. This is an operational compiler contract under hypotheses H-W1 to H-W4, not a theorem of general type soundness or a validated computational market model. The full source grammar, falsification boundaries, and runnable evaluation mapping are in `spec/world-declarations-v0.md` and `evals/world-declarations-v0.md`. Agent decision rules and user-defined transition bodies are not yet implemented.
