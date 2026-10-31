@@ -37,6 +37,10 @@
 * **Playbook:** [`notebooks/executive_engineering_notebook.md`](notebooks/executive_engineering_notebook.md) — Comprehensive architecture playbook, Bayesian prior injection mechanics, 5-subsystem breakdown, and cross-industry language intersections (Terraform, Julia, Solidity).
 * **Interactive Notebook:** [`notebooks/executive_engineering_notebook.ipynb`](notebooks/executive_engineering_notebook.ipynb) — Executable Jupyter notebook simulating $100,000$ agents, Hill equation saturation kinetics, and mass conservation invariants.
 
+## Experimental Typed World Declarations
+
+[World Declarations v0](spec/world-declarations-v0.md) defines context-sensitive `world`, `entity`, `agent`, and `state` declarations, with an explicit primitive type checker and backward compatibility gates. It is a static AST/type-checking milestone only; agent decision rules and world execution are deferred.
+
 ## Core Language Implementation
 
 The reference compiler, parser, AST semantic validator, and Monte Carlo simulation runtime live in the sister repository:

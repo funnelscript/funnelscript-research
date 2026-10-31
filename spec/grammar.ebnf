@@ -2,6 +2,20 @@
 (*          FunnelScript Root Grammar         *)
 (* ========================================== *)
 
+ProgramFile           ::= StrategyFile | WorldFile ;
+
+(* --- Contextual world/entity/agent/state declarations --- *)
+(* New declaration words are soft keywords in the reference lexer. *)
+WorldFile             ::= "world" Identifier "{" WorldDeclaration* "}" ;
+WorldDeclaration      ::= WorldEntityDeclaration | WorldAgentDeclaration ;
+WorldEntityDeclaration ::= "entity" Identifier "{" StateField* "}" ;
+WorldAgentDeclaration ::= "agent" Identifier "{" StateField* "}" ;
+StateField            ::= "state" Identifier ":" PrimitiveType "=" StateLiteral ";" ;
+PrimitiveType         ::= "int" | "float" | "bool" | "string" ;
+StateLiteral          ::= SignedNumber | StringLiteral | BooleanLiteral ;
+SignedNumber          ::= ( "-" )? Number ;
+BooleanLiteral        ::= "true" | "false" ;
+
 StrategyFile          ::= "strategy" Identifier "{" StrategyElement* "}" ;
 
 StrategyElement       ::= MetadataBlock
