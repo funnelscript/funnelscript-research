@@ -316,3 +316,8 @@ DEC-031 and [Stochastic Operators v0](../spec/stochastic-operators-v0.md) specif
 ## Marketing Library Reuse Without Core Marketing Keywords (2026-10-31)
 
 DEC-032 and [Marketing Standard Library v0](../spec/marketing-stdlib-v0.md) describe the first separately authored FunnelScript marketing source unit, compiled via generic one-owner World module imports. The [evaluation](../evals/marketing-stdlib-v0.md) verifies alias-equivalent execution, filesystem confinement, source packaging and a single-journey sampled conversion flow. Finite float typing does not enforce nonnegative financial values or real behavioral model accuracy. Multi-agent populations and empirical validation remain independent research programs.
+
+
+## Distribution Evidence Boundary: Experimental Developer Preview (2026-10-31)
+
+DEC-033 and [Developer Preview v0](../spec/developer-preview-v0.md) specify a versioned Python source distribution, a safe one-file World starter and independent CI build/install checks. The [evaluation](../evals/developer-preview-v0.md) distinguishes TDD outcomes, package behavior and remote release checks. Developer usability and reproducibility do not establish Bayesian calibration, valid policy counterfactuals, market-level predictive accuracy, or justified real marketing expenditure.

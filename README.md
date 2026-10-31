@@ -64,9 +64,9 @@
 * **[Package Manager Specification (`fpm`)](docs/fpm.md):** Modular libraries, manifests, lockfiles, and commercial incentives.
 * **[Marketing Systems Engineering](docs/MARKETING_SYSTEMS_ENGINEERING.md):** Manifesto, mental models, and the MSE practitioner persona.
 * **[The Shim Strategy](docs/SHIM_STRATEGY.md):** Specification-first adoption and the linter wedge.
-* **[Architecture Decisions (DECISIONS.md)](DECISIONS.md):** Canonical records of accepted architectural decisions (DEC-001 through DEC-032).
+* **[Architecture Decisions (DECISIONS.md)](DECISIONS.md):** Canonical records of accepted architectural decisions (DEC-001 through DEC-033).
 * **[Engineering Debates (DEBATES.md)](DEBATES.md):** Falsifiable trade-offs and operational boundary decisions.
-* **[Out of the Box Ideas (OUT_OF_THE_BOX.md)](OUT_OF_THE_BOX.md):** Frontier research tracking and speculative hypotheses (OOTB-001 through OOTB-026).
+* **[Out of the Box Ideas (OUT_OF_THE_BOX.md)](OUT_OF_THE_BOX.md):** Frontier research tracking and speculative hypotheses (OOTB-001 through OOTB-027).
 
 ## Core Language Implementation
 
@@ -86,3 +86,8 @@ MIT License. See [LICENSE](LICENSE) for details.
 ## Initial Marketing Standard Library and World Imports
 
 [Marketing Standard Library v0](spec/marketing-stdlib-v0.md) and its [conformance evaluation](evals/marketing-stdlib-v0.md) define source-level `import "std:marketing/lead_response.fnl" as Prospect;` inside a World. The bundled library uses existing typed events, seeded sampling, a guarded one-shot lead journey and delayed local checkout. Local modules follow the same core import rules. The reference interpreter rejects module cycles, ambiguous exports and path escapes. This v0 is not a validated financial model, a consumer population simulator, a calibrated market digital twin or a capability to execute Live marketing actions.
+
+
+## Experimental Developer Preview Candidate
+
+[Developer Preview v0 Contract](spec/developer-preview-v0.md) and [Evaluation](evals/developer-preview-v0.md) describe the tagged Git source install and installed-CLI World starter. The candidate uses Python `0.2.0a1` and `init-world`, with a pinned CI workflow for Python, wheel smoke and Bun build. Public tag and workflow status must be verified separately; nothing in this milestone validates market forecasts, real agents, financial conservation or Live execution.

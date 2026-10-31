@@ -126,3 +126,10 @@ funnelscript schema --output spec/schema.json
 | **0** | `SUCCESS` | Strategy compiled, checked, or simulated without invariant violations. |
 | **1** | `INVARIANT_ERROR` | Syntax failure, cycle detected, or critical linter error (`FS201`, `FS202`, `FS301`, `FS501`). |
 | **2** | `IO_ERROR` | Target file does not exist or cannot be read/written. |
+
+
+---
+
+## Experimental Developer Preview v0.2.0a1
+
+The installed Python CLI supports `funnelscript init-world first.fnl`: an exclusive-create, non-overwriting starter that imports the source-defined `std:marketing/lead_response.fnl` agent as `Prospect`. Follow with `check` and `run-world` supplying an explicit typed Impression. The versioned Git source can be invoked through `uvx --from "git+https://github.com/funnelscript/funnelscript@v0.2.0a1"` **only after the public tag is verified**. Unlike the older `init` command, this creates a minimal `.fnl` World, not a legacy campaign JSON file. See [Preview Research Contract](../spec/developer-preview-v0.md) and the application repo `docs/EXPERIMENTAL_PREVIEW.md`.
