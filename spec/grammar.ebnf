@@ -19,7 +19,11 @@ RuleDeclaration       ::= "rule" Identifier "on" "event" Identifier GuardClause?
 GuardClause           ::= "when" "(" Identifier GuardOp StateLiteral ")" ;
 GuardOp               ::= "==" | "!=" | "<" | "<=" | ">" | ">=" ;
 RuleStatement         ::= TransitionStatement | EmitStatement ;
-TransitionStatement   ::= "transition" Identifier "=" StateExpression ";" ;
+TransitionStatement   ::= "transition" Identifier "=" TransitionExpression ";" ;
+TransitionExpression  ::= StateExpression | SampleExpression ;
+SampleExpression      ::= "sample" ("bernoulli" "(" SampleArgument ")"
+                        | "uniform" "(" SampleArgument "," SampleArgument ")") ;
+SampleArgument        ::= SignedNumber | PayloadReference | Identifier ;
 EmitStatement         ::= "emit" Identifier ("(" EventArgList? ")")? "after" SignedNumber ";" ;
 EventArgList          ::= EventArgument ("," EventArgument)* ;
 EventArgument         ::= Identifier "=" StateExpression ;

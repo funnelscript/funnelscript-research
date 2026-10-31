@@ -306,3 +306,8 @@ Experimental source-level `when (field OP literal)` guards permit a pre-event st
 ## Operational Note: Typed World Event Payloads (2026-10-31)
 
 Source-level `event Name(field: type)` declarations now define exact primitive message shapes for the experimental World interpreter. Rule bodies may read `payload.field` and schedule local `emit Name(field = expression) after Delay;` messages without a second calendar. Validation occurs both before executing incoming events and before inserting generated messages, including strict string keys and finite float values. See [the source contract](../spec/typed-event-payloads-v0.md) and [the test evaluation](../evals/typed-event-payloads-v0.md) for falsifiable evidence. This is a deterministic language semantics result, not evidence for individualized behavioral forecasting, Bayesian causal identification or Live Execution.
+
+
+## Seeded Language-Level Stochastic Semantics (2026-10-31)
+
+DEC-031 and [Stochastic Operators v0](../spec/stochastic-operators-v0.md) specify typed, seed-replayable Bernoulli and Uniform transition operators using the existing event-calendar RNG. The empirical [conformance evaluation](../evals/stochastic-operators-v0.md) verifies interpreter behavior (H-S1 to H-S4), not predictions, causal identification, individual agent realism, or generalization to historical interventions. Any theoretical claims about calibrated market-twin fidelity require a separate empirical model and out-of-sample evaluation before publication.

@@ -75,11 +75,11 @@ funnelscript run-world examples/counter_world.fnl \
 ```
 
 * `file`: `.fnl` source with a `world` declaration containing `entity` / `agent`, typed `state`, and `rule` definitions.
-* `--event OWNER.EVENT@TIME`: Provide a qualified event name and non-negative finite timestamp; can be repeated.
-* `--seed <int>`: Deterministic event machine seed (default `0`).
+* `--event OWNER.EVENT@TIME` or JSON record: Repeatable, stable-order input of a qualified event with a finite nonnegative timestamp. Typed events use `{"name":"Wallet.Credit","time":0,"payload":{"amount":8}}` with statically declared fields.
+* `--seed <int>`: Event kernel PRNG seed (default `0`); replay identical source, events and seed for the same interpreter version.
 * `--max-events <int>`: Positive processing limit (default `100000`).
 
-Outputs JSON containing `world`, `state`, `processed_events`, and `pending_events`. A missing handler, type violation, invalid timestamp, non-World source, or event limit error returns a nonzero exit code with an explanatory stderr message. This v0 does not auto-generate events or execute platform effects. See [World Rules Language Reference](LANGUAGE_REFERENCE_WORLD_RULES.md).
+Outputs JSON containing `world`, `state`, `processed_events`, and `pending_events`. A missing handler, type violation, invalid timestamp, non-World source, or event limit error returns a nonzero exit code with an explanatory stderr message. World rules may schedule **local events** via `emit Name after Delay;`, with exact-typed named payload arguments. Typed transitions may use `sample bernoulli(float)` or `sample uniform(float,float)`, consuming one seeded random draw each after a true guard. No platform effects, automatic initial triggers, calibration or empirical prediction are supplied. See the [World Rules Language Reference](https://github.com/funnelscript/funnelscript/blob/main/docs/LANGUAGE_REFERENCE_WORLD_RULES.md) and [Stochastic Operators v0](../spec/stochastic-operators-v0.md).
 
 ---
 
