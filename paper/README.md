@@ -301,3 +301,8 @@ An experimental extension permits typed World rules to generate finite-delay loc
 ## Operational Note: Typed Conditional World Rules (2026-10-31)
 
 Experimental source-level `when (field OP literal)` guards permit a pre-event state predicate to suppress both transitions and event emission with exact primitive typing. Formal semantics and falsification evidence are recorded in [`spec/world-guards-v0.md`](../spec/world-guards-v0.md) and [`evals/world-guards-v0.md`](../evals/world-guards-v0.md). This is interpreter evidence, not evidence of probabilistic consumer psychology or market prediction.
+
+
+## Operational Note: Typed World Event Payloads (2026-10-31)
+
+Source-level `event Name(field: type)` declarations now define exact primitive message shapes for the experimental World interpreter. Rule bodies may read `payload.field` and schedule local `emit Name(field = expression) after Delay;` messages without a second calendar. Validation occurs both before executing incoming events and before inserting generated messages, including strict string keys and finite float values. See [the source contract](../spec/typed-event-payloads-v0.md) and [the test evaluation](../evals/typed-event-payloads-v0.md) for falsifiable evidence. This is a deterministic language semantics result, not evidence for individualized behavioral forecasting, Bayesian causal identification or Live Execution.

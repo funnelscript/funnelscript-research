@@ -53,6 +53,10 @@
 
 [Typed Guard Semantics v0](spec/world-guards-v0.md) and [Falsification Evaluation](evals/world-guards-v0.md) define `when (field OP literal)` predicates on pre-event state with strictly typed comparisons. False guards suppress both assignments and local events; deterministic interpreter tests do not validate market predictions.
 
+## Experimental Typed Event Payloads
+
+[Typed Event Payloads v0](spec/typed-event-payloads-v0.md) and [Falsification Evaluation](evals/typed-event-payloads-v0.md) specify source-level event field schemas, typed input JSON records, named local emission arguments and read-only `payload.field` expressions. Both ingress and scheduled outgoing messages are validated; these mechanisms have no external effects and do not establish predictive market validity.
+
 ## Strategic Documentation & Ecosystem
 
 * **[Contributing Guide](CONTRIBUTING.md):** Setup, testing standards, and good-first-issue taxonomy.
@@ -60,9 +64,9 @@
 * **[Package Manager Specification (`fpm`)](docs/fpm.md):** Modular libraries, manifests, lockfiles, and commercial incentives.
 * **[Marketing Systems Engineering](docs/MARKETING_SYSTEMS_ENGINEERING.md):** Manifesto, mental models, and the MSE practitioner persona.
 * **[The Shim Strategy](docs/SHIM_STRATEGY.md):** Specification-first adoption and the linter wedge.
-* **[Architecture Decisions (DECISIONS.md)](DECISIONS.md):** Canonical records of accepted architectural decisions (DEC-001 through DEC-029).
+* **[Architecture Decisions (DECISIONS.md)](DECISIONS.md):** Canonical records of accepted architectural decisions (DEC-001 through DEC-030).
 * **[Engineering Debates (DEBATES.md)](DEBATES.md):** Falsifiable trade-offs and operational boundary decisions.
-* **[Out of the Box Ideas (OUT_OF_THE_BOX.md)](OUT_OF_THE_BOX.md):** Frontier research tracking and speculative hypotheses (OOTB-001 through OOTB-023).
+* **[Out of the Box Ideas (OUT_OF_THE_BOX.md)](OUT_OF_THE_BOX.md):** Frontier research tracking and speculative hypotheses (OOTB-001 through OOTB-024).
 
 ## Core Language Implementation
 

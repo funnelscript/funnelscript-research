@@ -49,7 +49,7 @@ For each input event `e` at `t >= 0`, for each emitted delay `d`:
 ## Known boundaries
 
 - One initial event is still externally supplied; no automatic World startup event exists yet.
-- No cross-entity emission, probabilistic delay, payload, conditions, persistent scheduler, cancellation, concurrency, or Live/Shadow effects.
+- At this v0 milestone there was no cross-entity emission, probabilistic delay, payload, conditions, persistent scheduler, cancellation, concurrency, or Live/Shadow effects. Subsequent independently tested additions specify conditional guards (`spec/world-guards-v0.md`) and typed local payload records (`spec/typed-event-payloads-v0.md`); the remaining boundaries still apply.
 - This extends a small operational interpreter, not a validated model of human behavior or market forecasts.
 
 ## Evaluation routing
