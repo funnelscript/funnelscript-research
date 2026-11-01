@@ -551,3 +551,8 @@ On 2026-11-01, a bounded, explicitly opt-in Python `PopulationExecutor` adapter 
 ## Phase 007E — Proposed, not Accepted ADR (2026-11-01)
 
 Bounded implementation record only: opt-in canonical financial audit v1 with strict trace-and-policy restoration and atomic single-writer checkpoint. No change to existing accepted DEC IDs or new Accepted ADR. Producer authentication, actual authorization and shared-state serializability remain undecided pending operator permission and separate threat-model evidence. See `spec/durable-financial-provenance-v1.md`.
+
+
+## Phase 007F — Implementation checkpoint; no accepted architecture decision
+
+2026-11-01: Opt-in single-writer commit coordinator, versioned deterministic receipt and recovery validation added within the already approved domain boundary. A revalidated complete audit is required before publication; a changed checkpoint requires the previous trusted receipt; a successful acknowledgement requires publication plus revalidation; uncertain syscall outcomes raise an explicit recovery-required exception. Exactly-once network delivery, multi-writer serializability, producer authentication, crash-proof file hardware, and arbitrary valid rollback prevention are not accepted or demonstrated. Existing DEC-009 and Phase 007E contracts remain unchanged. See spec/financial-commit-recovery-007f.md. No new Accepted ADR.
