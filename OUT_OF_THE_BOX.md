@@ -543,3 +543,8 @@ Verified source-to-sale World witnesses and explicit author-asserted external tr
 ## Phase 007E research frontier (not implemented)
 
 Potential future externally anchored digest catalogs, HMAC with operator-owned key lifecycle, append-only authenticated logs and stateful concurrency arbitration require independent operators/requirements. Hash chaining without an external trust root cannot turn mutable records into authenticated evidence. No such capabilities are claimed or authorized in this phase.
+
+
+## Phase 007F frontier — authenticated rollback fences and writer arbitration (unimplemented)
+
+Potential future research would specify operator-controlled immutable anchors, signature trust roots, durable fencing tokens, and a concrete multi-writer arbitration threat model. None is authorized by the present checksum-bound single-writer commit coordinator. A production durability promise additionally requires filesystem/hardware-specific power-loss experiments; an unanchored hash chain cannot independently prohibit older valid checkpoint substitution.

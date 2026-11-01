@@ -1145,3 +1145,8 @@ and real-world prediction accuracy were not tested.
 ## Phase 007E — Durable audit: integrity versus producer authority (2026-11-01)
 
 Thesis: canonical SHA-256 evidence supports deterministic, portable post-restart integrity checks. Antithesis: a writable data file and its unkeyed digest may be forged together; asserted authorization references are not cryptographic permissions. Resolution: implement narrowly scoped single-writer checkpoint export/import bound to re-executed World evidence, optionally check an externally anchored digest, and retain authentication/concurrency as explicit stops. No new ledger or distributed coordinator.
+
+
+## Phase 007F — Commit acknowledgements and single-writer recovery versus physical guarantees
+
+Option A retained a caller-managed checkpoint but allowed accidental successful acknowledgements across ambiguous rename/fsync windows. Selected, without accepting an ADR: Option B, a narrow opt-in coordinator that validates a complete Phase 007E audit, publishes via the existing single-writer checkpoint writer, re-reads the evidence, and issues a checksum-bound receipt. Option C, consensus/database/broker infrastructure, remains unapproved. A failed directory fsync cannot authorize SUCCESS even if new content is visible. A stored checksum cannot authenticate its producer; without an externally trusted retained receipt it cannot reveal rollback to an older self-consistent image. Falsifiers and measured counterexamples: spec/financial-commit-recovery-007f.md and evals/financial-commit-recovery-007f.md.
