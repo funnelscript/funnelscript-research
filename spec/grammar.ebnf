@@ -22,13 +22,16 @@ GuardOp               ::= "==" | "!=" | "<" | "<=" | ">" | ">=" ;
 RuleStatement         ::= TransitionStatement | EmitStatement ;
 TransitionStatement   ::= "transition" Identifier "=" TransitionExpression ";" ;
 TransitionExpression  ::= StateExpression | SampleExpression ;
+(* Lexer recognizes // comments before the single / division token. *)
+BinaryOperator        ::= "+" | "-" | "*" | "/" ;
+BinaryRight           ::= StateLiteral | PayloadReference | Identifier ;
 SampleExpression      ::= "sample" ("bernoulli" "(" SampleArgument ")"
                         | "uniform" "(" SampleArgument "," SampleArgument ")") ;
 SampleArgument        ::= SignedNumber | PayloadReference | Identifier ;
 EmitStatement         ::= "emit" Identifier ("(" EventArgList? ")")? "after" SignedNumber ";" ;
 EventArgList          ::= EventArgument ("," EventArgument)* ;
 EventArgument         ::= Identifier "=" StateExpression ;
-StateExpression       ::= StateLiteral | PayloadReference | Identifier (("+" | "-") (StateLiteral | PayloadReference))? ;
+StateExpression       ::= StateLiteral | PayloadReference | Identifier (BinaryOperator BinaryRight)? ;
 PayloadReference      ::= "payload" "." Identifier ;
 PrimitiveType         ::= "int" | "float" | "bool" | "string" ;
 StateLiteral          ::= SignedNumber | StringLiteral | BooleanLiteral ;

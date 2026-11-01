@@ -41,6 +41,8 @@
 
 ---
 
+| **DEC-037** | [EOF-Safe Parsing and Exact-Typed Narrow World Arithmetic](#dec-037-eof-safe-parsing-and-exact-typed-narrow-world-arithmetic) | 2026-11-01 | **Accepted** | One binary operator, finite float outputs, controlled zero division |
+
 ## Detailed Architecture Decision Records
 
 ### DEC-001: Core-Outwards 5-Phase Implementation Strategy
@@ -477,3 +479,67 @@
 * **Provenance:** Agent Skills format specification; research H-B1 through H-B4 (`spec/skill-bundle-v0.md`) and conformance evaluations. App and research checkouts retain separate ownership while mirroring the 22 primary skill directories.
 * **Risk boundary:** The vendored `academic-paper` pipeline refers to upstream shared protocols not fully bundled. A narrow default language-pair registry is included for the observed broken link, but complete offline agent-pipeline behavior is not claimed. Do not erase vendor evidence/scripts simply to reduce line counts.
 * **Observed impact:** Four naming mismatches and one entrypoint-link failure were corrected; the registry's own abstract-guide link now resolves relative to its actual location. A redundant J-Space archive was removed; ignored Cargo build output was cleaned without changing tracked Rust code. Final full regression: application 219 passed (58 subtests), research 5 passed. No FunnelScript World or marketing simulation semantics change.
+
+
+---
+
+### DEC-036: Explicit CLI Failure Taxonomy and Bounded JSON Event Inputs
+
+* **Status:** Accepted as an experimental CLI boundary contract (2026-11-01).
+* **Research anchor:** Fail-fast parser contracts, bounded untrusted input parsing, and the existing exact-typed event and finite-time semantics of DEC-030.
+* **Falsifiable hypotheses:** H-CLI1 unexpected parser implementation faults must not be reported as user syntax errors; H-CLI2 an event JSON input exceeding 65,536 UTF-8 bytes must fail before decoding; H-CLI3 an exporter filesystem failure must return I/O status 2 without an earlier export-success report.
+* **Invariants:** In `check`/`compile`/`simulate`, known parser/lexer/type/JSON validation failures return 1, source-file read and export OSErrors return 2, and unexpected implementation faults propagate. Existing `run-world` runtime/error exit code 1 remains unchanged. The JSON byte bound includes whitespace and is applied per JSON `--event` argument, not to legacy `OWNER.EVENT@TIME` strings. `Event` retains sole responsibility for finite, nonnegative timestamps; user-supplied absolute export paths remain valid.
+* **Scope and rationale:** Narrow classification and failure reporting in the existing CLI; no parser grammar, event semantics, simulation economics, path sandbox, new dependency, or prediction claim. Export notices are delayed until all requested exports have succeeded; this is not multi-file atomicity.
+* **Verification boundary:** `tests/test_cli.py` contains direct falsification tests. A local green test run does not certify this behavior in the existing `v0.2.0a1` published tag.
+
+---
+
+### DEC-037: EOF-Safe Parsing and Exact-Typed Narrow World Arithmetic
+
+* **Status:** Accepted as a bounded experimental World language extension (2026-11-01).
+* **Context:** DEC-027 originally restricted `state +/- literal` and subsequent payload typing extended one right operand category. Empty token sequences could accidentally index `tokens[-1]`; `*` and `/` were not supported and comments already claimed `//`.
+* **Decision:** Extend the existing World rule-expression parser with one `+`, `-`, `*` or `/` operation whose left operand is a same-owner state reference and right operand is a matching exact-type literal, same-owner state reference or declared payload field. Retain old single-value and sample expressions. Preserve `//` comment priority. Permit no chains, precedence grammar, parentheses, casts or arbitrary calls. Produce deliberate ParserError at empty/exhausted input.
+* **Typing and runtime:** Both operands must be exactly `int` or exactly `float`; bool is not numeric. `+`, `-`, `*` preserve operand type; `/` yields `float` even for int/int. Compile-time literal zero denominator is invalid; dynamic zero is a controlled runtime failure. Float expression literals/operands and resulting floats must be finite; integer arithmetic remains exact and unbounded, while int/int division conversion overflow is controlled. Initial state type-check policy remains unchanged for compatibility.
+* **Scope and rationale:** This extends only DEC-027's narrow syntactic subset while preserving its snapshot-atomic semantics, DEC-030 payload checks and DEC-031 event-ordered seeded RNG. It adds no market-financial assumptions or new dependencies.
+* **Evidence and limits:** H-AR1 through H-AR3 in `spec/arithmetic-expressions-v0.md`; observed RED/GREEN tests and full verification in `evals/arithmetic-expressions-v0.md`. This is an interpreter correctness claim, not a real-market validation result.
+
+
+---
+
+### Phase 006 evidence checkpoint (no new ADR)
+
+The Phase 006 conformance corpus exercises accepted DEC-019, DEC-027 through
+DEC-032, and DEC-037 on the experimental Python World reference interpreter.
+H-C1 through H-C3 and their precise falsifiers are specified in
+`spec/world-conformance-v0.md`; independently fixed expected/rejection
+records are evaluated in `evals/world-conformance-v0.md`. This evidence
+adds no architectural decision and does not supersede any accepted ADR.
+Version-pinned canonical JSON is an *evaluation artifact*, not a new runtime
+or exposed production trace API. External predictive validity is not inferred.
+
+---
+
+### Phase 007 negative capability checkpoint (no new ADR)
+
+On 2026-11-01, public WorldExecutor and EventMachine execution of two explicitly named owners demonstrated deterministic replay but **not** stable keyed per-agent substreams. Reversing equal-time input insertion order swaps the first two draws of the shared random.Random(seed) stream. See spec/population-reference-v0.md and evals/population-reference-v0.md, P-RNG-ORDER-1. This is consistent with accepted DEC-019/031 and does not replace their semantic contract. No new population architecture was accepted; a World-backed population adapter remains Proposed. Legacy and World remain non-equivalent. Phase 007 is BLOCKED, with no production change or empirical-validity claim.
+
+
+---
+
+### Phase 007A opt-in runtime capability checkpoint (no accepted ADR)
+
+On 2026-11-01, a bounded, explicitly opt-in Python `PopulationExecutor` adapter was implemented and verified against proposed `spec/population-identity-rng-v0.md` and `evals/population-identity-rng-v0.md`. It wraps independent `WorldExecutor.run` instances with stable `(world_seed, trial_id, agent_id, stream_role)` SHA-256-derived seeds and exact identity partitions; it does **not** modify DEC-019/031 default World semantics or accept a new language/legacy migration architecture. Agent interactions, shared shocks, within-handler stream roles and state-restoration semantics require a separately **Proposed**, reviewed, then accepted ADR before implementation. The original P-RNG-ORDER-1 default-World counterexample remains true. Phase 007 financial/metric requirements remain blocked. No independent external reviewer sign-off or statistical calibration was obtained.
+
+
+---
+
+### Phase 007B bounded financial-model checkpoint (no new accepted ADR)
+
+2026-11-01: Domain-owned `MarketingLedger` and trial/risk metric evaluators were implemented only in the opt-in Python marketing standard library, governed by proposed `spec/financial-ledger-metrics-v0.md` and measured `evals/financial-ledger-metrics-v0.md`. This is consistent with **accepted DEC-009**: cash, receivable and paid-spend conservation are model rules, NOT unconditional language/compiler semantics. DEC-019, DEC-027, DEC-031 and legacy stochastic/economic behavior remain unchanged. Exact integer minor-unit posting prevents ambient Decimal context from corrupting recorded money. No accepted ADR is created by this checkpoint. Automatic financial events from World, shared financial accounting across interacting agents, credit/tax/refund semantics, source-causal attribution and legacy telemetry migration require separate research and approval. This scope verifies a synthetic ledger, not empirically calibrated marketing behavior or statistical independence.
+
+
+---
+
+### Phase 007C provenance integration checkpoint (no new accepted ADR)
+
+2026-11-01: Opt-in `WorldExecutor.run(trace=[])` and `PopulationExecutor.run(trace=True)` observe executed World transitions without modifying `EventMachine` ordering, default RNG, language rules or legacy processing. Domain-owned `DeclaredSalePolicy`, `recognize_sales`, and `post_provenanced_trial` validate state-transition evidence, canonical transaction IDs, idempotent duplicate replay and authoritative `MarketingLedger` conservation. Constrained to independently executed agent calendars and model-authored event-to-sale policy. The local processed-event index is not a kernel insertion ordinal; mutable/in-process audit evidence is not cryptographically authenticated. Costs, settlements and writeoffs are manually declared and are not World-caused. This is a **Proposed reference integration** under accepted DEC-009, DEC-019 and DEC-031, not automatic financial World semantics or an Accepted ADR. Further shared-cash interactions, externally valid causality, accounting richness, and calibration require separate review. See `spec/transaction-provenance-v0.md` and `evals/transaction-provenance-v0.md`.

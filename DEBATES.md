@@ -1029,3 +1029,111 @@ A critical trap in ambitious software projects is delaying release until a massi
 * **Option C, bounded curation (accepted):** Preserve 22 primary entrypoints and functional resources; correct verified path defects; remove duplicate archives and ignored generated output; label incomplete upstream dependency closure. Add cheap cross-repository tests.
 * **Trade-off:** The remaining upstream suites still include nonessential docs and nested integrations. Deeper pruning requires tracing nested code references, licensing and behavior contracts before removal. The current test proves entrypoint integrity, not that every vendor pipeline executes without network or external resources.
 * **Falsification:** H-B1 to H-B4, test RED/GREEN and actual disk/Git byte counts in `evals/skill-bundle-v0.md`. During final reconciliation, an independently reproduced missing local link in each checkout refuted the earlier completion claim; the precise entrypoint and registry-relative repairs then passed both full suites (app: 219 tests and 58 subtests; research: 5 tests).
+
+
+---
+
+## Debate 25: Transparent CLI Faults vs. Catch-All Error Suppression
+
+**Problem:** Should a CLI treat every exception raised during parsing as malformed user input and permit unbounded event JSON payloads?
+
+**Option A (rejected):** Catch `Exception` under a friendly "Parse Error" label and decode arbitrary event inputs. This hides developer defects, obscures filesystem faults, and leaves per-argument resource usage undefined.
+
+**Option B (accepted as DEC-036):** Catch known lexical, syntactic, type and JSON validation errors explicitly, separate filesystem failures as I/O status 2, and let unanticipated implementation faults surface. Enforce a 64 KiB UTF-8 cap before event JSON decoding while preserving the Event dataclass's existing timestamp invariant and documented absolute export paths.
+
+**Trade-offs and falsification:** A fixed byte limit can reject an intentionally large but valid JSON event; the limit is documented and can be reevaluated with measured workloads. Export status is not transactional if an earlier file was already written. H-CLI1 to H-CLI3 use regression tests to separate expected user failures from internal faults; none establish defense against arbitrary nested JSON complexity or externally supplied malicious filesystem environments.
+
+---
+
+## Debate 26: Strict Narrow Arithmetic vs Convenient Coercion and Precedence
+
+**Problem:** DEC-027's exact-type rule does not cover multiplication/division, and real-valued integer division conflicts with an `int` assignment. Adding `/` also collides lexically with existing `//` comments.
+
+* **Option A (rejected):** Promote mixed int/float, silently convert integer divisions back to int and infer precedence to accept chains. This contradicts exact typed assignments and makes the source grammar ambiguous relative to the current AST.
+* **Option B (accepted, DEC-037):** Exactly one binary operator, left state reference, right literal/payload/state, exact numeric types, and float result for `/`. Reject unsupported chains; tokenize comments before division; reject static zero and control dynamic zero and non-finite float results.
+* **Compatibility consequence:** Existing finite arithmetic and seeded execution are preserved. Initial float-state checks remain type-only: a previously accepted malformed externally constructed World state must still reach its existing outbound payload diagnostic rather than becoming a new parser-time error.
+* **Falsification:** Phase 003 RED/GREEN arithmetic, EOF, event, and stochastic regressions. No floating-point cross-platform bitwise identity or economic units system is claimed.
+
+
+---
+
+## Debate 27: Canonical World Trace as an Oracle vs. a Second Interpreter
+
+**Problem:** Future World executors need independently inspectable behavior
+criteria without duplicating the production interpreter in tests.
+
+**Option A (rejected):** Recompute all expected states and event streams with
+`WorldExecutor` or derive expectations from the same run under assertion.
+That would allow shared implementation mistakes to pass unnoticed.
+
+**Option B (selected for Phase 006 verification, without a new ADR):**
+Author fixed source fixtures, named rejection boundaries and complete
+state/processed/pending event records by hand, with separately verified
+Python `random.Random` sample references and deterministic canonical JSON.
+Compare three fresh interpreter executions to each fixed golden and perform
+an equal-priority insertion-order perturbation. Keep all source semantics
+and production APIs unchanged.
+
+**Trade-off:** This corpus is a finite, interpreter-version-specific
+conformance oracle, not a formal proof for all programs or an empirical
+simulation model. JSON float spellings require explicit numeric-kind
+preservation. Accepted DEC-019/027–032/037 remain authoritative.
+External market validity, statistical calibration, causal inference
+and real-world prediction accuracy were not tested.
+
+---
+
+## Debate 28: Shared World RNG vs Stable Population-Identity Streams (Phase 007)
+
+**Evidence:** A two-owner World with identical Uniform transitions and seed 1 gives A=0.13436424411240122 when A.Tick is inserted first, but A=0.8474337369372327 when B.Tick is inserted first. Both orders replay exactly. The accepted DEC-019/031 shared run-local RNG does not provide keyed (world_seed, agent_id, trial_id) substreams, and the legacy position-indexed tensor does not provide a public stable identity contract.
+
+**Option A (Proposed, not selected):** introduce an explicitly governed World-backed population runner with stable IDs, independently versioned keyed PRNG derivation, causal interaction boundary and a narrow legacy adapter. This would enable a future order-invariance test, but requires production semantics and an architecture review beyond Phase 007.
+
+**Option B (selected as present boundary, not a new ADR):** preserve both existing engines, identify current non-equivalence and stop when future per-agent order invariance cannot be demonstrated. No claim of independent agent streams, population throughput, or statistical calibration follows.
+
+**Falsification and decision gate:** H-POP2 requires the same named agent's trajectory under cohort permutation with unchanged causal input; P-RNG-ORDER-1 falsifies that request against the existing World API. Future migration requires an accepted contract for IDs, trial ownership, seed derivation, draw consumption, shared shocks, ledger/metric units and backward compatibility. Neither a test-only third engine nor a change to accepted default World RNG is an acceptable shortcut.
+
+
+---
+
+## Debate 29: Keyed Per-Instance Replay Without Replacing the World Calendar (Phase 007A)
+
+**Question:** How can fixed explicit population identity and order-invariant independent agent trajectories be verified without silently revising accepted DEC-019/031's event-ordered shared random stream?
+
+**Option A (deferred):** A generalized population execution layer with global causal interactions and new event ownership. It would be more expressive but requires unaccepted causal scheduling and checkpoint semantics, with greater maintenance risk.
+
+**Option B (selected for bounded opt-in Python implementation; no accepted language ADR):** Each stable `PopulationAgent` record selects its own existing WorldExecutor/EventMachine run with a SHA-256-derived, versioned seed for `(world_seed, trial_id, agent_id, stream_role)`. Enumerated, exclusive state partitions are checked on completion. This retains all existing World guard, type, source-order sample, emission and priority contracts. Cost: repeated per-agent interpreter initialization, no cross-agent shared state/events, no in-handler exogenous/policy stream separation or resumable RNG snapshots.
+
+**Option C (deferred):** Add keyed resolver injection directly to EventMachine. It risks broad semantic coupling and introduces a source-owner-to-instance routing contract not supported by current World source declarations.
+
+**Decision boundary:** B is a narrowly authorized Phase 007A experiment under unchanged established APIs, not acceptance of a generalized population/migration decision. A and C require a new explicit architecture decision and genuine causal fixtures. The exact accepted default World shared-stream witness P-RNG-ORDER-1 is retained; `PopulationExecutor` tests instead exercise distinct per-instance keyed contracts. Tests 36 focused, 374 complete application plus 58 subtests, and 5 research passed; measured two-trial 10/100/1000 independent-instance experiments. This is computational reproducibility, not statistically independent Monte Carlo, market calibration, or causal inference. An independent reviewer was unavailable; self-audit is explicitly not peer approval.
+
+**Falsifier:** A matched agent's output changes solely because another independent instance is inserted, removed, or permuted, while input events and its seed/trial/role remain identical.
+
+
+---
+
+## Debate 30: Domain-Owned Reference Accounting vs Universal Financial Compiler Rules (Phase 007B)
+
+**Thesis A (rejected):** Implement liquid cash, delays, settlements, CAC/ROAS and risk metrics as automatic constraints in the World compiler or change the current legacy runtime's telemetry formulas. This would violate DEC-009, silently alter accepted World/legacy behavior, and confuse model-owned assumptions with language semantics.
+
+**Antithesis B (selected for bounded reference execution):** A pure, opt-in Python marketing-domain journal with explicit transaction identity, sale/settlement reference, currency, horizon and paid cash movements, and separately declared model-derived eligible/conversion identity sets. Use exact integer minor units and fixed decimal reporting rules. The model must explicitly author the journal (or a separately approved future adapter). Reuse Phase 007A `PopulationResult` as a read-only identity source. Finance is not given a new event engine and legacy telemetry retains its distinct contract.
+
+**Trade-off:** Under B there is no evidence that a World conversion *caused* a financial sale: trial attribution is explicitly named, not independently verified. Real financial accounting requires more than paid expenses and gross sales; refund, fees, deferred cost, tax, credit, inventory and disputed settlements are omitted. Empirical VaR/CVaR are finite-sample formulas without calibration/independence proof. A general source-to-ledger adapter requires new accepted ownership and causal scheduling semantics.
+
+**Falsifier:** Sale recognition increases cash before settlement, duplicate sale identifiers are counted, over-settlement is accepted, or CVaR at alpha=.75 for losses [0,0,0,100] is incorrectly reported 25. Tests refuted the early Decimal-context scaling implementation: 1,234,567.89 was posted as 1,234,600.00 at context precision 5. Exact digit-to-integer minor-unit conversion eliminated this observed error.
+
+**Status:** Selected as verified limited Phase 007B opt-in marketing reference mechanism. Not a new Accepted architecture ADR. No independent external reviewer sign-off.
+
+
+---
+
+## Debate 31: Reconstructing Event Causality After Execution vs a Read-Only Transition Witness (Phase 007C)
+
+**Thesis A:** Derive sale records only from existing `PopulationResult.results[agent].processed` events and final state. Rejected: a guard may reject a processed event, and a later transition may establish the same terminal state. Neither event occurrence nor actual state change is attributable from the two snapshots alone.
+
+**Selected bounded alternative B:** An optional, per-step read-only World reducer witness records pre-state, guard decision, post-state and processed occurrence index while the original `EventMachine` performs exactly one execution. A marketing-owned policy must specify the exact event and state change before a sale is recognized. Financial entry identity uses unambiguous versioned JSON and SHA-256. Duplicate exact transactions are idempotent; conflicting reuse rejects. The existing exact-minor-unit `MarketingLedger` is the only accounting implementation.
+
+**Alternative C rejected:** No generalized event sourcing, scheduler, compiler-level sale rule, database or broker is justified by this reference path. **Scope:** One-agent-template independent keyed population and event-caused sale recognition only. Cost/settlement/writeoff remain externally authored financial operations. Processed occurrence index is not a kernel heap ordinal and can shift when the *same agent's* earlier event history changes. Signatures are deterministic but not tamper-proof.
+
+**Falsifiers:** false guard produces sale; duplicate Tick posts a second sale; changing agent enrollment order changes matched sale identity; cash recognizes uncollected revenue; same-ID differing amount is quietly accepted; opt-in trace changes World random outcomes. Synthetic tests reject each. No accepted ADR or real-world causal inference claim.

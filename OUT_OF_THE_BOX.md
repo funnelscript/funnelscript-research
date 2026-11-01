@@ -473,3 +473,65 @@ A future dependency scanner could build a graph of all bundled skill instruction
 ### Boundary
 
 Not implemented. DEC-035 currently verifies 22 top-level names, indexed local entrypoints, direct Markdown resource links and obvious duplicate archives. Its 2026-10-31 full-suite GREEN receipt confirms the repaired direct-link boundary, not transitive closure, vendor licenses or independent AI-agent execution.
+
+
+---
+
+### Phase 002 frontier boundary (2026-11-01)
+
+DEC-036 introduces only a finite per-event JSON input cap and explicit CLI error classes. General-purpose recursive JSON depth quotas, transactional multi-export writes and process-level isolation remain **unimplemented**. These would require distinct benchmarks and failure contracts; they are not silently promoted into the current CLI milestone or claimed as security guarantees.
+
+---
+
+### Phase 003 frontier boundary (2026-11-01)
+
+DEC-037 deliberately excludes expression trees, precedence rules, implicit numeric coercion and domain-specific physical or financial units. A future independently evaluated, unit-aware arithmetic layer could explore rejecting dimensionally invalid ratios without embedding marketing-specific rules into the compiler. This is a research question, **not implemented**; no claim of dimensional validation or cross-platform IEEE-754 bitwise agreement follows from the current exact-type interpreter.
+
+
+---
+
+### Phase 006 frontier boundary (2026-11-01)
+
+The independent World conformance corpus permits future engines to compare
+fixed event and state traces against a pinned Python interpreter contract.
+A hypothetical differential and metamorphic test generator could expand
+coverage beyond the current finite fixture set; it must first specify
+a trusted independent semantics source, supported primitive typing and
+numeric-version boundaries, and failure minimization.
+
+**H-O29 (unimplemented):** Given a pre-registered corpus of semantically
+valid World mutations and known violating mutations, a future differential
+runner detects every known violating mutation without treating benign
+source transformations as semantic failures. Falsified by missed violating
+mutations or incorrect rejections of equivalent programs.
+
+No alternative engine, browser parity, property-based generator,
+statistical calibration or real-world accuracy check was implemented
+during Phase 006.
+
+---
+
+### Phase 007 frontier boundary: keyed scenario streams (unimplemented)
+
+A future research candidate could represent each agent/trial/intervention as an explicitly versioned random-stream identity and test reproducible common-random-number counterfactual comparisons under cohort permutations. **H-O30 (future, not implemented):** on a preregistered matrix of agent additions, removals, permutations, and controlled interactions, matched-agent local stochastic trajectories remain identical when their causal inputs are identical; falsified by any unexplained trajectory change or stream collision. The Phase 007 two-owner World trace is a negative baseline. Statistical stream independence, causal validity and empirical forecast accuracy cannot be inferred from deterministic seed partitioning.
+
+
+---
+
+### Phase 007A boundary update: reusable stream-role scheduling (OOTB-030 continuation)
+
+The narrow opt-in `PopulationExecutor` now verifies **independent agent-instance** identity and keyed replay for fixed source events; it does not implement global shared exogenous shocks or role-level substream separation within an individual World rule. A future specification could define explicit role-tagged draw sites, causal interactions, and replayable checkpoints without disrupting accepted DEC-031. This must be evaluated against deliberately interacting agents and independent golden traces before any claim of improved counterfactual alignment. A cryptographic seed derivation is not mathematical proof of statistical independence. This remains **Proposed research**, not a planned implicit migration and not an empirical-prediction system.
+
+
+---
+
+### Phase 007B frontier: auditable causal transaction provenance (OOTB-031, future)
+
+A future event-to-ledger bridge may define a typed, model-authored causal reference from a stable World agent ID and event ordinal to a domain transaction ID, with explicit idempotency and delayed settlement. A falsifier must attempt duplicate emissions, reordering, missing acknowledgments, real exchange-rate changes, and interacting agents that share a cash account; a valid implementation would retain exact cash/receivable reconciliation while preserving accepted World source and event ordering. This is **unimplemented research**, not a reason to embed commercial rules into the compiler or alter current default RNG behavior. Current 007B is an opt-in authored journal, not an exogenous-market validation.
+
+
+---
+
+### Phase 007C update to OOTB-031 — proposed next research on robust auditability
+
+The narrow Phase 007C **in-process** event-to-sale witness exists and is tested: only an explicitly declared source-to-target transition creates a recognized sale, and actual cash remains a separate settled financial posting. The OOTB-031 broader vision of distributed, signed or resumption-stable transaction lineage remains **unimplemented**. A future hypothesis could test whether identity survives checkpoint/restart, causally coupled multi-agent transitions, and intentionally adversarial trace substitution without claiming that a local SHA-256 digest authenticates the producer. Such research requires an architectural decision gate and an explicit threat model; none is implicitly accepted here.
