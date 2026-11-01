@@ -1,6 +1,10 @@
 # FunnelScript Research
 
+<img src="https://raw.githubusercontent.com/funnelscript/funnelscript/main/assets/brand/funnelscript-wordmark-light.svg" alt="FunnelScript language logo" width="420"/>
+
 Research specifications, falsification protocols, and scientific manuscripts for [FunnelScript](https://github.com/funnelscript/funnelscript), an **experimental** language for expressing and executing stateful marketing-system models. The compiler, CLI, tests, bundled Marketing Standard Library, and Web Studio live in the [application repository](https://github.com/funnelscript/funnelscript).
+
+FunnelScript language branding and logo usage rules are maintained in the [application visual identity guide](https://github.com/funnelscript/funnelscript/blob/main/docs/brand/README.md). The research repository retains the same wordmark without introducing a separate scientific-project identity.
 
 ## Current evidence boundary
 
