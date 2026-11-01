@@ -65,3 +65,18 @@ A later documentation-only commit may advance `main`; that commit requires a fre
 **H-P5 verdict:** PASS for canonical local file targets only. **H-P6 verdict:** manual tree/command reconciliation PASS, not a general static proof. **H-P7 verdict:** PASS for inspected entrypoint/release/proposal claims, subject to independent evidence for future releases. **Boundaries:** External links, fragment slugs, scientific correctness, empirically calibrated forecasting and outside-user usability remain unverified by these tests. No Python World interpreter or frontend behavior changed in this phase.
 
 **Post-remediation regression gate:** Application `uv run pytest -q` completed **215 passed in 6.02s**; `uv build` built the `0.2.0a1` wheel and sdist. A source-run of the documented `examples/marketing_lead_response.fnl` with seed 1 returned `processed_events=2`, `revenue=100.0`, `spend=2.0`, `pending_events=0`. An initial `bun test` command failed only because `bun` was not on the noninteractive shell's PATH (existing FL-014); invoking the installed Bun binary directly passed **1 test** and `bun run build` completed successfully (2226 Vite modules, TypeScript build green). Both repositories' `git diff --check` checks were clean after removing Markdown trailing whitespace. These facts describe the local verification gate, not a new public tagged release or an empirical market study.
+
+
+---
+
+## CLI Boundary Hardening Evaluation (Phase 002, 2026-11-01)
+
+**Scope:** Local development branches `work/phase-002-cli-hardening`, not the historical `v0.2.0a1` tag. Research contract: `spec/developer-preview-v0.md` H-CLI1 through H-CLI3; decision: DEC-036.
+
+**RED evidence:** Existing CLI baseline had 7 passing tests. Seven selected added regression cases then failed for the intended causes: two `AttributeError` faults mislabeled as parser errors, two `PermissionError` faults returned code 1, two oversized event strings reached the JSON decoder, and a failed JSON export escaped after a CSV success notice.
+
+**GREEN evidence:** `uv run pytest tests/test_cli.py -v` completed with 23 passed. `uv run pytest -q` completed with 235 passed and 58 subtests. `python3 -m unittest discover -s tests -v` in research completed with 5 passed. `bun test` returned one pass and `bun run build` succeeded, confirming no observed frontend regression (not semantic engine parity).
+
+**Smoke:** `uv run funnelscript check examples/black_friday_2026.json` succeeded; `uv run funnelscript run-world examples/marketing_lead_response.fnl --event '{"name":"Prospect.Impression","time":0,"payload":{"cpc":2.0,"conversion_probability":0.7,"order_value":100.0}}' --seed 1` processed two events and returned revenue 100.0/spend 2.0. This is a deterministic example under assumed inputs, not external empirical calibration.
+
+**Limits:** A later export may fail after an earlier file was actually written; the CLI now suppresses misleading success notices but is not transactional. Any future public preview needs its own exact-commit wheel/installed smoke and release evidence.

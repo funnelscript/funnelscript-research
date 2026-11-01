@@ -57,3 +57,16 @@ PyPI distribution, an unconditional automatic GitHub Release, custom package man
 ## Evaluation plan
 
 Record RED/GREEN for CLI behaviors in `funnelscript/tests/test_preview_quickstart.py`, Python/Bun regressions, build metadata and isolated-wheel smoke. Verify the pushed candidate's workflow status, tag uniqueness and remote tag SHA before making any public-preview claim. Document evidence and blockers in `evals/developer-preview-v0.md` and the app's failure lessons / readiness ledger.
+
+
+---
+
+## Phase 002: CLI failure and input-boundary extension (2026-11-01)
+
+This source-level contract applies to the local development CLI **after** the historical v0.2.0a1 tag. It does not change World execution semantics or establish a new published release.
+
+- **H-CLI1:** In `check`/`compile`/`simulate`, documented parser/lexer/type/JSON-validation failures map to status 1; filesystem read failures map to status 2; unexpected internal `AttributeError` faults are not converted to "Parse Error". The separate `run-world` error status 1 is unchanged. Counterexample: injected implementation error produces status 1 under a syntax label.
+- **H-CLI2:** A JSON-form `--event` argument containing more than 65,536 encoded UTF-8 bytes, including leading/trailing whitespace, is rejected before `json.loads`. A boundary-sized valid JSON object is accepted. Existing event time validation stays in `Event`, including nonfinite and negative rejection.
+- **H-CLI3:** Failed CSV/JSON export writes map to status 2 on stderr; no output success notice is emitted before all requested export calls have succeeded. Absolute and nested destinations chosen by the user remain supported.
+
+These contracts bound common command-line failure modes; they do not introduce a recursive JSON parser, an atomic multi-file transaction, or general filesystem sandboxing.
