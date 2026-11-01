@@ -1,0 +1,8 @@
+# Python caches
+__pycache__/
+*.py[oc]
+.pytest_cache/
+
+# Agent workspaces and plans
+/plans/
+/.agents/
