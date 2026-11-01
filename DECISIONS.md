@@ -502,3 +502,17 @@
 * **Typing and runtime:** Both operands must be exactly `int` or exactly `float`; bool is not numeric. `+`, `-`, `*` preserve operand type; `/` yields `float` even for int/int. Compile-time literal zero denominator is invalid; dynamic zero is a controlled runtime failure. Float expression literals/operands and resulting floats must be finite; integer arithmetic remains exact and unbounded, while int/int division conversion overflow is controlled. Initial state type-check policy remains unchanged for compatibility.
 * **Scope and rationale:** This extends only DEC-027's narrow syntactic subset while preserving its snapshot-atomic semantics, DEC-030 payload checks and DEC-031 event-ordered seeded RNG. It adds no market-financial assumptions or new dependencies.
 * **Evidence and limits:** H-AR1 through H-AR3 in `spec/arithmetic-expressions-v0.md`; observed RED/GREEN tests and full verification in `evals/arithmetic-expressions-v0.md`. This is an interpreter correctness claim, not a real-market validation result.
+
+
+---
+
+### Phase 006 evidence checkpoint (no new ADR)
+
+The Phase 006 conformance corpus exercises accepted DEC-019, DEC-027 through
+DEC-032, and DEC-037 on the experimental Python World reference interpreter.
+H-C1 through H-C3 and their precise falsifiers are specified in
+`spec/world-conformance-v0.md`; independently fixed expected/rejection
+records are evaluated in `evals/world-conformance-v0.md`. This evidence
+adds no architectural decision and does not supersede any accepted ADR.
+Version-pinned canonical JSON is an *evaluation artifact*, not a new runtime
+or exposed production trace API. External predictive validity is not inferred.

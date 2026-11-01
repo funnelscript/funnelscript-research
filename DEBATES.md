@@ -1053,3 +1053,30 @@ A critical trap in ambitious software projects is delaying release until a massi
 * **Option B (accepted, DEC-037):** Exactly one binary operator, left state reference, right literal/payload/state, exact numeric types, and float result for `/`. Reject unsupported chains; tokenize comments before division; reject static zero and control dynamic zero and non-finite float results.
 * **Compatibility consequence:** Existing finite arithmetic and seeded execution are preserved. Initial float-state checks remain type-only: a previously accepted malformed externally constructed World state must still reach its existing outbound payload diagnostic rather than becoming a new parser-time error.
 * **Falsification:** Phase 003 RED/GREEN arithmetic, EOF, event, and stochastic regressions. No floating-point cross-platform bitwise identity or economic units system is claimed.
+
+
+---
+
+## Debate 27: Canonical World Trace as an Oracle vs. a Second Interpreter
+
+**Problem:** Future World executors need independently inspectable behavior
+criteria without duplicating the production interpreter in tests.
+
+**Option A (rejected):** Recompute all expected states and event streams with
+`WorldExecutor` or derive expectations from the same run under assertion.
+That would allow shared implementation mistakes to pass unnoticed.
+
+**Option B (selected for Phase 006 verification, without a new ADR):**
+Author fixed source fixtures, named rejection boundaries and complete
+state/processed/pending event records by hand, with separately verified
+Python `random.Random` sample references and deterministic canonical JSON.
+Compare three fresh interpreter executions to each fixed golden and perform
+an equal-priority insertion-order perturbation. Keep all source semantics
+and production APIs unchanged.
+
+**Trade-off:** This corpus is a finite, interpreter-version-specific
+conformance oracle, not a formal proof for all programs or an empirical
+simulation model. JSON float spellings require explicit numeric-kind
+preservation. Accepted DEC-019/027–032/037 remain authoritative.
+External market validity, statistical calibration, causal inference
+and real-world prediction accuracy were not tested.

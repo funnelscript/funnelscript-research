@@ -486,3 +486,25 @@ DEC-036 introduces only a finite per-event JSON input cap and explicit CLI error
 ### Phase 003 frontier boundary (2026-11-01)
 
 DEC-037 deliberately excludes expression trees, precedence rules, implicit numeric coercion and domain-specific physical or financial units. A future independently evaluated, unit-aware arithmetic layer could explore rejecting dimensionally invalid ratios without embedding marketing-specific rules into the compiler. This is a research question, **not implemented**; no claim of dimensional validation or cross-platform IEEE-754 bitwise agreement follows from the current exact-type interpreter.
+
+
+---
+
+### Phase 006 frontier boundary (2026-11-01)
+
+The independent World conformance corpus permits future engines to compare
+fixed event and state traces against a pinned Python interpreter contract.
+A hypothetical differential and metamorphic test generator could expand
+coverage beyond the current finite fixture set; it must first specify
+a trusted independent semantics source, supported primitive typing and
+numeric-version boundaries, and failure minimization.
+
+**H-O29 (unimplemented):** Given a pre-registered corpus of semantically
+valid World mutations and known violating mutations, a future differential
+runner detects every known violating mutation without treating benign
+source transformations as semantic failures. Falsified by missed violating
+mutations or incorrect rejections of equivalent programs.
+
+No alternative engine, browser parity, property-based generator,
+statistical calibration or real-world accuracy check was implemented
+during Phase 006.
