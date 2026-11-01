@@ -1,0 +1,24 @@
+name: Research Conformance CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  research:
+    name: Independent research oracles and documentation contracts
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9 # v9.0.0
+        with:
+          version: "0.13.6"
+      - name: Install Python 3.12
+        run: uv python install 3.12
+      - name: Run reproducible research verification
+        run: uv run --no-project --python 3.12 --with pytest pytest -v

@@ -547,3 +547,7 @@ On 2026-11-01, a bounded, explicitly opt-in Python `PopulationExecutor` adapter 
 ### Phase 007D financial provenance checkpoint — proposed, NOT an Accepted ADR
 
 2026-11-01: Domain-owned `DeclaredFinancialAction` and `post_authorized_trial()` separate verified World-caused sales from author-asserted external paid actions, validate local operation identity and delegate exact cash/receivable conservation to `MarketingLedger`. Existing Phase 007C unprovenanced adapter remains available without being labeled authenticated. Under DEC-009, no economic rules migrated into compiler or World scheduler. Cryptographic authenticity, persistent replay, shared cash arbitration and empirical calibration require new explicit approval and are not implied. Evidence: `spec/financial-consequence-provenance-v0.md`, `evals/financial-consequence-provenance-v0.md`.
+
+## Phase 007E — Proposed, not Accepted ADR (2026-11-01)
+
+Bounded implementation record only: opt-in canonical financial audit v1 with strict trace-and-policy restoration and atomic single-writer checkpoint. No change to existing accepted DEC IDs or new Accepted ADR. Producer authentication, actual authorization and shared-state serializability remain undecided pending operator permission and separate threat-model evidence. See `spec/durable-financial-provenance-v1.md`.
