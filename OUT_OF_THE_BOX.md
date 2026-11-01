@@ -539,3 +539,7 @@ The narrow Phase 007C **in-process** event-to-sale witness exists and is tested:
 ### Phase 007D frontier boundary — durable attestations and shared-resource serializability
 
 Verified source-to-sale World witnesses and explicit author-asserted external transaction envelopes still cannot authenticate an external principal, persist evidence across untrusted storage, or arbitrate a cross-agent shared budget. A possible *future* research program would define a threat model, signer trust root, durable delivery protocol, transaction scope and serializable shared resource scheduler, then falsify them via replay, reordering and crash recovery. None is implemented or authorized in 007D; do not confuse deterministic SHA-256 identifiers with an authenticated signature.
+
+## Phase 007E research frontier (not implemented)
+
+Potential future externally anchored digest catalogs, HMAC with operator-owned key lifecycle, append-only authenticated logs and stateful concurrency arbitration require independent operators/requirements. Hash chaining without an external trust root cannot turn mutable records into authenticated evidence. No such capabilities are claimed or authorized in this phase.
