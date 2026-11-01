@@ -8,7 +8,8 @@ ProgramFile           ::= StrategyFile | WorldFile ;
 (* New declaration words are soft keywords in the reference lexer. *)
 WorldFile             ::= "world" Identifier "{" WorldDeclaration* "}" ;
 WorldDeclaration      ::= WorldEntityDeclaration | WorldAgentDeclaration | WorldImport ;
-WorldImport           ::= "import" StringLiteral "as" Identifier ";" ;
+WorldImport           ::= "import" StringLiteral ("as" Identifier | "{" NamedImport ("," NamedImport)* "}") ";" ;
+NamedImport           ::= Identifier ("as" Identifier)? ;
 WorldEntityDeclaration ::= "entity" Identifier "{" WorldMember* "}" ;
 WorldAgentDeclaration ::= "agent" Identifier "{" WorldMember* "}" ;
 WorldMember           ::= StateField | EventDeclaration | RuleDeclaration ;
@@ -21,17 +22,20 @@ GuardClause           ::= "when" "(" Identifier GuardOp StateLiteral ")" ;
 GuardOp               ::= "==" | "!=" | "<" | "<=" | ">" | ">=" ;
 RuleStatement         ::= TransitionStatement | EmitStatement ;
 TransitionStatement   ::= "transition" Identifier "=" TransitionExpression ";" ;
-TransitionExpression  ::= StateExpression | SampleExpression ;
+TransitionExpression  ::= StateExpression ;
 (* Lexer recognizes // comments before the single / division token. *)
-BinaryOperator        ::= "+" | "-" | "*" | "/" ;
-BinaryRight           ::= StateLiteral | PayloadReference | Identifier ;
+AdditiveOperator      ::= "+" | "-" ;
+MultiplicativeOperator ::= "*" | "/" ;
 SampleExpression      ::= "sample" ("bernoulli" "(" SampleArgument ")"
                         | "uniform" "(" SampleArgument "," SampleArgument ")") ;
 SampleArgument        ::= SignedNumber | PayloadReference | Identifier ;
 EmitStatement         ::= "emit" Identifier ("(" EventArgList? ")")? "after" SignedNumber ";" ;
 EventArgList          ::= EventArgument ("," EventArgument)* ;
 EventArgument         ::= Identifier "=" StateExpression ;
-StateExpression       ::= StateLiteral | PayloadReference | Identifier (BinaryOperator BinaryRight)? ;
+StateExpression       ::= AdditiveExpression ;
+AdditiveExpression    ::= MultiplicativeExpression (AdditiveOperator MultiplicativeExpression)* ;
+MultiplicativeExpression ::= PrimaryExpression (MultiplicativeOperator PrimaryExpression)* ;
+PrimaryExpression     ::= StateLiteral | PayloadReference | Identifier | "(" StateExpression ")" | SampleExpression ;
 PayloadReference      ::= "payload" "." Identifier ;
 PrimitiveType         ::= "int" | "float" | "bool" | "string" ;
 StateLiteral          ::= SignedNumber | StringLiteral | BooleanLiteral ;

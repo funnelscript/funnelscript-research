@@ -556,3 +556,8 @@ Bounded implementation record only: opt-in canonical financial audit v1 with str
 ## Phase 007F — Implementation checkpoint; no accepted architecture decision
 
 2026-11-01: Opt-in single-writer commit coordinator, versioned deterministic receipt and recovery validation added within the already approved domain boundary. A revalidated complete audit is required before publication; a changed checkpoint requires the previous trusted receipt; a successful acknowledgement requires publication plus revalidation; uncertain syscall outcomes raise an explicit recovery-required exception. Exactly-once network delivery, multi-writer serializability, producer authentication, crash-proof file hardware, and arbitrary valid rollback prevention are not accepted or demonstrated. Existing DEC-009 and Phase 007E contracts remain unchanged. See spec/financial-commit-recovery-007f.md. No new Accepted ADR.
+
+
+## Phase 007G — Proposed language implementation checkpoint, not Accepted ADR
+
+Versioned additions introduce bounded typed arithmetic AST composition, deterministic explicit World declaration imports, and versioned strict event playbook input. Existing DEC-009 accounting boundaries, DEC-027 pre-event snapshot semantics and DEC-031 keyed RNG remain controlling. No legacy engine migration or empirical equivalence decision is made. Research: spec/phase-007g-composable-language-v1.md.
