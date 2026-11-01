@@ -1150,3 +1150,8 @@ Thesis: canonical SHA-256 evidence supports deterministic, portable post-restart
 ## Phase 007F — Commit acknowledgements and single-writer recovery versus physical guarantees
 
 Option A retained a caller-managed checkpoint but allowed accidental successful acknowledgements across ambiguous rename/fsync windows. Selected, without accepting an ADR: Option B, a narrow opt-in coordinator that validates a complete Phase 007E audit, publishes via the existing single-writer checkpoint writer, re-reads the evidence, and issues a checksum-bound receipt. Option C, consensus/database/broker infrastructure, remains unapproved. A failed directory fsync cannot authorize SUCCESS even if new content is visible. A stored checksum cannot authenticate its producer; without an externally trusted retained receipt it cannot reveal rollback to an older self-consistent image. Falsifiers and measured counterexamples: spec/financial-commit-recovery-007f.md and evals/financial-commit-recovery-007f.md.
+
+
+## Phase 007G — Strict composability versus unconstrained scripting
+
+Selected: a bounded precedence-climbing expression tree, explicit named module exports, and file ingestion through the existing World event validation path. Rejected: arbitrary code evaluation, wildcard import merging, a package manager, a new event scheduler, implicit numeric widening or legacy/World engine unification. Falsifiers: incorrectly associated arithmetic, conflicting namespace bindings, invalid JSON acceptance, or altered seeded snapshot behavior. Research: spec/phase-007g-composable-language-v1.md. This is not an Accepted ADR.

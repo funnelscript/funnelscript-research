@@ -548,3 +548,8 @@ Potential future externally anchored digest catalogs, HMAC with operator-owned k
 ## Phase 007F frontier — authenticated rollback fences and writer arbitration (unimplemented)
 
 Potential future research would specify operator-controlled immutable anchors, signature trust roots, durable fencing tokens, and a concrete multi-writer arbitration threat model. None is authorized by the present checksum-bound single-writer commit coordinator. A production durability promise additionally requires filesystem/hardware-specific power-loss experiments; an unanchored hash chain cannot independently prohibit older valid checkpoint substitution.
+
+
+## Phase 007G frontier — Future module package system and engine equivalence (unimplemented)
+
+Potential future work could compare semantic traces for deliberately paired legacy and World models or test explicit module package manifests. Neither a package resolver nor a single merged simulation runtime is implemented or approved by Phase 007G.

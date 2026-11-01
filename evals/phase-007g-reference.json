@@ -1,0 +1,13 @@
+{
+  "schema": "funnelscript-phase-007g-independent-example-v1",
+  "world": "Demo",
+  "seed": 42,
+  "inputs": [
+    {"name": "Balance.Tick", "time": 1, "payload": {}},
+    {"name": "Lead.Tick", "time": 0, "payload": {"increment": 3}}
+  ],
+  "expected": {
+    "processed_events": 2,
+    "state": {"Balance": {"count": 9}, "Lead": {"visits": 6}}
+  }
+}
