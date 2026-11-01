@@ -1124,3 +1124,16 @@ and real-world prediction accuracy were not tested.
 **Falsifier:** Sale recognition increases cash before settlement, duplicate sale identifiers are counted, over-settlement is accepted, or CVaR at alpha=.75 for losses [0,0,0,100] is incorrectly reported 25. Tests refuted the early Decimal-context scaling implementation: 1,234,567.89 was posted as 1,234,600.00 at context precision 5. Exact digit-to-integer minor-unit conversion eliminated this observed error.
 
 **Status:** Selected as verified limited Phase 007B opt-in marketing reference mechanism. Not a new Accepted architecture ADR. No independent external reviewer sign-off.
+
+
+---
+
+## Debate 31: Reconstructing Event Causality After Execution vs a Read-Only Transition Witness (Phase 007C)
+
+**Thesis A:** Derive sale records only from existing `PopulationResult.results[agent].processed` events and final state. Rejected: a guard may reject a processed event, and a later transition may establish the same terminal state. Neither event occurrence nor actual state change is attributable from the two snapshots alone.
+
+**Selected bounded alternative B:** An optional, per-step read-only World reducer witness records pre-state, guard decision, post-state and processed occurrence index while the original `EventMachine` performs exactly one execution. A marketing-owned policy must specify the exact event and state change before a sale is recognized. Financial entry identity uses unambiguous versioned JSON and SHA-256. Duplicate exact transactions are idempotent; conflicting reuse rejects. The existing exact-minor-unit `MarketingLedger` is the only accounting implementation.
+
+**Alternative C rejected:** No generalized event sourcing, scheduler, compiler-level sale rule, database or broker is justified by this reference path. **Scope:** One-agent-template independent keyed population and event-caused sale recognition only. Cost/settlement/writeoff remain externally authored financial operations. Processed occurrence index is not a kernel heap ordinal and can shift when the *same agent's* earlier event history changes. Signatures are deterministic but not tamper-proof.
+
+**Falsifiers:** false guard produces sale; duplicate Tick posts a second sale; changing agent enrollment order changes matched sale identity; cash recognizes uncollected revenue; same-ID differing amount is quietly accepted; opt-in trace changes World random outcomes. Synthetic tests reject each. No accepted ADR or real-world causal inference claim.

@@ -528,3 +528,10 @@ The narrow opt-in `PopulationExecutor` now verifies **independent agent-instance
 ### Phase 007B frontier: auditable causal transaction provenance (OOTB-031, future)
 
 A future event-to-ledger bridge may define a typed, model-authored causal reference from a stable World agent ID and event ordinal to a domain transaction ID, with explicit idempotency and delayed settlement. A falsifier must attempt duplicate emissions, reordering, missing acknowledgments, real exchange-rate changes, and interacting agents that share a cash account; a valid implementation would retain exact cash/receivable reconciliation while preserving accepted World source and event ordering. This is **unimplemented research**, not a reason to embed commercial rules into the compiler or alter current default RNG behavior. Current 007B is an opt-in authored journal, not an exogenous-market validation.
+
+
+---
+
+### Phase 007C update to OOTB-031 — proposed next research on robust auditability
+
+The narrow Phase 007C **in-process** event-to-sale witness exists and is tested: only an explicitly declared source-to-target transition creates a recognized sale, and actual cash remains a separate settled financial posting. The OOTB-031 broader vision of distributed, signed or resumption-stable transaction lineage remains **unimplemented**. A future hypothesis could test whether identity survives checkpoint/restart, causally coupled multi-agent transitions, and intentionally adversarial trace substitution without claiming that a local SHA-256 digest authenticates the producer. Such research requires an architectural decision gate and an explicit threat model; none is implicitly accepted here.
