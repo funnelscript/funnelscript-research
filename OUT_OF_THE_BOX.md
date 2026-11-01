@@ -514,3 +514,10 @@ during Phase 006.
 ### Phase 007 frontier boundary: keyed scenario streams (unimplemented)
 
 A future research candidate could represent each agent/trial/intervention as an explicitly versioned random-stream identity and test reproducible common-random-number counterfactual comparisons under cohort permutations. **H-O30 (future, not implemented):** on a preregistered matrix of agent additions, removals, permutations, and controlled interactions, matched-agent local stochastic trajectories remain identical when their causal inputs are identical; falsified by any unexplained trajectory change or stream collision. The Phase 007 two-owner World trace is a negative baseline. Statistical stream independence, causal validity and empirical forecast accuracy cannot be inferred from deterministic seed partitioning.
+
+
+---
+
+### Phase 007A boundary update: reusable stream-role scheduling (OOTB-030 continuation)
+
+The narrow opt-in `PopulationExecutor` now verifies **independent agent-instance** identity and keyed replay for fixed source events; it does not implement global shared exogenous shocks or role-level substream separation within an individual World rule. A future specification could define explicit role-tagged draw sites, causal interactions, and replayable checkpoints without disrupting accepted DEC-031. This must be evaluated against deliberately interacting agents and independent golden traces before any claim of improved counterfactual alignment. A cryptographic seed derivation is not mathematical proof of statistical independence. This remains **Proposed research**, not a planned implicit migration and not an empirical-prediction system.

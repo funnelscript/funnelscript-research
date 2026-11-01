@@ -174,3 +174,10 @@ Option B (defensible current boundary): keep two engines separate with explicit 
 Planned bounded experimental scales are two segments at N=10,100,1000 with stable ID partitions, multiple trials and delayed cash. They were **not run as a population experiment** because H-POP2 cannot be demonstrated through present public APIs. Do not manufacture a third simulator in tests; do not claim performance, population conservation, independent Monte Carlo, or paired counterfactual reproducibility. Fixture P-RNG-ORDER-1, described above, is the smallest publicly reproducible order-dependence witness, not a true population execution. A failing desired-invariant probe is evidence of the gap and not a newly discovered regression of accepted semantics. Future implementation must have a separately approved and test-first card before unblocking Phase 007.
 
 **External market validity, statistical calibration, causal inference, and real-world prediction accuracy were not tested.**
+
+
+---
+
+## Phase 007A verified dependency update (2026-11-01; historical Phase 007 BLOCKED status retained)
+
+The separately proposed `spec/population-identity-rng-v0.md` contract has an opt-in independent-instance Python execution adapter with an exact identity snapshot and versioned per-agent/trial/role seed derivation. Its 10/100/1000-agent experimental results and 36 focused tests are recorded in `evals/population-identity-rng-v0.md`. This closes only the earlier **absence of a stable population identity and keyed RNG runtime capability** for causally independent instances. It does NOT revise accepted default World RNG semantics or retroactively turn the P-RNG-ORDER-1 counterexample into a regression. H-POP3 delayed cash settlement and the executable financial/metric contract remain unverified; Phase 007 is still BLOCKED. No market validity, statistical calibration, causal inference, or prediction accuracy was tested.

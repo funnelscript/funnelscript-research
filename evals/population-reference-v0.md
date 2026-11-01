@@ -103,3 +103,10 @@ Actual exception: AssertionError with the stated H-POP2 RED message. The shell r
 ## Read-only review independence limitation
 
 A separately executed read-only source/fixture audit checked accepted shared RNG ownership, legacy first-audience and trial RNG, telemetry percentile/CVaR semantics, pinned golden provenance, all nine ten-field metric definitions, domain-ledger arithmetic, no skipped or weakened tests, no third engine, staged file scope and both Git whitespace checks. The audit returned exit 0. The A2M Code Review Graph could not inspect this repository because its requested root was outside that graph tool's approved workspace. Consequently, no separate external/human reviewer verdict is claimed; independent adversarial reviewer sign-off remains unverified. This does not override the existing H-POP2 STOP result.
+
+
+---
+
+## Post-checkpoint Phase 007A evidence (historical STOP retained)
+
+The Phase 007 STOP described above was correct at its recorded commit and execution date. An opt-in, domain-neutral, isolated-agent `PopulationExecutor` was subsequently introduced under the separate Phase 007A research contract. Its precise keyed identity and bounded verification are in `spec/population-identity-rng-v0.md` and `evals/population-identity-rng-v0.md`; the original negative P-RNG-ORDER-1 default-World fixture remains unchanged and passes. Do not conflate previously NOT RUN Phase 007 experiments with the separately measured Phase 007A 10/100/1000 independent-instance trials. Financial settlement, accounting and reference metric execution still have no verified implementation; Phase 007 remains BLOCKED.

@@ -522,3 +522,10 @@ or exposed production trace API. External predictive validity is not inferred.
 ### Phase 007 negative capability checkpoint (no new ADR)
 
 On 2026-11-01, public WorldExecutor and EventMachine execution of two explicitly named owners demonstrated deterministic replay but **not** stable keyed per-agent substreams. Reversing equal-time input insertion order swaps the first two draws of the shared random.Random(seed) stream. See spec/population-reference-v0.md and evals/population-reference-v0.md, P-RNG-ORDER-1. This is consistent with accepted DEC-019/031 and does not replace their semantic contract. No new population architecture was accepted; a World-backed population adapter remains Proposed. Legacy and World remain non-equivalent. Phase 007 is BLOCKED, with no production change or empirical-validity claim.
+
+
+---
+
+### Phase 007A opt-in runtime capability checkpoint (no accepted ADR)
+
+On 2026-11-01, a bounded, explicitly opt-in Python `PopulationExecutor` adapter was implemented and verified against proposed `spec/population-identity-rng-v0.md` and `evals/population-identity-rng-v0.md`. It wraps independent `WorldExecutor.run` instances with stable `(world_seed, trial_id, agent_id, stream_role)` SHA-256-derived seeds and exact identity partitions; it does **not** modify DEC-019/031 default World semantics or accept a new language/legacy migration architecture. Agent interactions, shared shocks, within-handler stream roles and state-restoration semantics require a separately **Proposed**, reviewed, then accepted ADR before implementation. The original P-RNG-ORDER-1 default-World counterexample remains true. Phase 007 financial/metric requirements remain blocked. No independent external reviewer sign-off or statistical calibration was obtained.

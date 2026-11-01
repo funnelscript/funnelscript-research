@@ -1092,3 +1092,20 @@ and real-world prediction accuracy were not tested.
 **Option B (selected as present boundary, not a new ADR):** preserve both existing engines, identify current non-equivalence and stop when future per-agent order invariance cannot be demonstrated. No claim of independent agent streams, population throughput, or statistical calibration follows.
 
 **Falsification and decision gate:** H-POP2 requires the same named agent's trajectory under cohort permutation with unchanged causal input; P-RNG-ORDER-1 falsifies that request against the existing World API. Future migration requires an accepted contract for IDs, trial ownership, seed derivation, draw consumption, shared shocks, ledger/metric units and backward compatibility. Neither a test-only third engine nor a change to accepted default World RNG is an acceptable shortcut.
+
+
+---
+
+## Debate 29: Keyed Per-Instance Replay Without Replacing the World Calendar (Phase 007A)
+
+**Question:** How can fixed explicit population identity and order-invariant independent agent trajectories be verified without silently revising accepted DEC-019/031's event-ordered shared random stream?
+
+**Option A (deferred):** A generalized population execution layer with global causal interactions and new event ownership. It would be more expressive but requires unaccepted causal scheduling and checkpoint semantics, with greater maintenance risk.
+
+**Option B (selected for bounded opt-in Python implementation; no accepted language ADR):** Each stable `PopulationAgent` record selects its own existing WorldExecutor/EventMachine run with a SHA-256-derived, versioned seed for `(world_seed, trial_id, agent_id, stream_role)`. Enumerated, exclusive state partitions are checked on completion. This retains all existing World guard, type, source-order sample, emission and priority contracts. Cost: repeated per-agent interpreter initialization, no cross-agent shared state/events, no in-handler exogenous/policy stream separation or resumable RNG snapshots.
+
+**Option C (deferred):** Add keyed resolver injection directly to EventMachine. It risks broad semantic coupling and introduces a source-owner-to-instance routing contract not supported by current World source declarations.
+
+**Decision boundary:** B is a narrowly authorized Phase 007A experiment under unchanged established APIs, not acceptance of a generalized population/migration decision. A and C require a new explicit architecture decision and genuine causal fixtures. The exact accepted default World shared-stream witness P-RNG-ORDER-1 is retained; `PopulationExecutor` tests instead exercise distinct per-instance keyed contracts. Tests 36 focused, 374 complete application plus 58 subtests, and 5 research passed; measured two-trial 10/100/1000 independent-instance experiments. This is computational reproducibility, not statistically independent Monte Carlo, market calibration, or causal inference. An independent reviewer was unavailable; self-audit is explicitly not peer approval.
+
+**Falsifier:** A matched agent's output changes solely because another independent instance is inserted, removed, or permuted, while input events and its seed/trial/role remain identical.
