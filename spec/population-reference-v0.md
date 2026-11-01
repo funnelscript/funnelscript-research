@@ -181,3 +181,10 @@ Planned bounded experimental scales are two segments at N=10,100,1000 with stabl
 ## Phase 007A verified dependency update (2026-11-01; historical Phase 007 BLOCKED status retained)
 
 The separately proposed `spec/population-identity-rng-v0.md` contract has an opt-in independent-instance Python execution adapter with an exact identity snapshot and versioned per-agent/trial/role seed derivation. Its 10/100/1000-agent experimental results and 36 focused tests are recorded in `evals/population-identity-rng-v0.md`. This closes only the earlier **absence of a stable population identity and keyed RNG runtime capability** for causally independent instances. It does NOT revise accepted default World RNG semantics or retroactively turn the P-RNG-ORDER-1 counterexample into a regression. H-POP3 delayed cash settlement and the executable financial/metric contract remain unverified; Phase 007 is still BLOCKED. No market validity, statistical calibration, causal inference, or prediction accuracy was tested.
+
+
+---
+
+## Phase 007B bounded financial reference evidence (2026-11-01; initial STOP remains historically correct)
+
+The opt-in marketing-domain reference ledger and metric library now verifies the original 100+30-20-5=105 cash and 60-30=30 receivable example, exact fixed two-decimal accounting, trial conversion/CAC/ROAS with 007A stable identities, and empirical VaR/CVaR/ruin under declared loss conventions. See `spec/financial-ledger-metrics-v0.md` and `evals/financial-ledger-metrics-v0.md`. Synthetic population-journal inputs with explicit 10/100/1000 agent IDs are measured separately from the historical Phase 007 NOT RUN checkpoint. This is not automatic economic interpretation of World transitions, not legacy metric parity, and not an externally valid market model. Phase 007 overall is not marked DONE pending approved causal transaction/attribution semantics and scientific review.

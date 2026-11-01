@@ -110,3 +110,10 @@ A separately executed read-only source/fixture audit checked accepted shared RNG
 ## Post-checkpoint Phase 007A evidence (historical STOP retained)
 
 The Phase 007 STOP described above was correct at its recorded commit and execution date. An opt-in, domain-neutral, isolated-agent `PopulationExecutor` was subsequently introduced under the separate Phase 007A research contract. Its precise keyed identity and bounded verification are in `spec/population-identity-rng-v0.md` and `evals/population-identity-rng-v0.md`; the original negative P-RNG-ORDER-1 default-World fixture remains unchanged and passes. Do not conflate previously NOT RUN Phase 007 experiments with the separately measured Phase 007A 10/100/1000 independent-instance trials. Financial settlement, accounting and reference metric execution still have no verified implementation; Phase 007 remains BLOCKED.
+
+
+---
+
+## Post-checkpoint Phase 007B finance evidence (2026-11-01)
+
+The earlier Phase 007 STOP and NOT RUN measurements remain historical claims about the prior public World API. New, separate Phase 007B research `evals/financial-ledger-metrics-v0.md` documents an opt-in author-supplied transaction ledger plus exact trial/reference metrics and independent 10/100/1000-agent synthetic integration. It does not silently convert historical negative evidence to positive World-default evidence. All default World semantics and P-RNG-ORDER-1 are unchanged; legacy finance conventions remain non-equivalent. Full Phase 007 market/economic causal integration and external validity are unverified.

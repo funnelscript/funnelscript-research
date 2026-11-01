@@ -521,3 +521,10 @@ A future research candidate could represent each agent/trial/intervention as an 
 ### Phase 007A boundary update: reusable stream-role scheduling (OOTB-030 continuation)
 
 The narrow opt-in `PopulationExecutor` now verifies **independent agent-instance** identity and keyed replay for fixed source events; it does not implement global shared exogenous shocks or role-level substream separation within an individual World rule. A future specification could define explicit role-tagged draw sites, causal interactions, and replayable checkpoints without disrupting accepted DEC-031. This must be evaluated against deliberately interacting agents and independent golden traces before any claim of improved counterfactual alignment. A cryptographic seed derivation is not mathematical proof of statistical independence. This remains **Proposed research**, not a planned implicit migration and not an empirical-prediction system.
+
+
+---
+
+### Phase 007B frontier: auditable causal transaction provenance (OOTB-031, future)
+
+A future event-to-ledger bridge may define a typed, model-authored causal reference from a stable World agent ID and event ordinal to a domain transaction ID, with explicit idempotency and delayed settlement. A falsifier must attempt duplicate emissions, reordering, missing acknowledgments, real exchange-rate changes, and interacting agents that share a cash account; a valid implementation would retain exact cash/receivable reconciliation while preserving accepted World source and event ordering. This is **unimplemented research**, not a reason to embed commercial rules into the compiler or alter current default RNG behavior. Current 007B is an opt-in authored journal, not an exogenous-market validation.

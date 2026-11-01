@@ -529,3 +529,10 @@ On 2026-11-01, public WorldExecutor and EventMachine execution of two explicitly
 ### Phase 007A opt-in runtime capability checkpoint (no accepted ADR)
 
 On 2026-11-01, a bounded, explicitly opt-in Python `PopulationExecutor` adapter was implemented and verified against proposed `spec/population-identity-rng-v0.md` and `evals/population-identity-rng-v0.md`. It wraps independent `WorldExecutor.run` instances with stable `(world_seed, trial_id, agent_id, stream_role)` SHA-256-derived seeds and exact identity partitions; it does **not** modify DEC-019/031 default World semantics or accept a new language/legacy migration architecture. Agent interactions, shared shocks, within-handler stream roles and state-restoration semantics require a separately **Proposed**, reviewed, then accepted ADR before implementation. The original P-RNG-ORDER-1 default-World counterexample remains true. Phase 007 financial/metric requirements remain blocked. No independent external reviewer sign-off or statistical calibration was obtained.
+
+
+---
+
+### Phase 007B bounded financial-model checkpoint (no new accepted ADR)
+
+2026-11-01: Domain-owned `MarketingLedger` and trial/risk metric evaluators were implemented only in the opt-in Python marketing standard library, governed by proposed `spec/financial-ledger-metrics-v0.md` and measured `evals/financial-ledger-metrics-v0.md`. This is consistent with **accepted DEC-009**: cash, receivable and paid-spend conservation are model rules, NOT unconditional language/compiler semantics. DEC-019, DEC-027, DEC-031 and legacy stochastic/economic behavior remain unchanged. Exact integer minor-unit posting prevents ambient Decimal context from corrupting recorded money. No accepted ADR is created by this checkpoint. Automatic financial events from World, shared financial accounting across interacting agents, credit/tax/refund semantics, source-causal attribution and legacy telemetry migration require separate research and approval. This scope verifies a synthetic ledger, not empirically calibrated marketing behavior or statistical independence.

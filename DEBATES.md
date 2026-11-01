@@ -1109,3 +1109,18 @@ and real-world prediction accuracy were not tested.
 **Decision boundary:** B is a narrowly authorized Phase 007A experiment under unchanged established APIs, not acceptance of a generalized population/migration decision. A and C require a new explicit architecture decision and genuine causal fixtures. The exact accepted default World shared-stream witness P-RNG-ORDER-1 is retained; `PopulationExecutor` tests instead exercise distinct per-instance keyed contracts. Tests 36 focused, 374 complete application plus 58 subtests, and 5 research passed; measured two-trial 10/100/1000 independent-instance experiments. This is computational reproducibility, not statistically independent Monte Carlo, market calibration, or causal inference. An independent reviewer was unavailable; self-audit is explicitly not peer approval.
 
 **Falsifier:** A matched agent's output changes solely because another independent instance is inserted, removed, or permuted, while input events and its seed/trial/role remain identical.
+
+
+---
+
+## Debate 30: Domain-Owned Reference Accounting vs Universal Financial Compiler Rules (Phase 007B)
+
+**Thesis A (rejected):** Implement liquid cash, delays, settlements, CAC/ROAS and risk metrics as automatic constraints in the World compiler or change the current legacy runtime's telemetry formulas. This would violate DEC-009, silently alter accepted World/legacy behavior, and confuse model-owned assumptions with language semantics.
+
+**Antithesis B (selected for bounded reference execution):** A pure, opt-in Python marketing-domain journal with explicit transaction identity, sale/settlement reference, currency, horizon and paid cash movements, and separately declared model-derived eligible/conversion identity sets. Use exact integer minor units and fixed decimal reporting rules. The model must explicitly author the journal (or a separately approved future adapter). Reuse Phase 007A `PopulationResult` as a read-only identity source. Finance is not given a new event engine and legacy telemetry retains its distinct contract.
+
+**Trade-off:** Under B there is no evidence that a World conversion *caused* a financial sale: trial attribution is explicitly named, not independently verified. Real financial accounting requires more than paid expenses and gross sales; refund, fees, deferred cost, tax, credit, inventory and disputed settlements are omitted. Empirical VaR/CVaR are finite-sample formulas without calibration/independence proof. A general source-to-ledger adapter requires new accepted ownership and causal scheduling semantics.
+
+**Falsifier:** Sale recognition increases cash before settlement, duplicate sale identifiers are counted, over-settlement is accepted, or CVaR at alpha=.75 for losses [0,0,0,100] is incorrectly reported 25. Tests refuted the early Decimal-context scaling implementation: 1,234,567.89 was posted as 1,234,600.00 at context precision 5. Exact digit-to-integer minor-unit conversion eliminated this observed error.
+
+**Status:** Selected as verified limited Phase 007B opt-in marketing reference mechanism. Not a new Accepted architecture ADR. No independent external reviewer sign-off.
