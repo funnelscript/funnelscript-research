@@ -1080,3 +1080,15 @@ simulation model. JSON float spellings require explicit numeric-kind
 preservation. Accepted DEC-019/027–032/037 remain authoritative.
 External market validity, statistical calibration, causal inference
 and real-world prediction accuracy were not tested.
+
+---
+
+## Debate 28: Shared World RNG vs Stable Population-Identity Streams (Phase 007)
+
+**Evidence:** A two-owner World with identical Uniform transitions and seed 1 gives A=0.13436424411240122 when A.Tick is inserted first, but A=0.8474337369372327 when B.Tick is inserted first. Both orders replay exactly. The accepted DEC-019/031 shared run-local RNG does not provide keyed (world_seed, agent_id, trial_id) substreams, and the legacy position-indexed tensor does not provide a public stable identity contract.
+
+**Option A (Proposed, not selected):** introduce an explicitly governed World-backed population runner with stable IDs, independently versioned keyed PRNG derivation, causal interaction boundary and a narrow legacy adapter. This would enable a future order-invariance test, but requires production semantics and an architecture review beyond Phase 007.
+
+**Option B (selected as present boundary, not a new ADR):** preserve both existing engines, identify current non-equivalence and stop when future per-agent order invariance cannot be demonstrated. No claim of independent agent streams, population throughput, or statistical calibration follows.
+
+**Falsification and decision gate:** H-POP2 requires the same named agent's trajectory under cohort permutation with unchanged causal input; P-RNG-ORDER-1 falsifies that request against the existing World API. Future migration requires an accepted contract for IDs, trial ownership, seed derivation, draw consumption, shared shocks, ledger/metric units and backward compatibility. Neither a test-only third engine nor a change to accepted default World RNG is an acceptable shortcut.

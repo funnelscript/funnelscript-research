@@ -516,3 +516,9 @@ records are evaluated in `evals/world-conformance-v0.md`. This evidence
 adds no architectural decision and does not supersede any accepted ADR.
 Version-pinned canonical JSON is an *evaluation artifact*, not a new runtime
 or exposed production trace API. External predictive validity is not inferred.
+
+---
+
+### Phase 007 negative capability checkpoint (no new ADR)
+
+On 2026-11-01, public WorldExecutor and EventMachine execution of two explicitly named owners demonstrated deterministic replay but **not** stable keyed per-agent substreams. Reversing equal-time input insertion order swaps the first two draws of the shared random.Random(seed) stream. See spec/population-reference-v0.md and evals/population-reference-v0.md, P-RNG-ORDER-1. This is consistent with accepted DEC-019/031 and does not replace their semantic contract. No new population architecture was accepted; a World-backed population adapter remains Proposed. Legacy and World remain non-equivalent. Phase 007 is BLOCKED, with no production change or empirical-validity claim.

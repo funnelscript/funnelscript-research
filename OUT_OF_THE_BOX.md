@@ -508,3 +508,9 @@ mutations or incorrect rejections of equivalent programs.
 No alternative engine, browser parity, property-based generator,
 statistical calibration or real-world accuracy check was implemented
 during Phase 006.
+
+---
+
+### Phase 007 frontier boundary: keyed scenario streams (unimplemented)
+
+A future research candidate could represent each agent/trial/intervention as an explicitly versioned random-stream identity and test reproducible common-random-number counterfactual comparisons under cohort permutations. **H-O30 (future, not implemented):** on a preregistered matrix of agent additions, removals, permutations, and controlled interactions, matched-agent local stochastic trajectories remain identical when their causal inputs are identical; falsified by any unexplained trajectory change or stream collision. The Phase 007 two-owner World trace is a negative baseline. Statistical stream independence, causal validity and empirical forecast accuracy cannot be inferred from deterministic seed partitioning.
