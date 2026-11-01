@@ -1042,3 +1042,14 @@ A critical trap in ambitious software projects is delaying release until a massi
 **Option B (accepted as DEC-036):** Catch known lexical, syntactic, type and JSON validation errors explicitly, separate filesystem failures as I/O status 2, and let unanticipated implementation faults surface. Enforce a 64 KiB UTF-8 cap before event JSON decoding while preserving the Event dataclass's existing timestamp invariant and documented absolute export paths.
 
 **Trade-offs and falsification:** A fixed byte limit can reject an intentionally large but valid JSON event; the limit is documented and can be reevaluated with measured workloads. Export status is not transactional if an earlier file was already written. H-CLI1 to H-CLI3 use regression tests to separate expected user failures from internal faults; none establish defense against arbitrary nested JSON complexity or externally supplied malicious filesystem environments.
+
+---
+
+## Debate 26: Strict Narrow Arithmetic vs Convenient Coercion and Precedence
+
+**Problem:** DEC-027's exact-type rule does not cover multiplication/division, and real-valued integer division conflicts with an `int` assignment. Adding `/` also collides lexically with existing `//` comments.
+
+* **Option A (rejected):** Promote mixed int/float, silently convert integer divisions back to int and infer precedence to accept chains. This contradicts exact typed assignments and makes the source grammar ambiguous relative to the current AST.
+* **Option B (accepted, DEC-037):** Exactly one binary operator, left state reference, right literal/payload/state, exact numeric types, and float result for `/`. Reject unsupported chains; tokenize comments before division; reject static zero and control dynamic zero and non-finite float results.
+* **Compatibility consequence:** Existing finite arithmetic and seeded execution are preserved. Initial float-state checks remain type-only: a previously accepted malformed externally constructed World state must still reach its existing outbound payload diagnostic rather than becoming a new parser-time error.
+* **Falsification:** Phase 003 RED/GREEN arithmetic, EOF, event, and stochastic regressions. No floating-point cross-platform bitwise identity or economic units system is claimed.

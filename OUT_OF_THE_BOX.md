@@ -480,3 +480,9 @@ Not implemented. DEC-035 currently verifies 22 top-level names, indexed local en
 ### Phase 002 frontier boundary (2026-11-01)
 
 DEC-036 introduces only a finite per-event JSON input cap and explicit CLI error classes. General-purpose recursive JSON depth quotas, transactional multi-export writes and process-level isolation remain **unimplemented**. These would require distinct benchmarks and failure contracts; they are not silently promoted into the current CLI milestone or claimed as security guarantees.
+
+---
+
+### Phase 003 frontier boundary (2026-11-01)
+
+DEC-037 deliberately excludes expression trees, precedence rules, implicit numeric coercion and domain-specific physical or financial units. A future independently evaluated, unit-aware arithmetic layer could explore rejecting dimensionally invalid ratios without embedding marketing-specific rules into the compiler. This is a research question, **not implemented**; no claim of dimensional validation or cross-platform IEEE-754 bitwise agreement follows from the current exact-type interpreter.
