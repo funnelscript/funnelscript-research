@@ -558,3 +558,8 @@ Potential future work could compare semantic traces for deliberately paired lega
 ## Recovery frontier: trace bridges and bounded scale (2026-11-02; unapproved)
 
 A future versioned World/browser trace bridge and an independent heap/stream/aggregate resource benchmark could falsify semantic equivalence and memory scalability claims under adversarial event fan-out, changed agent ordering and withheld calibration data. Neither implementation nor a claim of 100k-agent readiness follows from the present local R1/R2 remediation. The owner must first choose authority, admission and migration contracts.
+
+
+## R3 frontier: bounded calendar and aggregate retention (2026-11-02; not accepted)
+
+Count-based queue admission can reject event explosions but cannot cap arbitrary Python payload bytes or a blocking user reducer. Future research could compare typed aggregate-only checkpoints and child-process RSS limits, then falsify claims of replay, restoration and memory control under real multi-agent input. No implementation, implicit event dropping or public API promise follows from the current baseline.
