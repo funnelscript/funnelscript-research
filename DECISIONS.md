@@ -38,10 +38,15 @@
 | **DEC-028** | [Source-Scheduled Local Events Through the Existing Event Calendar](#dec-028-source-scheduled-local-events-through-the-existing-event-calendar) | 2026-10-31 | **Accepted** | Type-checked `emit` and bounded deterministic event scheduling |
 | **DEC-029** | [Type-Checked Pre-Event Guards for World Rules](#dec-029-type-checked-pre-event-guards-for-world-rules) | 2026-10-31 | **Accepted** | Deterministic conditional execution of typed World rules |
 | **DEC-030** | [Exact-Typed Local Event Records at Both Calendar Boundaries](#dec-030-exact-typed-local-event-records-at-both-calendar-boundaries) | 2026-10-31 | **Accepted** | Static message schemas, strict ingress and pre-enqueue checking |
+| **DEC-031** | [Reproducible Source-Level Stochastic World Transitions](#dec-031-reproducible-source-level-stochastic-world-transitions) | 2026-11-01 | **Accepted** | Seeded stochastic World transitions |
+| **DEC-032** | [Source-Imported World Modules and Initial Marketing Standard Library](#dec-032-source-imported-world-modules-and-initial-marketing-standard-library) | 2026-11-01 | **Accepted** | Explicit module boundaries and optional domain packages |
+| **DEC-033** | [Tagged Git-Source Experimental Preview and Safe World Onboarding](#dec-033-tagged-git-source-experimental-preview-and-safe-world-onboarding) | 2026-11-01 | **Accepted** | Versioned preview distribution |
+| **DEC-034** | [Repository-Specific Documentation Contracts for the Experimental Preview](#dec-034-repository-specific-documentation-contracts-for-the-experimental-preview) | 2026-11-01 | **Accepted** | Documentation link verification |
+| **DEC-035** | [Curated, Named Agent Skills with an Explicit Vendor Boundary](#dec-035-curated-named-agent-skills-with-an-explicit-vendor-boundary) | 2026-10-31 | **Accepted** | Contributor-facing skill bundle integrity |
+| **DEC-036** | [Explicit CLI Failure Taxonomy and Bounded JSON Event Inputs](#dec-036-explicit-cli-failure-taxonomy-and-bounded-json-event-inputs) | 2026-11-01 | **Accepted** | CLI error classification and bounded JSON input |
+| **DEC-037** | [EOF-Safe Parsing and Exact-Typed Narrow World Arithmetic](#dec-037-eof-safe-parsing-and-exact-typed-narrow-world-arithmetic) | 2026-11-01 | **Accepted** | One binary operator, finite float outputs, controlled zero division |
 
 ---
-
-| **DEC-037** | [EOF-Safe Parsing and Exact-Typed Narrow World Arithmetic](#dec-037-eof-safe-parsing-and-exact-typed-narrow-world-arithmetic) | 2026-11-01 | **Accepted** | One binary operator, finite float outputs, controlled zero division |
 
 ## Detailed Architecture Decision Records
 

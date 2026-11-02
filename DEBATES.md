@@ -1155,3 +1155,10 @@ Option A retained a caller-managed checkpoint but allowed accidental successful 
 ## Phase 007G — Strict composability versus unconstrained scripting
 
 Selected: a bounded precedence-climbing expression tree, explicit named module exports, and file ingestion through the existing World event validation path. Rejected: arbitrary code evaluation, wildcard import merging, a package manager, a new event scheduler, implicit numeric widening or legacy/World engine unification. Falsifiers: incorrectly associated arithmetic, conflicting namespace bindings, invalid JSON acceptance, or altered seeded snapshot behavior. Research: spec/phase-007g-composable-language-v1.md. This is not an Accepted ADR.
+
+
+## Recovery architecture alternatives (2026-11-02; unresolved)
+
+Accepted ADRs were locally mirrored through DEC-037 after a detected register drift, but this does **not** decide canonical ownership or provide cross-repository CI parity. Candidate A: research-owned accepted ADR register with generated app mirror. Candidate B: application-owned register with research carrying immutable references. Owner selection and a failing cross-repo drift test are required before treating R1 as complete.
+
+For Web Studio, either make a versioned client of authoritative World execution with independent trace fixtures, or retain only a clearly labeled seeded single-path illustration that rejects unsupported graphs. Local browser containment is not a research result, semantic engine parity, or a predictive market model. See application `docs/ARCHITECTURE_RECOVERY_AUDIT.md`; no new ADR was accepted.

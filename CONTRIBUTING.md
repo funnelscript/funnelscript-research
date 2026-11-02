@@ -21,14 +21,14 @@ This repository holds FunnelScript's research contracts, falsifiable hypotheses,
 2. State a falsifiable hypothesis, a counterexample, and the invariant or acceptance criterion in the relevant file under `spec/`.
 3. Record the test procedure and actual outcomes under `evals/`. Link a concrete application test or GitHub Actions run when the claim depends on implementation.
 4. Update the accepted decision, debate, and hypothesis records if the design boundary changes. Keep the research and [application documentation](https://github.com/funnelscript/funnelscript/tree/main/docs) aligned.
-5. Run the repository-local documentation contract test and verify the diff before submitting:
+5. Run the same full research test suite as CI and verify the diff before submitting:
 
 ```bash
-python3 -m unittest discover -s tests -v
+python3 -m pytest -q
 git diff --check
 ```
 
-The documentation test checks relative links in canonical research documents. It does not verify external URLs, scientific claims, or the behavior of the application. Python's standard library is sufficient; no application dependencies are installed in this repository.
+`pytest` is required for the full research regression suite, including the documentation-link contracts and other research oracles. `python3 -m unittest discover -s tests -v` is an optional **narrower** smoke check only. These tests do not verify external URLs, scientific claims, or the behavior of the application. Research tests require `pytest`; application dependencies are not installed in this repository.
 
 ## Compiler and runtime changes
 

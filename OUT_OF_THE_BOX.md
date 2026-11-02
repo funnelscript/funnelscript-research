@@ -553,3 +553,8 @@ Potential future research would specify operator-controlled immutable anchors, s
 ## Phase 007G frontier — Future module package system and engine equivalence (unimplemented)
 
 Potential future work could compare semantic traces for deliberately paired legacy and World models or test explicit module package manifests. Neither a package resolver nor a single merged simulation runtime is implemented or approved by Phase 007G.
+
+
+## Recovery frontier: trace bridges and bounded scale (2026-11-02; unapproved)
+
+A future versioned World/browser trace bridge and an independent heap/stream/aggregate resource benchmark could falsify semantic equivalence and memory scalability claims under adversarial event fan-out, changed agent ordering and withheld calibration data. Neither implementation nor a claim of 100k-agent readiness follows from the present local R1/R2 remediation. The owner must first choose authority, admission and migration contracts.
