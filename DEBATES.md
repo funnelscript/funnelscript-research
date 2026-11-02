@@ -1159,7 +1159,7 @@ Selected: a bounded precedence-climbing expression tree, explicit named module e
 
 ## Recovery architecture alternatives (2026-11-02; unresolved)
 
-Accepted ADRs were locally mirrored through DEC-037 after a detected register drift, but this does **not** decide canonical ownership or provide cross-repository CI parity. Candidate A: research-owned accepted ADR register with generated app mirror. Candidate B: application-owned register with research carrying immutable references. Owner selection and a failing cross-repo drift test are required before treating R1 as complete.
+Research PR #7 repaired the research accepted index through DEC-037 and merged into main. Application Draft PR #7 now runs a cross-repository metadata parity gate (37 matching accepted decisions, all three CI jobs green). This repairs observed drift but does **not** formally decide canonical ownership or require identical historical ADR prose. Candidate A: research-owned accepted ADR register with a verified application metadata mirror. Candidate B: application-owned register with immutable research references. Owner acceptance remains required before R1 governance is closed.
 
 For Web Studio, either make a versioned client of authoritative World execution with independent trace fixtures, or retain only a clearly labeled seeded single-path illustration that rejects unsupported graphs. Local browser containment is not a research result, semantic engine parity, or a predictive market model. See application `docs/ARCHITECTURE_RECOVERY_AUDIT.md`; no new ADR was accepted.
 
@@ -1167,3 +1167,57 @@ For Web Studio, either make a versioned client of authoritative World execution 
 ## R3 resource envelope: counted queue admission versus streaming execution (2026-11-02)
 
 A finite processed-event cap does not bound the number of future events in the calendar or retained `RunResult` fields. Direct CPython 3.12/arm64 measurements reached 100,000 pending events and about 22 MB traced peak with `max_events=1`. Option A adds opt-in queue/history/intent admission quotas to the existing ordered heap, retaining v0 semantics whenever the limits do not bind. Option B introduces a separately typed streaming/aggregate result and checkpoint contract to reduce retained history for long jobs, but requires backpressure, restoration, and sink failure semantics. Neither option supplies a hard process-memory quota for arbitrary user payloads; neither is accepted yet. Proposed hypotheses H-RQ1/RQ2/RT1/RT2/RP1 and evidence: `spec/runtime-resource-envelope-v0.md`, `evals/runtime-resource-baseline-2026-11-02.md`.
+
+
+## R1 architectural decision authority and lifecycle (2026-11-02; PROPOSED)
+
+**Research anchor:** DEC-011 (living decision, debate and speculation ledgers),
+DEC-023 (docs as code), and Michael Nygard,
+[Documenting Architecture Decisions](https://cognitect.com/blog/2011/11/15/documenting-architecture-decisions)
+(2011). The current research index is self-consistent after Research PR #7;
+the application mirror is checked in Application Draft PR #7. These are verified
+repository facts, not evidence that formal authority was accepted.
+
+**Option A, recommended for owner review:** The research repository owns the
+immutable accepted ADR register and semantic research proposals; the application
+retains the historical detailed ledger but treats matching index IDs, titles,
+dates and statuses as a checked replica. The application never interprets a
+passing metadata check as equal detailed prose or matching runtime behavior.
+Acceptance is an explicit owner-reviewed research decision, not a side effect
+of an implementation PR becoming green. Implementation state belongs to
+conformance evidence and the tracked recovery index, not to an overwritten ADR
+status. Supersession creates a new decision referencing the old one.
+
+**Option B:** The application owns the accepted ADRs and research keeps
+immutable references. This aligns the register with working code, but makes
+scientific and grammar authority dependent on an implementation repository
+and reverses the existing hypothesis-first review dependency. Either option
+requires a coordinated edit procedure across two Git histories.
+
+**Falsifiable H-GOV1:** A missing, duplicate or non-Accepted indexed record,
+or an unindexed detailed DEC record in the canonical research ledger, fails
+research CI. The five new independent research tests include adversarial
+copies of the real ledger and verify these rejection paths.
+The invariant is
+`set(index_ids) = set(detailed_ids)` with unique IDs and Accepted index status.
+
+**Falsifiable H-GOV2:** On an application PR or main push, differing accepted
+metadata across repositories fails the app parity job. After that workflow is
+merged into application main, a daily scheduled parity-only run also probes
+research-only drift. This is eventual detection, not a cross-repository atomic
+merge or an instant block on research PRs. GitHub scheduled events can be
+delayed or dropped, so the operating procedure must inspect failing checks
+and not advertise a strict daily recovery guarantee.
+
+**Acceptance sequence proposed:** (1) write the hypothesis and competing
+alternatives in research DEBATES/spec; (2) owner reviews and accepts the
+chosen governance rule in a new immutable DEC record; (3) update matching
+application index metadata in a coordinated PR; (4) require independent
+research-ledger, cross-repository parity and application conformance tests;
+(5) track Implemented separately from Accepted. No automated merge is
+authorized by test success alone.
+
+**Stop conditions:** Owner has not selected A or B; an accepted decision
+changes without traceable review; existing detailed historical prose is
+silently overwritten; accepted status is inferred from completed code; or
+the only drift detector is falsely represented as an atomic safety gate.
