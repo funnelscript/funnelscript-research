@@ -16,7 +16,10 @@ therefore does not imply constant space. Observed on CPython 3.12.13/arm64:
 100,000 future events, `until=0`, `max_events=1` produced 100,000 pending
 events at a 22.1 MB traced peak. A single processed event emitting 100,000
 future events also returned 100,000 pending at a 22.9 MB traced peak.
-See [measured baseline](../evals/runtime-resource-baseline-2026-11-02.md).
+A follow-on 1k/10k/100k matrix measured 88-89 MB process peak RSS for
+all three 100k-event cases on the same platform. This is not a guaranteed
+bound, and population-scale World behavior remains unmeasured. See the
+[measured baseline](../evals/runtime-resource-baseline-2026-11-02.md).
 
 `PopulationExecutor.run` executes one isolated `WorldExecutor.run` per enrolled
 agent and retains every `RunResult`, identity partition and optional trace.
