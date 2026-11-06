@@ -1221,3 +1221,25 @@ authorized by test success alone.
 changes without traceable review; existing detailed historical prose is
 silently overwritten; accepted status is inferred from completed code; or
 the only drift detector is falsely represented as an atomic safety gate.
+
+
+## Continuum marketing hydrodynamics and Scientific Machine Learning vs. discrete ABM vs. macroscopic Bayesian MMM (2026-11-06; PROPOSED)
+
+**Research anchors:** DEC-011, OOTB-032, Boral et al. (ICML 2024, DySLIM), Zepeda-Núñez et al. (Nature Machine Intelligence 2026, GenFocal), Wan et al. (ICLR 2023), Li et al. (ICLR 2021, FNO), Bezgin et al. (JCP 2022, WENO3-NN), Cuturi (NeurIPS 2013, Sinkhorn), Chen et al. (NeurIPS 2018, Neural ODE), Rackauckas et al. (2020, SciML/UDE), Zeigler et al. (2000, Discrete Event Systems Specification), and Jin et al. (Google Research 2021, Bayesian MMM). Companion research monograph: [paper/sciml_marketing_hydrodynamics.md](paper/sciml_marketing_hydrodynamics.md).
+
+**Dialectical tension:**
+Simulating complex market responses to strategic marketing interventions $\mathbf{u}(t)$ currently suffers from a tri-scale dichotomy:
+1. **Macroscopic Bayesian Media Mix Modeling (Option A):** Aggregate weekly channel adstock and saturation curves (`pymc-marketing`, `meridian`). Strengths: low dimensional parameter space, robust inference from coarse spend/revenue time series. Critical failure: blind to micro-funnel conversion latencies, session drop-offs, inventory stockout shocks, and liquidity constraints.
+2. **Microscopic Discrete-Event Agent-Based Modeling (Option B):** Discrete agent vectors $(\alpha, \beta, \gamma, w)$ traversing finite state machines on an explicit event calendar (`FunnelScript World`). Strengths: granular modeling of cognitive traits and non-linear touchpoints. Critical failure: the 3% Conversion Paradox (infinite micro-parameter combinations produce identical aggregate conversion rates, making parameters unidentifiable without randomized lift tests), $O(N \log N)$ computational bottlenecks scaling past $N = 10^7$ agents, and autoregressive trajectory blowout over $\ge 90$-day horizons due to positive Lyapunov exponents.
+3. **Meso-Scale Marketing Hydrodynamics & Scientific Machine Learning (Option C, Proposed Synthesis):** Represent audience populations as continuous density fields $\rho(x, t)$ over bounded cognitive coordinates $x \in \Omega \subset \mathbb{R}^4$ governed by an Advection-Diffusion-Reaction PDE with spend-driven velocity fields $\mathbf{v}(x, t; \mathbf{u})$, solved differentiably via JAX (`ScanOdeSolver`), stabilized over long horizons by DySLIM entropic Optimal Transport ergodic measure preservation, and bridged to macroscopic Bayesian MMM via a two-stage GenFocal downscaling pipeline (Rectified Flow debiasing + conditional diffusion).
+
+**Trade-offs and architectural boundaries:**
+- *Continuum assumption vs. discrete indivisibility:* Hydrodynamic PDEs model high-density mass audiences ($N \ge 10^5$) with sub-millisecond GPU rollouts and analytical adjoint sensitivity $\nabla_{\mathbf{u}} \text{ROAS}$, but do not represent individual B2B account journeys or small-cohort discrete transactions where Poisson shot noise dominates.
+- *Calibration cost vs. runtime execution:* DySLIM Sinkhorn regularization and GenFocal diffusion bridges require offline neural pre-training on historical campaigns, trading upfront training compute for instant 60 FPS interactive simulation surrogates during strategic planning.
+- *Falsification boundaries:*
+  - $H_{\text{ergodic}}$ is falsified if DySLIM Sinkhorn regularized 90-day simulation rollouts drift beyond Wasserstein distance $W_2 > 0.08$ from empirical customer lifetime value distributions, or fail to bound percentiles ($P_{10}, P_{50}, P_{90}$) within $\pm 10\%$.
+  - $H_{\text{genfocal}}$ is falsified if synthesized daily/hourly conversion cascades violate macro-revenue conservation laws ($\sum \hat{y}_{\text{daily}} \ne Y_{\text{macro}}$) outside the 95% Bayesian credible interval.
+  - $H_{\text{fluid}}$ is falsified if the continuum JAX adjoint gradient $\frac{\partial \text{ROAS}}{\partial \mathbf{u}}$ contradicts finite-difference numerical verification or if forward simulation exceeds 200ms on GPU for $N = 10^8$ equivalent consumers.
+  - $H_{\text{weno}}$ is falsified if discontinuous market shocks (e.g. abrupt stockout or ad account ban) produce negative audience densities ($\rho < 0$) or non-TVD oscillatory artifacts.
+
+**Stop conditions:** Continuum PDEs must never be used to simulate small discrete cohorts ($N < 1,000$); discrete event engines must retain authority for transaction ledger accounting; no claim of production replacement is accepted prior to empirical validation across verified benchmarks.
