@@ -554,7 +554,6 @@ Potential future research would specify operator-controlled immutable anchors, s
 
 Potential future work could compare semantic traces for deliberately paired legacy and World models or test explicit module package manifests. Neither a package resolver nor a single merged simulation runtime is implemented or approved by Phase 007G.
 
-
 ## Recovery frontier: trace bridges and bounded scale (2026-11-02; unapproved)
 
 A future versioned World/browser trace bridge and an independent heap/stream/aggregate resource benchmark could falsify semantic equivalence and memory scalability claims under adversarial event fan-out, changed agent ordering and withheld calibration data. Neither implementation nor a claim of 100k-agent readiness follows from the present local R1/R2 remediation. The owner must first choose authority, admission and migration contracts.
@@ -563,3 +562,87 @@ A future versioned World/browser trace bridge and an independent heap/stream/agg
 ## R3 frontier: bounded calendar and aggregate retention (2026-11-02; not accepted)
 
 Count-based queue admission can reject event explosions but cannot cap arbitrary Python payload bytes or a blocking user reducer. Future research could compare typed aggregate-only checkpoints and child-process RSS limits, then falsify claims of replay, restoration and memory control under real multi-agent input. No implementation, implicit event dropping or public API promise follows from the current baseline.
+
+---
+
+## 32. Hydrodynamic Market Fields & Invariant-Preserving Attractors: Scientific Machine Learning for FunnelScript (OOTB-032)
+
+### The Vision: Cross-Pollinating Google Research `swirl-dynamics` into Marketing Systems Engineering
+
+Current market simulations in FunnelScript exist at two extreme poles:
+1. **Discrete Agent-Based Modeling (ABM):** Microscopic simulation of individual agent vectors ($\alpha, \beta, \gamma, w$), which faces the *Curse of Dimensionality* and computational bottlenecks when scaling to $10^7 - 10^8$ mass-market consumers, alongside severe long-horizon trajectory drift.
+2. **Macroscopic Bayesian MMM:** Aggregate weekly channel adstock and saturation models (`pymc-marketing`), which lack structural insight into micro-funnel bottlenecks, session latencies, and cash flow settlement traps.
+
+Google Research's **`swirl-dynamics`** library demonstrates that complex, multiscale, chaotic physical systems (fluid flows, atmospheric turbulence, climate extremes) can be rigorously modeled, debiased, and downscaled by synthesizing numerical differential equation solvers, neural operators, and probabilistic diffusion models.
+
+By framing customer populations as a **continuous cognitive fluid** and campaign dynamics as **non-equilibrium thermodynamics**, FunnelScript can import six foundational paradigms from `swirl-dynamics`:
+
+```
+┌─────────────────────────────────────────────────────────────────────────────────────────┐
+│                    Swirl-Dynamics ────> FunnelScript Theoretical Mapping                │
+├───────────────────────────────────────────┬─────────────────────────────────────────────┤
+│ Google Swirl-Dynamics Core Mechanism     │ FunnelScript Marketing Engineering Anchor   │
+├───────────────────────────────────────────┼─────────────────────────────────────────────┤
+│ 1. DySLIM (Ergodic Measure Preservation)  │ Long-Horizon Attractor Stabilization        │
+│    Sinkhorn Divergence / MMD in OTT-JAX   │ Prevents 90-day simulation drift & blowout  │
+├───────────────────────────────────────────┼─────────────────────────────────────────────┤
+│ 2. GenFocal & R2-D2 (2-Stage Downscaling) │ Macro-MMM to Micro-ABM Calibration Bridge   │
+│    Rectified Flow Debiasing + Diffusion   │ Debias macro MMM, sample micro-journeys     │
+├───────────────────────────────────────────┼─────────────────────────────────────────────┤
+│ 3. Differentiable Solvers (ScanOdeSolver) │ End-to-End Differentiable Campaign Compiler │
+│    JAX lax.scan + Adjoint Sensitivity     │ Analytical gradients: d(ROAS)/d(AdSpend)    │
+├───────────────────────────────────────────┼─────────────────────────────────────────────┤
+│ 4. Neural Operators (FNO & HyperUNet)    │ Mesh-Free Infinite-Scale Funnel Surrogates  │
+│    Operator mapping on function spaces    │ Instant 60 FPS Web Studio simulation engine │
+├───────────────────────────────────────────┼─────────────────────────────────────────────┤
+│ 5. WENO-NN Shock Capturing (Rational NN)  │ Discontinuous Market Shock Dynamics         │
+│    Non-oscillatory conservation schemes   │ Stockouts, price wars, ad account bans      │
+├───────────────────────────────────────────┼─────────────────────────────────────────────┤
+│ 6. Test-Time Diffusion Guidance           │ Invariant Enforcement & Catastrophe Search  │
+│    Score-based constraint gradients       │ Enforce cash non-negativity; find ruin modes│
+└───────────────────────────────────────────┴─────────────────────────────────────────────┘
+```
+
+---
+
+### Mathematical Formulations
+
+#### 1. The Marketing Hydrodynamic Equation (The Advection-Diffusion-Reaction Continuity Equation)
+Instead of simulating $10^8$ individual agents, the audience distribution is represented as a continuous density field $\rho(x, t)$ over cognitive coordinate space $x = (\alpha, \beta, \gamma, w) \in \Omega \subset \mathbb{R}^4$:
+
+$$\frac{\partial \rho}{\partial t} + \nabla \cdot (\rho \, \mathbf{v}(x, t; \mathbf{u})) = \nabla \cdot (\mathbf{D} \nabla \rho) + \mathcal{S}_{\text{acq}}(x, t) - \mathcal{D}_{\text{churn}}(x, t)$$
+
+Where:
+* $\mathbf{v}(x, t; \mathbf{u})$ is the **advective velocity field** generated by active marketing tactics $\mathbf{u}(t)$ (ad spend, discounts, retargeting frequency), propelling consumers towards higher purchase readiness.
+* $\mathbf{D}$ is the **diffusion tensor** representing stochastic cognitive variance, word-of-mouth drift, and brand memory decay.
+* $\mathcal{S}_{\text{acq}}$ is the top-of-funnel acquisition flux from paid and organic search.
+* $\mathcal{D}_{\text{churn}}$ is the customer exhaustion and churn sink.
+
+#### 2. DySLIM Ergodic Invariant Measure Regularization
+To prevent long-horizon autoregressive rollouts from diverging away from reality, the calibration objective enforces that the time-average measure of the simulation matches the empirical business attractor $\mu_{\text{historical}}^*$:
+
+$$\mathcal{L}_{\text{Ergodic}} = \mathcal{L}_{\text{step}} + \lambda_{\text{ergodic}} \cdot \mathbb{D}_{\text{Sinkhorn}}\left(\frac{1}{T}\sum_{t=1}^T \delta_{s(t)}, \mu_{\text{historical}}^*\right)$$
+
+Where $\mathbb{D}_{\text{Sinkhorn}}$ is the entropy-regularized optimal transport divergence computed via OTT-JAX, guaranteeing that long-term simulations neither collapse to zero nor explode to infinite conversions.
+
+#### 3. GenFocal Macro-to-Micro Downscaling Pipeline
+* **Stage 1 (Debiasing Macro MMM):** Train an Optimal Transport / Rectified Flow velocity model to map coarse, weekly Bayesian MMM posteriors from `pymc-marketing` onto observed historical revenue trajectories, removing structural channel aggregation bias.
+* **Stage 2 (Conditional Diffusion Downscaling):** Train a score-based diffusion model conditioned on the debiased macro trajectory to synthesize high-frequency daily transaction cascades, abandoned checkout latencies, and cash flow drawdown curves.
+
+#### 4. WENO-NN Discontinuous Shock Capturing
+When sudden exogenous market shocks occur (e.g. Black Friday inventory exhaustion, viral PR boycott, or payment gateway processor outage), conversion rates experience discontinuous jumps. Standard finite-difference methods produce Gibbs phenomenon oscillations (e.g. negative audience densities or negative cash).
+Using data-driven Weighted Essentially Non-Oscillatory schemes with rational networks ensures:
+$$\rho(x, t) \ge 0, \quad \int_{\Omega} \rho(x, t) \, dx = N(t), \quad \text{Total Variation Bounded (TVD)}$$
+
+---
+
+### Falsifiable Research Hypotheses
+
+* **$H_{\text{ergodic}}$ (Simulation Stability):** *Under a 90-day autoregressive forward simulation with stochastic customer churn and competitor bidding, a model calibrated with DySLIM Sinkhorn invariant-measure regularization maintains bounded Wasserstein distance ($W_2 \le 0.08$) to the true empirical distribution, whereas unregularized MSE-calibrated simulations exhibit catastrophic divergence ($W_2 > 0.45$) in $> 70\%$ of trials.*
+  * *Falsification Boundary:* Any run where DySLIM regularized simulation diverges or fails to preserve empirical customer lifetime value (LTV) percentiles ($P_{10}, P_{50}, P_{90}$) within $\pm 10\%$.
+
+* **$H_{\text{genfocal}}$ (Macro-to-Micro Bridging):** *A two-stage downscaling architecture (Rectified Flow macro debiasing + conditional diffusion) reproduces micro-funnel hourly conversion variance with $< 12\%$ relative error while guaranteeing exact conservation of macro weekly revenue totals ($\sum \hat{y}_{\text{daily}} = Y_{\text{macro}}$).*
+  * *Falsification Boundary:* Discrepancy between aggregated micro-simulated revenue and macro Bayesian MMM bounds exceeding the $95\%$ credible interval.
+
+* **$H_{\text{fluid}}$ (Continuum Scaling Parity):** *A continuous JAX-based hydrodynamic PDE solver (`ScanOdeSolver`) evaluates campaign ROAS and cash flow dynamics for an effective population of $N = 10^8$ consumers in $< 50\text{ms}$ on a single GPU, providing exact adjoint sensitivity gradients $\frac{\partial \text{ROAS}}{\partial \text{Spend}}$ that match discrete-event simulation outcomes within a Kolmogorov-Smirnov distance $D_{\text{KS}} \le 0.03$.*
+  * *Falsification Boundary:* Analytical gradient direction contradicting finite-difference numerical verification or execution time exceeding $200\text{ms}$.
