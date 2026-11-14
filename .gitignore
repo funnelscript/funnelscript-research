@@ -1,10 +1,19 @@
-# Python caches
+# Python caches and artifacts
 __pycache__/
 *.py[oc]
 .pytest_cache/
+.hypothesis/
+build/
+dist/
+*.egg-info
+.venv/
 
 # Lean build artifacts
 .lake/
+
+# OS metadata
+.DS_Store
+Thumbs.db
 
 # Agent workspaces and plans
 /plans
