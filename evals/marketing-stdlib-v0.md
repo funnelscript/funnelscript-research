@@ -1,6 +1,6 @@
 # Evaluation: World Module Imports and Initial Marketing Standard Library v0
 
-Date: 2026-10-31. Implementation: `funnelscript` source parser, packaged `stdlib/marketing/lead_response.fnl`, unchanged World type checker and EventMachine. Research: `spec/marketing-stdlib-v0.md`, DEC-032.
+Date: 2026-10-31. Implementation: `funnelscript` source parser, packaged `stdlib/marketing/lead_response.fnls`, unchanged World type checker and EventMachine. Research: `spec/marketing-stdlib-v0.md`, DEC-032.
 
 ## Falsification matrix
 
@@ -16,7 +16,7 @@ Date: 2026-10-31. Implementation: `funnelscript` source parser, packaged `stdlib
 1. **Spec-first:** Wrote the v0 hypothesis and invariant contract before any source or test edits.
 2. **RED:** `uv run pytest tests/test_world_modules.py -q --tb=short`: **20 failed, 1 passed**. The parser rejected `import` in the World declaration body with `Expected entity or agent declaration`. The legacy-world control passed. These are one missing-feature failure mechanism, not 20 distinct discovered defects.
 3. **GREEN:** Added a bounded source loader, contextual import parsing, alias compilation, the first marketing source module, wheel package-data, and the runnable example. Focused `test_world_modules.py` reached 21 passed. Two adversarial tests were added for independent aliases and rejecting imported Strategy programs: **23 focused tests passed**.
-4. **Regression:** `uv run pytest -v`: initial post-implementation **204 passed**; after two extra adversarial cases, the complete suite completed with **206 passed in 3.42s** (`uv run pytest -q`, exit code 0). Wheel and sdist built; wheel contents explicitly showed `funnelscript/stdlib/marketing/lead_response.fnl`.
+4. **Regression:** `uv run pytest -v`: initial post-implementation **204 passed**; after two extra adversarial cases, the complete suite completed with **206 passed in 3.42s** (`uv run pytest -q`, exit code 0). Wheel and sdist built; wheel contents explicitly showed `funnelscript/stdlib/marketing/lead_response.fnls`.
 5. **Real installed-artifact smoke:** From an unrelated temporary working directory, executed `uv run --no-project --with <absolute-wheel-path> python -m funnelscript.cli run-world <absolute-example-path> --event <typed-json> --seed 1`. The isolation installed 12 dependencies, then executed the shipped World module successfully. This verifies packaged source resolution separately from running the repository code.
 
 ## Concrete observed scenario

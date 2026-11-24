@@ -26,7 +26,7 @@ import = "import" , string , ("as" , identifier
        | "{" , selected , { "," , selected } , "}" ) , ";" ;
 selected = identifier , [ "as" , identifier ] ;
 ```
-Legacy `import "single.fnl" as Alias;` retains the exact-one-declaration rule. Named imports select declared exports by source name from a multi-declaration World module, without wildcard/implicit namespace joins; aliasing changes the owner label only. Direct and transitive module paths remain constrained to importer directory or packaged `std:` root. Duplicate aliases are rejected by the existing World type checker. No network resolution or dynamic execution.
+Legacy `import "single.fnls" as Alias;` retains the exact-one-declaration rule. Named imports select declared exports by source name from a multi-declaration World module, without wildcard/implicit namespace joins; aliasing changes the owner label only. Direct and transitive module paths remain constrained to importer directory or packaged `std:` root. Duplicate aliases are rejected by the existing World type checker. No network resolution or dynamic execution.
 
 ## H-PLAYBOOK — reproducible files
 

@@ -30,9 +30,9 @@ cd funnelscript
 uv run pytest -v tests/test_world_payloads.py
 uv run pytest -v
 uv build
-uv run main.py check examples/payload_world.fnl
-uv run main.py run-world examples/payload_world.fnl --event Wallet.Start@3
-uv run main.py run-world examples/payload_world.fnl --event '{"name":"Wallet.Credit","time":0,"payload":{"amount":8}}'
+uv run main.py check examples/payload_world.fnls
+uv run main.py run-world examples/payload_world.fnls --event Wallet.Start@3
+uv run main.py run-world examples/payload_world.fnls --event '{"name":"Wallet.Credit","time":0,"payload":{"amount":8}}'
 ```
 
 Observed:

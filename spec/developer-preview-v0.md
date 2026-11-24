@@ -12,10 +12,10 @@ Status: Research-first contract implemented and public Git source tag independen
 
 ## User-level behavior contract
 
-The installed CLI supports `funnelscript init-world TARGET.fnl`:
-- It writes a minimal valid World importing `std:marketing/lead_response.fnl` as `Prospect`.
+The installed CLI supports `funnelscript init-world TARGET.fnls`:
+- It writes a minimal valid World importing `std:marketing/lead_response.fnls` as `Prospect`.
 - The created file is accepted by `funnelscript check` and produces two events under the typed Impression input and seed 1.
-- It refuses existing targets without changing a byte, rejects non-`.fnl` targets, and returns an actionable nonzero exit code on filesystem errors.
+- It refuses existing targets without changing a byte, rejects non-`.fnls` targets, and returns an actionable nonzero exit code on filesystem errors.
 - The starter is inert until `run-world` receives an explicit typed event; no provider actions or autonomous agent population are constructed.
 - It works in a directory outside the source checkout from a wheel-installed or Git-installed distribution.
 - The installed CLI also reports its own Python distribution version through `funnelscript --version` using standard package metadata.
@@ -34,7 +34,7 @@ CI uses pinned source checkout and environment setup steps, `uv sync --locked`, 
 Let `T` be a target path and `B(T)` its bytes before an invocation.
 
 1. If `exists(T)`, then `exit(init-world T) != 0` and `B_after(T) = B_before(T)`.
-2. If `suffix(T) != ".fnl"`, then `exit(init-world T) != 0` and `not exists(T)` for an initially absent target.
+2. If `suffix(T) != ".fnls"`, then `exit(init-world T) != 0` and `not exists(T)` for an initially absent target.
 3. For an initially absent valid `T` in an existing writable directory: `exit(init-world T) = 0`, `Parser.from_file(T)` passes, and `WorldExecutor` runs a typed Impression through the original module.
 4. For the seed-1 documented scenario `p=0.7, cpc=2.0, order_value=100.0`, `processed_events=2`, `spend=2.0`, `revenue=100.0`. These values prove interpreter replay only, not external market prediction.
 5. The version string in `pyproject.toml`, Git source tag and actual wheel metadata must identify the same candidate. Clean-install evidence must not use the project cwd.

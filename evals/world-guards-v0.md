@@ -23,8 +23,8 @@ Contract: [world-guards-v0.md](../spec/world-guards-v0.md).
 cd funnelscript
 uv run pytest -v tests/test_world_guards.py
 uv run pytest -v
-uv run main.py check examples/guarded_world.fnl
-uv run main.py run-world examples/guarded_world.fnl --event Counter.Tick@0 --max-events 5
+uv run main.py check examples/guarded_world.fnls
+uv run main.py run-world examples/guarded_world.fnls --event Counter.Tick@0 --max-events 5
 ```
 
 Expected: `processed_events = 4`, `Counter.value = 3`, and `pending_events = 0`.

@@ -7,7 +7,7 @@ From the `funnelscript` working tree:
 ```bash
 uv run pytest -v tests/test_world_rules.py
 uv run pytest -v
-uv run -m funnelscript.cli run-world <path.fnl> --event Owner.Event@Time
+uv run -m funnelscript.cli run-world <path.fnls> --event Owner.Event@Time
 ```
 
 | Hypothesis | Failure boundary | Test probes |

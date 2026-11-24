@@ -42,7 +42,7 @@ Through `fpm`:
 ### 2.2 Third-Party Platform Providers
 Ad networks and SaaS platforms (e.g., TikTok Ads, HubSpot, Klaviyo, Snapchat Ads, Google Ads) have strong commercial incentives to author and maintain official FunnelScript provider connectors:
 * Connecting a platform to FunnelScript allows enterprises using Marketing as Code to target that platform natively in automated deployments.
-* Provider maintainers gain direct integration into enterprise marketing budgets defined in `.fnl` files.
+* Provider maintainers gain direct integration into enterprise marketing budgets defined in `.fnls` files.
 
 ---
 
@@ -60,7 +60,7 @@ Every `fpm` package contains a canonical manifest (`funnelscript.json`) and a de
   "license": "MIT",
   "author": "FunnelScript Core Team <core@funnelscript.org>",
   "keywords": ["marketing", "meta", "facebook-ads", "touchpoints", "kinetics"],
-  "main": "index.fnl",
+  "main": "index.fnls",
   "dependencies": {
     "@funnelscript/core-kinetics": "^0.4.0"
   },
@@ -121,7 +121,7 @@ strategy "Q4_Enterprise_Acquisition" {
 ```
 
 ### Import Resolution Rules:
-1. **Local Paths:** `import "./channels/email.fnl" as Email;` resolves relative to the current file.
+1. **Local Paths:** `import "./channels/email.fnls" as Email;` resolves relative to the current file.
 2. **Registry Packages:** `import "@funnelscript/meta-ads" as Meta;` resolves from the local `.funnelscript_modules/` directory created by `fpm install`.
 3. **Circular Dependency Detection:** The compiler builds a strict dependency graph across imported modules and rejects circular imports with `CircularDependencyError`.
 
@@ -133,4 +133,4 @@ To prevent untrusted code from exhausting marketing budgets or exfiltrating data
 
 1. **Static Invariant Audit:** Packages must pass `funnelscript check` without errors or warnings.
 2. **Bounded Budget Gas:** All recurring transitions and triggers must declare explicit spend upper bounds ($C_{\text{max}}$). Unbounded bidding loops are rejected.
-3. **Zero Arbitrary Execution:** FunnelScript packages contain only declarative `.fnl` strategy code, schemas, and calibration matrices. Arbitrary executable binaries or shell hooks are strictly prohibited.
+3. **Zero Arbitrary Execution:** FunnelScript packages contain only declarative `.fnls` strategy code, schemas, and calibration matrices. Arbitrary executable binaries or shell hooks are strictly prohibited.

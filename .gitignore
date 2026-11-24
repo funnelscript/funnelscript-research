@@ -72,3 +72,10 @@ scratch/
 # Worktrees and transient checkouts
 /worktrees/
 worktrees/
+
+# Anti-Slop & Environment Hygiene Guardrails
+agent-kernel/env-vault/
+*worktrees/
+*.wave.*
+coordinator.*/
+*.pyc
