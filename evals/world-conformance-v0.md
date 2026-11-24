@@ -21,7 +21,7 @@ DEC-019, DEC-027, DEC-028, DEC-029, DEC-030, DEC-031, DEC-032, DEC-037.
   Independent standard-library draw values additionally checked under
   system Python `3.9.6`; this is not a cross-platform conformance claim.
 - Source fixtures: `funnelscript/tests/fixtures/world-conformance/` (14
-  original source files plus `overflow.fnl` for the corrected probe);
+  original source files plus `overflow.fnls` for the corrected probe);
   versioned corpus: `cases.json`.
 - No browser/TypeScript test or frontend build was rerun: frontend code
   and compatibility were not modified.

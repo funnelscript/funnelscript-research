@@ -21,7 +21,7 @@ Status: **BLOCKED — H-POP2 STOP**. Evaluation date: 2026-11-01. This is a nega
 ## Minimal independent fixture and scientific boundary
 
 Fixture ID **P-RNG-ORDER-1**:
-- Application tests/fixtures/population-reference/order-coupling.fnl: two source-named World agents, each with one uniform sampled transition.
+- Application tests/fixtures/population-reference/order-coupling.fnls: two source-named World agents, each with one uniform sampled transition.
 - tests/fixtures/population-reference/order-coupling.json: seed 1, same time and priority, input event names reversed.
 - tests/test_population_reference.py: two tests pin exact expected first/reversed results and deterministic replay. They demonstrate *the absence of order-invariant streams*, not that a population system exists.
 - Golden provenance: exact first two CPython random.Random(1) draws, independently stated in Phase 006 research conformance corpus; neither expected value is computed from WorldExecutor within the test.
@@ -31,7 +31,7 @@ Fixture ID **P-RNG-ORDER-1**:
 
 RED probe (an explicitly exploratory desired-invariant assertion, not a regression-test fix):
   cd funnelscript
-  uv run python - [inline public-API probe using order-coupling.fnl, comparing A,B vs B,A, seed=1]
+  uv run python - [inline public-API probe using order-coupling.fnls, comparing A,B vs B,A, seed=1]
   Actual: AssertionError: H-POP2 RED: matched owners changed under cohort/event order perturbation
   Exit code: 1. This is a genuine missing requested behavior, not an interpreter semantic defect.
 
@@ -90,7 +90,7 @@ from pathlib import Path
 from funnelscript.core import Event
 from funnelscript.parser import Parser
 from funnelscript.runtime.world_executor import WorldExecutor
-p = Path('tests/fixtures/population-reference/order-coupling.fnl')
+p = Path('tests/fixtures/population-reference/order-coupling.fnls')
 world = WorldExecutor(Parser.from_file(p))
 forward = world.run([Event(0, 'A.Tick'), Event(0, 'B.Tick')], seed=1).state
 reversed_order = world.run([Event(0, 'B.Tick'), Event(0, 'A.Tick')], seed=1).state

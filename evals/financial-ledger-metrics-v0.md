@@ -37,7 +37,7 @@ Numeric implementation converts two-decimal Decimal inputs into Python integer m
 | `uv run pytest -q` | 430 passed, 58 subtests passed, 6.82s | 0 |
 | `uv run pytest tests/test_population_reference.py tests/test_population_identity.py tests/test_population_rng.py tests/test_world_conformance.py tests/test_world_stochastic.py tests/test_event_machine.py -q` | 129 passed, 0.85s | 0 |
 | `python3 -m unittest discover -s tests -v` (research checkout) | 5 passed | 0 |
-| `uv build --wheel --out-dir /tmp/funnelscript-phase007b-dist` | Wheel created; package archive has marketing `ledger.py`, `metrics.py`, `__init__.py`, existing `lead_response.fnl` | 0 |
+| `uv build --wheel --out-dir /tmp/funnelscript-phase007b-dist` | Wheel created; package archive has marketing `ledger.py`, `metrics.py`, `__init__.py`, existing `lead_response.fnls` | 0 |
 | AST source inspection for all new Python functions | No new function over 80 lines | 0 |
 
 Frontend sources/API not touched; Bun testing/build not run. Git-ignored build intermediates were not staged.

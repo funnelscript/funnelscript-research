@@ -66,7 +66,7 @@
 
 ```mermaid
 graph TD
-    A["FunnelScript Source (.fnl)"] --> B["Lexer & Parser"]
+    A["FunnelScript Source (.fnls)"] --> B["Lexer & Parser"]
     B --> C["Abstract Syntax Tree (AST)"]
     
     subgraph Verification ["Static Verification Layer"]
@@ -126,7 +126,7 @@ $$\mathbf{x}_i = \begin{bmatrix} \alpha_i \\ \beta_i \\ \gamma_i \\ \kappa_i \\ 
 * **Declarative Grammar:** Strongly-typed domain-specific language inspired by HashiCorp Configuration Language (HCL).
 * **Language Primitives:** The grammar abstracts marketing topology into declarative blocks: `audience`, `touchpoint`, `campaign`, `rule`, `transition`, and `constraint`.
 * **The Compilation Pipeline:**
-  $$\text{Raw Source (.fnl)} \xrightarrow{\text{Lexer}} \text{Token Stream} \xrightarrow{\text{Recursive Descent Parser}} \text{Standardized JSON AST}$$
+  $$\text{Raw Source (.fnls)} \xrightarrow{\text{Lexer}} \text{Token Stream} \xrightarrow{\text{Recursive Descent Parser}} \text{Standardized JSON AST}$$
 
 ```funnelscript
 // Sample Declarative FunnelScript Block
@@ -232,8 +232,8 @@ Before any simulation engine or production adapter executes, the AST must pass n
 * **Native CLI Suite:**  
   POSIX-compliant terminal tooling for automated CI/CD deployment pipelines:
   ```bash
-  funnelscript check strategy.fnl       # Static type analysis, DAG cycle check
-  funnelscript simulate strategy.fnl    # Run Monte Carlo simulation trials
+  funnelscript check strategy.fnls       # Static type analysis, DAG cycle check
+  funnelscript simulate strategy.fnls    # Run Monte Carlo simulation trials
   funnelscript schema                   # Export complete JSON schema specification
   funnelscript init my_strategy         # Bootstrap production scaffold
   ```

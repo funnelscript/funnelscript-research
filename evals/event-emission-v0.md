@@ -23,8 +23,8 @@ To reproduce:
 cd funnelscript
 uv run pytest -v tests/test_world_emissions.py
 uv run pytest -v
-uv run main.py check examples/event_chain_world.fnl
-uv run main.py run-world examples/event_chain_world.fnl --event Worker.Start@1
+uv run main.py check examples/event_chain_world.fnls
+uv run main.py run-world examples/event_chain_world.fnls --event Worker.Start@1
 ```
 
 Success here does **not** validate consumer psychology, calibration, real-market trajectories, or any Live Execution permissions.
@@ -32,8 +32,8 @@ Success here does **not** validate consumer psychology, calibration, real-market
 ## Distribution and CLI evidence (2026-10-31)
 
 - `uv run pytest -v`: **101 passed** on macOS with Python 3.12.13.
-- `uv run main.py check examples/event_chain_world.fnl`: World Type Check Passed (one agent).
-- `uv run funnelscript run-world examples/event_chain_world.fnl --event Worker.Start@1`: `processed_events=3`, `pending_events=0`, `Worker.progress=1`, `Worker.active=false`.
-- `uv run main.py run-world examples/event_chain_world.fnl --event Worker.Start@1 --max-events 2`: controlled nonzero termination (`max_events reached before the calendar was exhausted`).
+- `uv run main.py check examples/event_chain_world.fnls`: World Type Check Passed (one agent).
+- `uv run funnelscript run-world examples/event_chain_world.fnls --event Worker.Start@1`: `processed_events=3`, `pending_events=0`, `Worker.progress=1`, `Worker.active=false`.
+- `uv run main.py run-world examples/event_chain_world.fnls --event Worker.Start@1 --max-events 2`: controlled nonzero termination (`max_events reached before the calendar was exhausted`).
 - `uv build`: exit code 0; produced `dist/funnelscript-0.1.0-py3-none-any.whl` and `dist/funnelscript-0.1.0.tar.gz`, including the World executor module.
 - Both repositories passed `git diff --check` after documentation updates. Package artifact existence and CLI smoke do not prove clean-room installation on a new machine.

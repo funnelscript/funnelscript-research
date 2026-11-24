@@ -25,7 +25,7 @@ For `seed=42`, `conversion_probability=0.25`, two source transitions and event `
 
 - Draw #1 = `random.Random(42).random()` = approximately 0.6394267984578837; `0.6394 < 0.25` is false.
 - Draw #2 = 0.025010755222666936; `sample uniform(0.0,1.0)` yields the second draw.
-- Verified CLI command: `uv run main.py run-world examples/stochastic_world.fnl --event '{"name":"Shopper.Impression","time":0,"payload":{"conversion_probability":0.25}}' --seed 42`.
+- Verified CLI command: `uv run main.py run-world examples/stochastic_world.fnls --event '{"name":"Shopper.Impression","time":0,"payload":{"conversion_probability":0.25}}' --seed 42`.
 - Observed output: `{"pending_events":0,"processed_events":1,"state":{"Shopper":{"converted":false,"engagement_score":0.025010755222666936}},"world":"MarketTrial"}` (whitespace and key ordering may differ). A subprocess test executes this CLI twice and asserts identical outputs and expected state values.
 
 ## Limitations and residual risks

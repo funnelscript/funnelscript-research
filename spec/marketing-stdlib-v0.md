@@ -13,15 +13,15 @@ Status: Implemented research-first v0 contract, 2026-10-31. Accepted DEC-032; ex
 
 ```funnelscript
 world HolidayExperiment {
-  import "std:marketing/lead_response.fnl" as Prospect;
+  import "std:marketing/lead_response.fnls" as Prospect;
 }
 ```
 
 The `import` and `as` words are contextual identifiers inside `world`; `marketing`, `conversion`, and `campaign` are not core keywords.
 
-Each imported module is a complete `.fnl` `world` source exporting **exactly one** `agent` or `entity` declaration. The importing World gives that declaration a local alias, `Prospect`. Its state, events and same-owner rules are deep-copied; the resulting compiled AST contains normal World declarations, with no new runtime or domain interpreter. A module with zero/multiple exports fails explicitly in v0; a future module/signature system may lift that restriction.
+Each imported module is a complete `.fnls` `world` source exporting **exactly one** `agent` or `entity` declaration. The importing World gives that declaration a local alias, `Prospect`. Its state, events and same-owner rules are deep-copied; the resulting compiled AST contains normal World declarations, with no new runtime or domain interpreter. A module with zero/multiple exports fails explicitly in v0; a future module/signature system may lift that restriction.
 
-`std:marketing/lead_response.fnl` resolves to a packaged read-only source file in `funnelscript/stdlib/marketing/`. Local community modules may be included using relative paths such as `./lead.fnl` or `modules/lead.fnl`. Paths must be `.fnl`, relative, and contained under the importer file's own directory (or the package `stdlib` directory for `std:`), after symlink resolution. Absolute paths, traversals, missing modules, cyclic imports, and dependency chains deeper than 16 files fail before World execution. No network fetch, package registry, auto-install, executable plug-in or absolute machine path is permitted.
+`std:marketing/lead_response.fnls` resolves to a packaged read-only source file in `funnelscript/stdlib/marketing/`. Local community modules may be included using relative paths such as `./lead.fnls` or `modules/lead.fnls`. Paths must be `.fnls`, relative, and contained under the importer file's own directory (or the package `stdlib` directory for `std:`), after symlink resolution. Absolute paths, traversals, missing modules, cyclic imports, and dependency chains deeper than 16 files fail before World execution. No network fetch, package registry, auto-install, executable plug-in or absolute machine path is permitted.
 
 Both imported and local declarations participate in the existing WorldTypeChecker. Duplicate aliases or collisions with local owners fail; any implicit or nested import that would create more than one module export fails. Existing `world` and legacy `strategy` source files remain unchanged.
 
@@ -67,8 +67,8 @@ For one accepted Impression at `t`, probability `p in [0,1]`, unit cost `c` and 
 ## Falsifiable hypotheses
 
 - **H-M1, generic composition:** An imported Standard Library module executes using the same WorldExecutor as an inlined World; aliasing preserves behavior, with no domain keyword in the compiler. Counterexample: imported module fails type checking or produces different state on the same seed/events.
-- **H-M2, installed artifact:** The standard `.fnl` source is bundled in the distribution and works through the CLI from an unrelated working directory. Counterexample: running a wheel-installed CLI cannot find `std:marketing/lead_response.fnl`.
-- **H-M3, module security:** Duplicate aliases, missing/empty/multiple-export modules, traversal, absolute paths, symlink escapes and cycles fail explicitly before executing a World. Counterexample: `import "../private.fnl"` reads the parent file.
+- **H-M2, installed artifact:** The standard `.fnls` source is bundled in the distribution and works through the CLI from an unrelated working directory. Counterexample: running a wheel-installed CLI cannot find `std:marketing/lead_response.fnls`.
+- **H-M3, module security:** Duplicate aliases, missing/empty/multiple-export modules, traversal, absolute paths, symlink escapes and cycles fail explicitly before executing a World. Counterexample: `import "../private.fnls"` reads the parent file.
 - **H-M4, truthful marketing demo:** One Impression yields exactly one delayed Checkout and a seeded boolean; second impressions do nothing, state and revenue remain predictable under fixed seeds, and existing event/legacy suites pass unchanged. Counterexample: two queued Checkouts or unrepeatable replay.
 
 ## Explicit exclusions
@@ -77,4 +77,4 @@ No general-purpose type parameterization, alias-qualified cross-owner dispatch, 
 
 ## Evaluation routing
 
-Source: `src/funnelscript/parser.py` and source-packaged `src/funnelscript/stdlib/marketing/lead_response.fnl`; distribution metadata: `pyproject.toml`; runnable case: `examples/marketing_lead_response.fnl`. RED/GREEN: `tests/test_world_modules.py` and full regressions. Record evidence in `evals/marketing-stdlib-v0.md`. No new runtime.
+Source: `src/funnelscript/parser.py` and source-packaged `src/funnelscript/stdlib/marketing/lead_response.fnls`; distribution metadata: `pyproject.toml`; runnable case: `examples/marketing_lead_response.fnls`. RED/GREEN: `tests/test_world_modules.py` and full regressions. Record evidence in `evals/marketing-stdlib-v0.md`. No new runtime.

@@ -7,7 +7,7 @@ From the `funnelscript` working tree:
 ```bash
 uv run pytest -v tests/test_world_language.py
 uv run pytest -v
-uv run main.py check examples/warehouse_world.fnl
+uv run main.py check examples/warehouse_world.fnls
 ```
 
 | Hypothesis | Failure boundary | Test probes |

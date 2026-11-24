@@ -12,7 +12,7 @@ FunnelScript language branding and logo usage rules are maintained in the [appli
 | --- | --- | --- |
 | Typed World syntax, event-driven transitions, guards, and event payloads | Implemented in the reference interpreter | [World rules](spec/rule-transitions-v0.md), [events](spec/typed-event-payloads-v0.md), [evals](evals/world-rules-v0.md) |
 | Seeded Bernoulli/Uniform sampling and local event scheduling | Implemented; assumption-driven only | [Stochastic specification](spec/stochastic-operators-v0.md), [evaluation](evals/stochastic-operators-v0.md) |
-| Source imports and first `std:marketing/lead_response.fnl` module | Implemented, one exported entity/agent per module | [Library contract](spec/marketing-stdlib-v0.md), [evaluation](evals/marketing-stdlib-v0.md) |
+| Source imports and first `std:marketing/lead_response.fnls` module | Implemented, one exported entity/agent per module | [Library contract](spec/marketing-stdlib-v0.md), [evaluation](evals/marketing-stdlib-v0.md) |
 | Installed CLI starter and source-tagged `v0.2.0a1` preview | Published via Git tag; CI and clean-directory Git install verified | [Preview specification](spec/developer-preview-v0.md), [attestation](evals/developer-preview-v0.md) |
 | Market digital twin, fitted human behavior, causal lift prediction, PyMC/OmniTwin adapter | Research intent; **not validated or shipped as the World runtime** | [Paper and limitations](paper/README.md) |
 | Live marketing actions, `fpm` registry, PyPI distribution | Not shipped | [Ecosystem proposal](docs/fpm.md), [preview limits](spec/developer-preview-v0.md) |
@@ -25,9 +25,9 @@ The public `v0.2.0a1` tag can be installed without cloning the research reposito
 
 ```bash
 uvx --from "git+https://github.com/funnelscript/funnelscript@v0.2.0a1" funnelscript --version
-uvx --from "git+https://github.com/funnelscript/funnelscript@v0.2.0a1" funnelscript init-world first.fnl
-uvx --from "git+https://github.com/funnelscript/funnelscript@v0.2.0a1" funnelscript check first.fnl
-uvx --from "git+https://github.com/funnelscript/funnelscript@v0.2.0a1" funnelscript run-world first.fnl --event '{"name":"Prospect.Impression","time":0,"payload":{"cpc":2.0,"conversion_probability":0.7,"order_value":100.0}}' --seed 1
+uvx --from "git+https://github.com/funnelscript/funnelscript@v0.2.0a1" funnelscript init-world first.fnls
+uvx --from "git+https://github.com/funnelscript/funnelscript@v0.2.0a1" funnelscript check first.fnls
+uvx --from "git+https://github.com/funnelscript/funnelscript@v0.2.0a1" funnelscript run-world first.fnls --event '{"name":"Prospect.Impression","time":0,"payload":{"cpc":2.0,"conversion_probability":0.7,"order_value":100.0}}' --seed 1
 ```
 
 This models one assumed lead journey, not a market population. The [application tutorial](https://github.com/funnelscript/funnelscript/blob/main/docs/EXPERIMENTAL_PREVIEW.md) covers the result and local module extension. A Git tag is not a PyPI release or a standalone GitHub Release object.
